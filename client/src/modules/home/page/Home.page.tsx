@@ -2,11 +2,12 @@ import type { FC } from "react";
 
 //Components
 import { Button } from "../../../shared/components";
+import { ConventionCard } from "../../../shared/components/conventionCard/ConventionCard";
 import { KPI } from "../components";
 
 //Styles
 import './home.css';
-import { ConventionCard } from "../../../shared/components/conventionCard/ConventionCard";
+import { Standards } from "../components/standards/Standards";
 
 export const Home: FC = () => {
     return (
@@ -24,6 +25,7 @@ export const Home: FC = () => {
                         </p>
 
                     </div>
+                    <div className="header-radius"></div>
                 </section>
 
                 {/* HERO */}
@@ -49,21 +51,23 @@ export const Home: FC = () => {
                 {/* KPI */}
                 <section className="kpi-section">
                     <div className="kpi-inner-wrapper">
-                        <KPI
-                            imgPath={"./"}
-                            title={"Multi-Language Support"}
-                            description={"JavaScript, React, CSS, Typescript, NodeJS, ... all in one hub"}
-                        />
-                        <KPI
-                            imgPath={"./"}
-                            title={"Easy to Understand"}
-                            description={"Easy styling to improve readability for web or read the .md version"}
-                        />
-                        <KPI
-                            imgPath={"./"}
-                            title={"Easy to Reference"}
-                            description={"Quick search, filters, and downloadable cheat sheets"}
-                        />
+                        <div className="kpi-container">
+                            <KPI
+                                imgPath={"./"}
+                                title={"Multi-Language Support"}
+                                description={"JavaScript, React, CSS, Typescript, NodeJS, ... all in one hub"}
+                            />
+                            <KPI
+                                imgPath={"./"}
+                                title={"Easy to Understand"}
+                                description={"Easy styling to improve readability for web or read the .md version"}
+                            />
+                            <KPI
+                                imgPath={"./"}
+                                title={"Easy to Reference"}
+                                description={"Quick search, filters, and downloadable cheat sheets"}
+                            />
+                        </div>
                     </div>
                 </section>
 
@@ -93,6 +97,41 @@ export const Home: FC = () => {
                                 copy={ "View More" }
                                 primary={ true }
                             />
+                        </div>
+                    </div>
+                    <div className="lower-corner-bg">
+                        <div className="lower-corner-normal"></div>
+                    </div>
+                </section>
+
+                {/* CONTRIBUTE */}
+                <section className="contribute-section">
+                    <div className="contribute-inner-wrapper">
+                        <div className="contribute-container">
+                            <h3>SHARE YOUR STANDARDS</h3>
+                            <div className="standards-wrapper">
+                                <Standards
+                                    standards_number={ 1 }
+                                    standards_title={ "Define and Write" }
+                                    standards_description={ "Use our minimalist editor with full Markdown support to clearly document your conventions. No unnecessary bells and whistles, just focus on the content." }
+                                />
+                                <Standards
+                                    standards_number={ 2 }
+                                    standards_title={ "Tag and Categorize" }
+                                    standards_description={ "Add the relevant languages, frameworks, and tools. Our smart tagging ensures the right developers can find your standard immediately." }
+                                />
+                                <Standards
+                                    standards_number={ 3 }
+                                    standards_title={ "Publish and Impact" }
+                                    standards_description={ "Publish your standard and see the impact immediately. Every view and download contributes to your reputation in the community." }
+                                />
+                            </div>
+                            <div className="standards-button-wrapper">
+                                <Button
+                                    copy={"Start Contributing"}
+                                    primary={ false }
+                                />
+                            </div>
                         </div>
                     </div>
                 </section>
