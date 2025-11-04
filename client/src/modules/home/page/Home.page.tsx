@@ -6,6 +6,7 @@ import { KPI } from "../components";
 
 //Styles
 import './home.css';
+import { ConventionCard } from "../../../shared/components/conventionCard/ConventionCard";
 
 export const Home: FC = () => {
     return (
@@ -63,6 +64,36 @@ export const Home: FC = () => {
                             title={"Easy to Reference"}
                             description={"Quick search, filters, and downloadable cheat sheets"}
                         />
+                    </div>
+                </section>
+
+                {/* POPULAR CONVENTIONS */}
+                <section className="popular-conventions-section">
+                    <div className="popular-conventions-inner-wrapper">
+                        <h3>POPULAR CONVENTIONS</h3>
+                        <div className="popular-conventions-container">
+                            <ConventionCard
+                                convention_title="JavaScript"
+                                convention_description="Use camelCase for variable and function names"
+                                convention_imgPath="./images/"
+                            />
+                            <ConventionCard
+                                convention_title="JavaScript"
+                                convention_description="Use camelCase for variable and function names"
+                                convention_imgPath="./images/"
+                            />
+                            <ConventionCard
+                                convention_title="JavaScript"
+                                convention_description="Use camelCase for variable and function names"
+                                convention_imgPath="./images/"
+                            />
+                        </div>
+                        <div className="popular-convention-button-wrapper">
+                            <Button
+                                copy={ "View More" }
+                                primary={ true }
+                            />
+                        </div>
                     </div>
                 </section>
             </div>

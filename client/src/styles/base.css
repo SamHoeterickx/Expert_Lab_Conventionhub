@@ -8,6 +8,8 @@ body, html{
     font-family: var(--base-font);
     font-weight: 400;
     color: var(--font-color);
+
+    overflow-x: hidden;
 }
 
 h1 {

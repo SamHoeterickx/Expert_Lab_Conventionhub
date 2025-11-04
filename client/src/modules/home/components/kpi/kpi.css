@@ -19,6 +19,7 @@
     }
 
     .kpi-info-wrapper{
+        width: 60%;
         h2{
             margin-bottom: 1rem;
             max-width: 175px;

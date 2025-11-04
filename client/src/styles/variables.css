@@ -3,11 +3,12 @@
     /* COLORS */
     --background-color: #070B0F;
     --accent-color: #24BFB5;
+    --light-blue-color: #2A4159;
     --font-color: #FFFFFF;
 
     /* MARGINS & PADDING */
-    --base-margin: 8rem;
-    --base-padding: 8rem;
+    --base-margin: 6rem;
+    --base-padding: 6rem;
 
     /* FONTS */
     --base-font: "Goga Test";
