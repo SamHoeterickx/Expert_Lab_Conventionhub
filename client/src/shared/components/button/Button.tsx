@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { Link } from "react-router-dom";
 
 //Style
 import './button.css';
@@ -11,10 +12,12 @@ interface ButtonProps {
 
 export const Button: FC<ButtonProps> = ({ copy, primary }) => {
     return (
-        <button
-            className={`button ${primary ? 'primary' : 'secondary'}`}
-        >
-            {copy}
-        </button>
+        <Link to={"#"}>
+            <div
+                className={`button ${primary ? 'primary' : 'secondary'}`}
+            >
+                {copy}
+            </div>
+        </Link>
     );
 };

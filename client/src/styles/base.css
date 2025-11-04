@@ -12,6 +12,11 @@ body, html{
     overflow-x: hidden;
 }
 
+a{
+    color: var(--font-color);
+    text-decoration: none;
+}
+
 h1 {
     font-weight: 900; 
     font-size: var(--h1-font-size);

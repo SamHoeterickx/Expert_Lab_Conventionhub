@@ -2,6 +2,10 @@
     border: none;
     background-color: transparent;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-family: var(--font-family);
     font-size: .875rem;
     font-weight: 500;

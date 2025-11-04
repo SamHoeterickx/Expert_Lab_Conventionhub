@@ -25,11 +25,11 @@
     }
 
     .view-button{
-        border: none;
-        outline: none;
         background-color: var(--background-color);
         
-        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         
         color: var(--font-color);
         font-family: var(--font-family);

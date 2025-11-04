@@ -1,4 +1,5 @@
-import { useRef, type FC } from "react";
+import { type FC } from "react";
+import { Link } from "react-router-dom";
 
 //Style
 import './conventionCard.css';
@@ -12,8 +13,6 @@ interface ConventionCardProps {
 
 export const ConventionCard: FC<ConventionCardProps> = ({ convention_title, convention_imgPath, convention_description}) => {
 
-    const ref = useRef()
-
     return(
         <div className="convention-card-wrapper">
             <div className="convention-card-top-info">
@@ -21,7 +20,9 @@ export const ConventionCard: FC<ConventionCardProps> = ({ convention_title, conv
                 <img src={ convention_imgPath } alt="" />
             </div>
             <h4>{ convention_description }</h4>
-            <button className="view-button">View</button>
+            <Link to={'#'}>
+                <div className="view-button">View</div>
+            </Link>
         </div>
     )
 }
