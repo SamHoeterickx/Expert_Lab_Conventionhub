@@ -21,7 +21,7 @@
     }
 
     .header-radius{
-        width: 94dvw;
+        width: 97dvw;
         height: 92px;
         border-bottom-right-radius: 2.5rem;
         background-color: var(--background-color);
@@ -113,7 +113,7 @@
     .kpi-inner-wrapper{
         background-color: var(--background-color);
         border-top-right-radius: 2.5rem;
-        width: 94dvw;
+        width: 97dvw;
         
 
         .kpi-container{
@@ -185,7 +185,7 @@
         height: 6rem;
 
         .lower-corner-normal{
-            width: 94dvw;
+            width: 97dvw;
             background-color: var(--background-color);
             height: 100%;
 
@@ -246,7 +246,7 @@
 
 /* SLOGAN */
 .slogan-section{
-    height: 35dvh;
+    height: 300px;
 
     position: relative;
     width: 100%;
@@ -274,7 +274,7 @@
                 margin-right: 1rem;
                 color: var(--background-color);
                 font-weight: 900;
-                font-size: 1.85rem;
+                font-size: 1.5rem;
             }
         }
     }
@@ -293,7 +293,7 @@
             margin-left: 1rem;
             color: var(--accent-color);
             font-weight: 900;
-            font-size: 1.85rem;
+            font-size: 1.5rem;
         }
     }
 
