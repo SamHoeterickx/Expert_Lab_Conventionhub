@@ -1,0 +1,23 @@
+body, html{
+    /* BASE */
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    
+    /* FONTS */
+    font-family: var(--base-font);
+    font-weight: 400;
+    color: var(--font-color);
+}
+
+h1 {
+  font-weight: 900; 
+}
+
+h2 {
+  font-weight: 700;
+}
+
+p {
+  font-weight: 400;
+}
