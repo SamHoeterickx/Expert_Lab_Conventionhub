@@ -4,12 +4,12 @@ import type { FC } from "react";
 import './button.css';
 
 //Type
-interface ButtonType {
+interface ButtonProps {
     copy: string;
     primary: boolean;
 };
 
-export const Button: FC<ButtonType> = ({ copy, primary }) => {
+export const Button: FC<ButtonProps> = ({ copy, primary }) => {
     return (
         <button
             className={`button ${primary ? 'primary' : 'secondary'}`}

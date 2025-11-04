@@ -1,13 +1,17 @@
 import type { FC } from "react";
 
+//Components
+import { Button } from "../../../shared/components";
+import { KPI } from "../components";
+
 //Styles
 import './home.css';
-import { Button } from "../../../shared/components";
 
 export const Home: FC = () => {
     return (
         <>
             <div>
+                {/* HEADER */}
                 <section className="header-wrapper">
                     <div className="header-inner-wrapper">
                         
@@ -20,6 +24,8 @@ export const Home: FC = () => {
 
                     </div>
                 </section>
+
+                {/* HERO */}
                 <section className="hero-section">
                     <div className="explore-section-wrapper">
                         <img className="hero-image" src="./images/" alt="image of convention detail page" />
@@ -35,6 +41,27 @@ export const Home: FC = () => {
                         <Button
                             copy={'Contribute'}
                             primary={false}
+                        />
+                    </div>
+                </section>
+
+                {/* KPI */}
+                <section className="kpi-section">
+                    <div className="kpi-inner-wrapper">
+                        <KPI
+                            imgPath={"./"}
+                            title={"Multi-Language Support"}
+                            description={"JavaScript, React, CSS, Typescript, NodeJS, ... all in one hub"}
+                        />
+                        <KPI
+                            imgPath={"./"}
+                            title={"Easy to Understand"}
+                            description={"Easy styling to improve readability for web or read the .md version"}
+                        />
+                        <KPI
+                            imgPath={"./"}
+                            title={"Easy to Reference"}
+                            description={"Quick search, filters, and downloadable cheat sheets"}
                         />
                     </div>
                 </section>
