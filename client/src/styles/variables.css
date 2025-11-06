@@ -29,7 +29,7 @@
 /* THIN */
 @font-face {
   font-family: "Goga Test";
-  src: url("./fonts/GogaTest-Thin-BF6646d5d8040a9.otf") format("opentype");
+  src: url("/font/GogaTest-Thin-BF6646d5d8040a9.woff") format("woff");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -38,7 +38,7 @@
 /* EXTRA LIGHT */
 @font-face {
   font-family: "Goga Test";
-  src: url("./fonts/GogaTest-Extralight-BF6646d5d82fb83.otf") format("opentype"); 
+  src: url("/font/GogaTest-Extralight-BF6646d5d82fb83.woff") format("woff"); 
   font-style: normal;
   font-display: swap;
 }
@@ -46,7 +46,7 @@
 /* LIGHT */
 @font-face {
   font-family: "Goga Test";
-  src: url("./fonts/GogaTest-Light-BF6646d5d84c8a2.otf") format("opentype"); 
+  src: url("/font/GogaTest-Light-BF6646d5d84c8a2.woff") format("woff"); 
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -55,7 +55,7 @@
 /* REGULAR */
 @font-face {
   font-family: "Goga Test";
-  src: url("./fonts/GogaTest-Regular-BF6646d5d84f69b.otf") format("opentype"); 
+  src: url("/font/GogaTest-Regular-BF6646d5d84f69b.woff") format("woff"); 
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -64,7 +64,7 @@
 /* MEDIUM */
 @font-face {
   font-family: "Goga Test";
-  src: url("./fonts/GogaTest-Medium-BF6646d5d84754e.otf") format("opentype"); 
+  src: url("/font/GogaTest-Medium-BF6646d5d84754e.woff") format("woff"); 
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -73,7 +73,7 @@
 /* SEMIBOLD */
 @font-face {
   font-family: "Goga Test";
-  src: url("./fonts/GogaTest-Semibold-BF6646d5d8544cf.otf") format("opentype");
+  src: url("/font/GogaTest-Semibold-BF6646d5d8544cf.woff") format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -82,7 +82,7 @@
 /* BOLD */
 @font-face {
   font-family: "Goga Test";
-  src: url("./fonts/GogaTest-Bold-BF6646d5d83c978.otf") format("opentype"); 
+  src: url("/font/GogaTest-Bold-BF6646d5d83c978.woff") format("woff"); 
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -91,7 +91,7 @@
 /* EXTRA BOLD */
 @font-face {
   font-family: "Goga Test";
-  src: url("./fonts/GogaTest-Extrabold-BF6646d5d7d0a2b.otf") format("opentype"); 
+  src: url("/font/GogaTest-Extrabold-BF6646d5d7d0a2b.woff") format("woff"); 
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -100,7 +100,7 @@
 /* BLACK */
 @font-face {
   font-family: "Goga Test";
-  src: url("./fonts/GogaTest-Black-BF6646d5d78e551.otf") format("opentype");
+  src: url("/font/GogaTest-Black-BF6646d5d78e551.woff") format("woff");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
