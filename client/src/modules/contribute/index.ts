@@ -1,0 +1,1 @@
+export { CONTRIBUTE_ROUTE } from './contribute.route';
