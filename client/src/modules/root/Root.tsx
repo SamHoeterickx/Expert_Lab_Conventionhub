@@ -1,4 +1,5 @@
 import { createHashRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 //Components
 import { App } from "../app";
@@ -9,6 +10,8 @@ import { EXPLORE_ROUTE } from "../explore";
 import { HOME_ROUTE } from "../home";
 
 export const Root = () => {
+
+    const QUERY_CLIENT = new QueryClient();
 
     const ROUTE = createHashRouter([
         {
@@ -31,5 +34,9 @@ export const Root = () => {
         }
     ]);
     
-    return <RouterProvider router={ ROUTE } />
+    return (
+        <QueryClientProvider client={ QUERY_CLIENT } >
+            <RouterProvider router={ ROUTE } />
+        </QueryClientProvider>
+    )
 }
