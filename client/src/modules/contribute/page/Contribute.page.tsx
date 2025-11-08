@@ -1,10 +1,12 @@
 import type { FC } from "react";
-import { Header } from "../../../shared/components";
+import { Header, ScrollWrapper } from "../../../shared/components";
 
 export const Contribute: FC = () => {
     return(
-        <Header
-            title={ "CONTRIBUTE" }
-        />
+        <ScrollWrapper>
+            <Header
+                title={ "CONTRIBUTE" }
+            />
+        </ScrollWrapper>
     )
 }

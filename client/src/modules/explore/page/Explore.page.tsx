@@ -2,7 +2,7 @@ import type { FC } from "react"
 import { Link } from "react-router-dom";
 
 //Components
-import { Header, ConventionCard, PreFooter } from "../../../shared/components";
+import { Header, ConventionCard, PreFooter, ScrollWrapper } from "../../../shared/components";
 
 //Routes
 import { CONTRIBUTE_ROUTE } from "../../contribute";
@@ -52,7 +52,7 @@ export const dummyConventions = [
 
 export const Explore: FC = () => {
     return(
-        <>
+        <ScrollWrapper>
             <Header 
                 title={ "EXPLORE" }
             />
@@ -81,6 +81,6 @@ export const Explore: FC = () => {
                     Contribute
                 </Link>
             </PreFooter>
-        </>
+        </ScrollWrapper>
     )
 }

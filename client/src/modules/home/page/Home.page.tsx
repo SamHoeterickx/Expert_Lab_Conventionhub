@@ -1,6 +1,7 @@
 import type { FC } from "react";
 
 //Components
+import { ScrollWrapper } from "../../../shared/components";
 import { 
     ContributeSection, 
     HeaderSection,
@@ -15,13 +16,13 @@ import './home.css';
 
 export const Home: FC = () => {
     return (
-        <>
+        <ScrollWrapper>
             <HeaderSection />
             <HeroSection />
             <KpiSection />
             <PopularConventionsSection />
             <ContributeSection />
             <SloganSection />
-        </>
+        </ScrollWrapper>
     );
 }
