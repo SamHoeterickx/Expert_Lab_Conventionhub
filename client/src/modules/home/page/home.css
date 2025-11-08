@@ -21,7 +21,7 @@
     }
 
     .header-radius{
-        width: 97dvw;
+        margin-right: 3dvw;
         height: 92px;
         border-bottom-right-radius: 2.5rem;
         background-color: var(--background-color);
@@ -110,22 +110,28 @@
 
     background-color: var(--accent-color);
 
-    .kpi-inner-wrapper{
+    .kpi-corner-upper{
         background-color: var(--background-color);
         border-top-right-radius: 2.5rem;
-        width: 97dvw;
-        
+
+        margin-right: 3dvw;
+        padding-top: var(--base-padding);
+    }
+
+    .kpi-inner-wrapper{
+        background-color: var(--background-color);
 
         .kpi-container{
             margin-left: 7.5dvw;
-            padding-top: var(--base-padding);
+            
             width: 85dvw;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
     }
-   
+    
+
     ::after{
         content: '';
         position: absolute;
@@ -185,11 +191,11 @@
         height: 6rem;
 
         .lower-corner-normal{
-            width: 97dvw;
             background-color: var(--background-color);
             height: 100%;
 
             border-bottom-right-radius: 2.5rem;
+            margin-right: 3dvw;
         }
     }
 

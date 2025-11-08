@@ -4,6 +4,7 @@ import { KPI } from "../kpi/Kpi";
 export const KpiSection = () => {
     return(
         <section className="kpi-section">
+            <div className="kpi-corner-upper"></div>    
             <div className="kpi-inner-wrapper">
                 <div className="kpi-container">
                     <KPI
