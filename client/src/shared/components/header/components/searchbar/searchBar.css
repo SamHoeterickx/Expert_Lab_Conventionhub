@@ -1,0 +1,38 @@
+.searchbar-wrapper{
+   
+    display: flex;
+    justify-content: center;
+
+
+    .searchbar-inner-wrapper{
+        width: 50%;
+        height: 2rem;
+
+        padding: 0 .75rem ;
+
+        border-radius: .75rem;
+        background-color: var(--background-color);
+        display: flex;
+        gap: 1rem;
+        
+        input{     
+            height: 2rem;   
+            width: 90%;
+            background-color: var(--background-color);
+    
+            outline: none;
+            border: none;
+    
+            color: var(--font-color);
+
+        }
+
+        button{
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    }
+}
