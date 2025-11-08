@@ -36,14 +36,14 @@ export const Header: FC<HeaderProps> = ({ title }) => {
 
     }, [location]);
 
-    const handleSearchClick = () => {
+    const handleFilterDropdown = () => {
         const filterState = !isFilterState;
         
         setIsFilterState(!isFilterState);
-        setSearchParams({
-            s: 'hey', 
-            fs: filterState.toString()
-        })
+        setSearchParams(prevParams => {
+            prevParams.set('fs', filterState.toString());
+            return prevParams;
+        });
     }
 
     return (
@@ -53,7 +53,7 @@ export const Header: FC<HeaderProps> = ({ title }) => {
                 {
                     currentPage === "explore" && (
                         <button
-                            onClick={ handleSearchClick }
+                            onClick={ handleFilterDropdown }
                         >
                             🔍
                         </button>
