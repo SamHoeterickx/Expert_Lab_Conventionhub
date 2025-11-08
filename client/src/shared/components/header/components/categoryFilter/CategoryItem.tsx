@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { useSearchParams } from "react-router-dom";
 
 //Type
 interface CategoryItemProps {
@@ -6,9 +7,26 @@ interface CategoryItemProps {
 }
 
 export const CategoryItem:FC<CategoryItemProps> = ({ name }) => {
+
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const handleClick = () => {
+        console.log(name);
+
+        setSearchParams(prevParms => {
+            prevParms.set('cf', name);
+
+            return prevParms
+        })
+
+    }
+
     return(
-        <button className="category-item">
-            { name }
+        <button 
+            className="category-item"
+            onClick={ handleClick }
+        >
+            { name.toUpperCase() }
         </button>
     )
 }

@@ -52,4 +52,6 @@ button{
     border: none;
     outline: none;
     background-color: transparent;
+
+    font-family: var(--font-family);
 }
