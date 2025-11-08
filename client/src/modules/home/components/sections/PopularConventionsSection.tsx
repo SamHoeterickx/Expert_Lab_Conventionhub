@@ -1,6 +1,5 @@
 //Components
-import { Button } from "../../../../shared/components";
-import { ConventionCard } from "../../../../shared/components/conventionCard/ConventionCard";
+import { Button, ConventionCard } from "../../../../shared/components";
 
 export const PopularConventionsSection = () => {
     return (
