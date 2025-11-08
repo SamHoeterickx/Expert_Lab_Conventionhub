@@ -23,22 +23,4 @@
         font-weight: 300;
         margin-bottom: 1rem;
     }
-
-    .view-button{
-        background-color: var(--background-color);
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        color: var(--font-color);
-        font-family: var(--font-family);
-        font-size: 1rem;
-        font-weight: 300;
-        height: 2.5rem;
-        
-        border-radius: .45rem;
-    }
-
-
 }

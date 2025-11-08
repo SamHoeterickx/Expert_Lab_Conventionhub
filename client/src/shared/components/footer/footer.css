@@ -5,11 +5,10 @@ footer{
     background-color: var(--accent-color);
     
     .footer-container{
-        width: 97dvw;
         background-color: var(--background-color);
         border-top-left-radius: 2.5rem;
         
-        margin-left: 1rem;
+        margin-left: 3dvw;
         padding-top: var(--base-padding);
         padding-bottom: 2rem;
         
