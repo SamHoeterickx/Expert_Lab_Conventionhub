@@ -16,7 +16,58 @@ datasource db {
 }
 
 model User {
-  id    String     @id @default(uuid())
-  email String  @unique
-  name  String?
+  id              String        @id @default(uuid())
+  email           String        @unique
+  username        String        @unique
+  password        String
+  
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  conventions     Convention[]  
+  likes           Like[]
+  comments        Comment[]
+}
+
+model Convention{
+  id              String        @id @default(uuid())
+  title           String
+  slug            String        @unique
+  contentMd       String
+  contentHtml     String?
+  author          User          @relation(fields: [authorId], references: [id])
+  authorId        String
+  likeCount       Int           @default(0)
+  commentCount    Int           @default(0)
+  
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  likes           Like[]        
+  comments        Comment[]
+}
+
+model Like{
+  id              String        @id @default(uuid())
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String
+  convention      Convention    @relation(fields: [conventionId], references: [id])
+  conventionId    String
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@unique([userId, conventionId])
+}
+
+model Comment{
+  id              String        @id @default(uuid())
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String
+  convention      Convention    @relation(fields: [conventionId], references: [id])
+  conventionId    String
+  content         String
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
 }
