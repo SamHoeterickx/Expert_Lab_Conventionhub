@@ -1,6 +1,9 @@
 //Components
 import { Button, ConventionCard } from "../../../../shared/components";
 
+//Routes
+import { EXPLORE_ROUTE } from "../../../explore";
+
 export const PopularConventionsSection = () => {
     return (
         <section className="popular-conventions-section">
@@ -29,6 +32,7 @@ export const PopularConventionsSection = () => {
                 <div className="popular-convention-button-wrapper">
                     <Button
                         copy={ "View More" }
+                        link={ EXPLORE_ROUTE.path }
                         primary={ true }
                     />
                 </div>

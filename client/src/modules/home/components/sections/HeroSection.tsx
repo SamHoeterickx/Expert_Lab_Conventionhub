@@ -1,6 +1,10 @@
 //Components
 import { Button } from "../../../../shared/components";
 
+//Routes
+import { CONTRIBUTE_ROUTE } from "../../../contribute";
+import { EXPLORE_ROUTE } from "../../../explore";
+
 export const HeroSection = () => {
     return (
         <section className="hero-section">
@@ -8,16 +12,18 @@ export const HeroSection = () => {
                 <img className="hero-image" src="./images/" alt="image of convention detail page" />
 
                 <Button
-                    copy={'Explore'}
-                    primary={true}
+                    copy={ 'Explore' }
+                    link={ EXPLORE_ROUTE.path }
+                    primary={ true }
                 />
             </div>
             <div className="contribute-section-wrapper">
                 <img className="hero-image" src="./images/" alt="image of convention md file" />
 
                 <Button
-                    copy={'Contribute'}
-                    primary={false}
+                    copy={ 'Contribute' }
+                    link={ CONTRIBUTE_ROUTE.path }
+                    primary={ false }
                 />
             </div>
         </section>

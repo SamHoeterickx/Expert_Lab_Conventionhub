@@ -2,6 +2,9 @@
 import { Standards } from "../standards/Standards";
 import { Button } from "../../../../shared/components";
 
+//Routes
+import { CONTRIBUTE_ROUTE } from "../../../contribute";
+
 export const ContributeSection = () => {
     return (
         <section className="contribute-section">
@@ -28,6 +31,7 @@ export const ContributeSection = () => {
                     <div className="standards-button-wrapper">
                         <Button
                             copy={"Start Contributing"}
+                            link={ CONTRIBUTE_ROUTE.path }
                             primary={ false }
                         />
                     </div>

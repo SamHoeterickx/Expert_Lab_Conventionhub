@@ -7,12 +7,13 @@ import './button.css';
 //Type
 interface ButtonProps {
     copy: string;
+    link: string
     primary: boolean;
 };
 
-export const Button: FC<ButtonProps> = ({ copy, primary }) => {
+export const Button: FC<ButtonProps> = ({ copy, link, primary }) => {
     return (
-        <Link to={"#"}>
+        <Link to={`/${link}`}>
             <div
                 className={`button ${primary ? 'primary' : 'secondary'}`}
             >
