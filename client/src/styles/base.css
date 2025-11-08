@@ -47,3 +47,9 @@ p {
     font-size: var(--p-font-size);
     margin: 0;
 }
+
+button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}

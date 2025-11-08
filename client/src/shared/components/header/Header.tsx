@@ -53,6 +53,7 @@ export const Header: FC<HeaderProps> = ({ title }) => {
                 {
                     currentPage === "explore" && (
                         <button
+                            className="filter-drop-down"
                             onClick={ handleFilterDropdown }
                         >
                             🔍

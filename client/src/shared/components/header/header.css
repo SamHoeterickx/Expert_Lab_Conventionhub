@@ -28,23 +28,12 @@
             color: var(--background-color);
         }
 
-        button{
+        button.filter-drop-down{
             background-color: transparent;
             border: none;
             outline: none;
             font-size: 1.25rem;
             cursor: pointer;
         }
-    }
-
-    ::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 3dvw;
-
-        height: 100%;
-        background: var(--accent-color);
     }
 }

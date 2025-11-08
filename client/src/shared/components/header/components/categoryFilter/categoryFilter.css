@@ -1,0 +1,57 @@
+.category-wrapper{
+    display: flex;
+    justify-content: space-between;
+    gap: .75rem;
+
+    margin-top: 1rem;
+    
+    overflow-x: scroll;
+    z-index: 9999999;
+
+    scrollbar-color: rgba(0, 0, 0, 0.228) transparent;
+    scrollbar-width: thin;
+
+
+    .category-item{
+        max-width: 200px;
+        padding: .5rem 2rem;
+        background-color: var(--background-color);
+        color: var(--font-color);
+        border-radius: .5rem;
+    
+        font-size: .875rem;
+    
+        cursor: pointer;
+
+        margin-bottom: .25rem;
+    
+    }
+}
+
+
+.category-item:nth-child(1){
+    margin-left: 7.5dvw;
+}
+.category-item:nth-last-child(1){
+    margin-right: 7.5dvw;
+}
+
+/* Scrollbar */
+
+.category-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.category-wrapper::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+.category-wrapper::-webkit-scrollbar-thumb {
+
+    background-color: rgba(0, 0, 0, 0.158);
+    border-radius: 4px;
+}
+
+.category-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.468);
+}
