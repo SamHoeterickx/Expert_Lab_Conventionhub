@@ -37,8 +37,6 @@ model Convention{
   contentHtml     String?
   author          User          @relation(fields: [authorId], references: [id])
   authorId        String
-  likeCount       Int           @default(0)
-  commentCount    Int           @default(0)
   
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
