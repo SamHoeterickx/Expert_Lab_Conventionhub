@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 //Routes
 import { REGISTER_ROUTE } from "../../register";
+import { authService } from "../../../../shared/services/auth.service";
 
 export const Login = () => {
 
@@ -10,8 +11,19 @@ export const Login = () => {
         e.preventDefault();
         const form = e.currentTarget;
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        console.log(data);
+        const data = Object.fromEntries(formData.entries()) as Record<string, string>;
+
+        login(data.email, data.password);
+    }
+
+    const login = async(email:string, password:string) => {
+        try{
+            const data = await authService.login(email, password);
+            console.log(data)
+
+        }catch(error:any){
+            console.error('Failed to fetch login:', error);
+        }
     }
 
     return(

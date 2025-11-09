@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 //Routes
 import { LOGIN_ROUTE } from "../../login";
+import { authService } from "../../../../shared/services/auth.service";
 
 export const Register = () => {
 
@@ -11,10 +12,18 @@ export const Register = () => {
         
         const form = e.currentTarget;
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        console.log(data);
-        //HOOK
+        const data = Object.fromEntries(formData.entries()) as Record<string, string>;
+        register(data.email, data.username, data.password, data.repeatPassword)
     }
+
+    const register = async(email:string, username:string, password:string, repeatPassword:string) => {
+        try{
+            const data = await authService.register(email, username, password, repeatPassword);
+            console.log(data);
+        }catch(error:any){
+            console.error('Faild to fetch register:', error);
+        }
+    } 
 
     return(
         <form className="auth-form" onSubmit={handleFormSubmition} >
