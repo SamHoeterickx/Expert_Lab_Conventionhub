@@ -1,6 +1,6 @@
 import { type Request, type Response } from 'express';
 
-import { checkExcistingUser, registerNewUser } from './model'
+import { checkExcistingUser, registerNewUser, verifyPassword } from './model'
 
 export const register = async(req:Request, res:Response) => {
     try{
@@ -21,15 +21,15 @@ export const register = async(req:Request, res:Response) => {
             return res.status(409).send({
                 status: 409,
                 message: 'Email already in use'
-            })
-        }
+            });
+        };
         
         if(password !== repeatPassword){
             return res.status(401).send({
                 status: 401,
                 message: 'Passwords dont match'
             });
-        }
+        };
 
         const newUser = await registerNewUser(userData);
 
@@ -37,15 +37,15 @@ export const register = async(req:Request, res:Response) => {
             return res.status(409).send({
                 status: 409,
                 message: 'Failed to create new user'
-            }) 
-        }
+            });
+        };
 
-        res.cookie('userId', newUser.id, {
+        res.cookie('session_id', newUser.id, {
             httpOnly: true,
             sameSite: 'strict',
             signed: true,
             maxAge: 7 * 24 * 60 * 60 * 1000
-        })
+        });
 
         return res.status(201).send({
             status:201,
@@ -59,6 +59,59 @@ export const register = async(req:Request, res:Response) => {
             status: 500,
             message: error.message
         })
+
+    }
+}
+
+export const login = async(req:Request, res:Response) => {
+    try{
+
+        const {email, password} = req.body;
+
+        if(!email || !password){
+            return res.status(422).send({
+                status: 422,
+                message: 'Missing login info'
+            });
+        };
+
+        const excistingUser = await checkExcistingUser(email);
         
+        if(!excistingUser){
+            return res.status(401).send({
+                status: 401,
+                message: 'Invalid credentials'
+            });
+        };
+        
+        const passwordMatch = await verifyPassword(password, excistingUser.password);
+
+        if(!passwordMatch){
+            return res.status(401).send({
+                status: 401,
+                message: 'Invalid credentials'
+            });
+        };
+
+        res.cookie('session_id', excistingUser.id, {
+            httpOnly: true,
+            sameSite: 'strict',
+            signed: true,
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
+
+        return res.status(200).send({
+            status: 200,
+            message: 'Login succesfull',
+            sessioId: excistingUser.id
+        })
+
+
+    }catch(error:any){
+        console.error('Error fetching login:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        });
     }
 }

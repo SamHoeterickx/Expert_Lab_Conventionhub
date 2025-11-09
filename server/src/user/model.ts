@@ -19,7 +19,6 @@ export const checkExcistingUser = async(email:string) => {
     return result
 }
 
-
 export const registerNewUser = async(userData:UserDataProps) => {
 
     const hashedPassword = await bcrypt.hash(userData.password, 10);
@@ -36,4 +35,8 @@ export const registerNewUser = async(userData:UserDataProps) => {
     })
 
     return result
+}
+
+export const verifyPassword = async(password:string, hashedPassword:string) => {
+    return await bcrypt.compare(password, hashedPassword);
 }
