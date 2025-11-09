@@ -1,5 +1,5 @@
 import { type Request, type Response } from 'express';
-import { saveConvention } from './model';
+import { getAllConventions, saveConvention } from './model';
 
 
 export const createNewConvention = async(req:Request, res:Response) => {
@@ -38,4 +38,30 @@ export const createNewConvention = async(req:Request, res:Response) => {
             message: error.message
         });
     }
+}
+
+export const getConventions = async(req:Request, res:Response) => {
+    try{
+      
+        const allConventions = await getAllConventions();
+        if(!allConventions){
+            return res.status(404).send({
+                status: 404,
+                message: 'No conventions found'
+            });
+        };
+
+        return res.status(200).send({
+            status: 200,
+            message: 'Found conventions successfull',
+            data: allConventions
+        });
+
+    }catch(error:any){
+        console.error('Error fetching conventions:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        });
+    };
 }

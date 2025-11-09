@@ -13,6 +13,11 @@ interface ConventionDataProps {
     authorId: string
 }
 
+export const getAllConventions = async() => {
+    const result = await prisma.convention.findMany({});
+    return result
+}
+
 export const saveConvention = async(conventionData:ConventionDataProps) => {
     const slug = generateSlug(conventionData.title);
 
