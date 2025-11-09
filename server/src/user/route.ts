@@ -1,11 +1,7 @@
 import { Router } from "express";
 import { register, login } from './controller.ts';
 
-const conventionRouter = Router();
+export const userRouter = Router();
 
-conventionRouter.post('/login', login);
-conventionRouter.post('/register', register);
-
-
-
-export default conventionRouter
+userRouter.post('/login', login);
+userRouter.post('/register', register);

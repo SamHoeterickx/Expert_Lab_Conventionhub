@@ -7,7 +7,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 //Route
-import userRouter from './user/route.ts';
+import { conventionRouter } from './conventions/route.ts';
+import { userRouter } from './user/route.ts';
 
 const prisma = new PrismaClient({ log:['query']});
 const app:Express = express();
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser(process.env.COOKIE_SECRET))
 
+app.use('/api/conventions', conventionRouter)
 app.use('/api/users', userRouter);
 
 app.listen(port, () => {
