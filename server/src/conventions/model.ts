@@ -34,6 +34,17 @@ export const saveConvention = async(conventionData:ConventionDataProps) => {
     return result
 }
 
+export const removeConvention = async(conventionId:string, authorId:string) => {
+    const result = await prisma.convention.delete({
+        where: {
+            id: conventionId,
+            authorId: authorId
+        }
+    });
+
+    return result
+}
+
 const generateSlug = (title:string) => {
 
     const baseSlug = slugify(title);

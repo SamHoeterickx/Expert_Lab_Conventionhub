@@ -1,16 +1,14 @@
 import { type Request, type Response } from 'express';
-import { getAllConventions, saveConvention } from './model';
+import { getAllConventions, saveConvention, removeConvention } from './model';
 
 
 export const createNewConvention = async(req:Request, res:Response) => {
     try{
-        const {title, description, contentMd, authorId} = req.body;
-
-        // const {title, contentMd} = req.body;
-        // const authorId = req.signedCookies.session_id;
+        const {title, description, contentMd} = req.body;
+        const authorId = req.signedCookies.session_id;
         const conventionData = {title, description, contentMd, authorId}
 
-        if(!title || !contentMd || !authorId){
+        if(!title || !description ||!contentMd || !authorId){
             return res.status(401).send({
                 status: 401,
                 message: 'Missing info'
@@ -63,5 +61,35 @@ export const getConventions = async(req:Request, res:Response) => {
             status: 500,
             message: error.message
         });
+    };
+}
+
+export const deleteConvention = async(req:Request, res:Response) => {
+    try{
+
+        const {conventionId} = req.body;
+        const authorId = req.signedCookies.session_id;
+
+        if(!conventionId || !authorId){
+            return res.status(401).send({
+                status: 401,
+                message: 'Missing info'
+            });
+        };
+
+        const deletedConvention = await removeConvention(conventionId, authorId);
+        console.log(deletedConvention);
+
+        return res.status(202).send({
+            status: 202,
+            message: 'Delete convention successfully'
+        });
+
+    }catch(error:any){
+        console.error('Error fetching conventions:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        })
     };
 }
