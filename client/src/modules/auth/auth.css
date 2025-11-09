@@ -1,0 +1,93 @@
+
+.auth-wrapper{
+    position: relative;
+    width: 100%;
+    background-color: var(--background-color);
+
+    overflow: hidden;
+    height: 100dvh;
+
+    .auth-corner-top-right-container{
+        background-color: var(--accent-color);
+    }
+
+    .auth-corner-top-right{
+        height: var(--base-padding);
+        background-color: var(--background-color);
+        border-top-right-radius: 2.5rem;
+        margin-right: 3dvw;
+    }
+
+    .auth-container{
+        background-color: var(--background-color);
+        padding: 0 7.5dvw;
+
+        .auth-form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+
+            .auth-input-option{
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                width: 80%;
+
+                label{
+                    font-family: var(--base-font);
+                    color: var(--accent-color);
+                    font-weight: 800;
+                    font-size: 1.5rem;
+                }
+
+                input{
+                    background-color: transparent;
+                    border: 2pt solid var(--accent-color);
+                    outline: none;
+                    height: 2rem;   
+                    border-radius: .75rem;
+                    color: var(--font-color);
+                    padding: 0 .75rem ;
+                    font-family: var(--base-font);
+                    font-weight: 700;
+                }
+            }
+
+            input[type="submit"]{
+                background-color: var(--accent-color);
+                border: none;
+                outline: none;
+
+                width: 80%;
+                height: 3rem;
+                border-radius: .75rem;
+                
+                font-family: var(--base-font);
+                font-size: 1rem;
+                font-weight: 800;
+                text-align: center;
+            }
+
+            a{
+                color: var(--accent-color);
+                font-family: var(--base-font);
+                font-size: 1rem;
+                font-weight: 800;
+                border-bottom: 1pt solid var(--accent-color);
+            }
+        }
+    }
+
+    ::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 3dvw;
+
+        height: 100%;
+        background: var(--accent-color);
+    }
+}

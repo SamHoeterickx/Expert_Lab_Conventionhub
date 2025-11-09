@@ -8,6 +8,7 @@ import { App } from "../app";
 import { CONTRIBUTE_ROUTE } from "../contribute";
 import { EXPLORE_ROUTE } from "../explore";
 import { HOME_ROUTE } from "../home";
+import { Auth, LOGIN_ROUTE, REGISTER_ROUTE } from "../auth";
 
 export const Root = () => {
 
@@ -29,6 +30,20 @@ export const Root = () => {
                 {
                     path: CONTRIBUTE_ROUTE.path,
                     element: CONTRIBUTE_ROUTE.element
+                },
+            ]
+        },
+        {
+            path:'/auth/',
+            element: <Auth />,
+            children: [
+                {
+                    path: LOGIN_ROUTE.path,
+                    element: LOGIN_ROUTE.element
+                },
+                {
+                    path: REGISTER_ROUTE.path,
+                    element: REGISTER_ROUTE.element
                 }
             ]
         }
