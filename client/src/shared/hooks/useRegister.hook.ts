@@ -1,7 +1,10 @@
 import { useMutation } from "@tanstack/react-query"
 
 //Service
-import { authService } from "../services"
+import { authService } from "../services";
+
+//Const
+import { SHARED_MUTATE_KEYS } from "../const";
 
 //Type
 interface RegisterCredentials {
@@ -13,6 +16,7 @@ interface RegisterCredentials {
 
 export const useRegister = () => {
     return useMutation({
+        mutationKey: SHARED_MUTATE_KEYS.register,
         mutationFn: (credential:RegisterCredentials) => authService.register(credential.email, credential.username, credential.password, credential.repeatPassword),
         
         onSuccess: (data) => {

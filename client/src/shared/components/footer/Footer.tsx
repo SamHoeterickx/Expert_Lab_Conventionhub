@@ -24,6 +24,11 @@ export const Footer = () => {
                                 <p>Create Conventions</p>
                             </Link>
                         </li>
+                        <li>
+                            <Link to={`/${CONTRIBUTE_ROUTE.path}`}>
+                                <p>Account</p>
+                            </Link>
+                        </li>
                         <li><p>
                                 2025
                             </p>

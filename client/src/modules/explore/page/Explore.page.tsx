@@ -1,8 +1,11 @@
-import type { FC } from "react"
+import { useEffect, type FC } from "react"
 import { Link } from "react-router-dom";
 
 //Components
 import { Header, ConventionCard, PreFooter, ScrollWrapper } from "../../../shared/components";
+
+//Hooks
+import { useGetConventions } from "../../../shared/hooks/useGetConventions.hook";
 
 //Routes
 import { CONTRIBUTE_ROUTE } from "../../contribute";
@@ -10,47 +13,10 @@ import { CONTRIBUTE_ROUTE } from "../../contribute";
 //Style
 import './explore.css';
 
-//Dummy data
-export const dummyConventions = [
-    {
-      id: 'js-001',
-      slug: 'javascript',
-      title: 'Javascript',
-      description: 'Use camelCase for variable and function names.',
-    },
-    {
-      id: 'react-002',
-      slug: 'react',
-      title: 'React',
-      description: 'Component names must be in PascalCase (e.g., MyComponent).',
-    },
-    {
-      id: 'css-003',
-      slug: 'css',
-      title: 'CSS',
-      description: 'Prefer BEM (Block-Element-Modifier) for scalable class names.',
-    },
-    {
-      id: 'ts-004',
-      slug: 'typescript',
-      title: 'TypeScript',
-      description: 'Use interfaces to define the shape of objects and props.',
-    },
-    {
-      id: 'html-005',
-      slug: 'html',
-      title: 'HTML',
-      description: 'Use semantic elements like <main>, <nav>, and <article> for accessibility.',
-    },
-    {
-      id: 'git-006',
-      slug: 'git',
-      title: 'Git',
-      description: "Write clear commit messages starting with a type (e.g., 'feat:', 'fix:').",
-    },
-];
-
 export const Explore: FC = () => {
+
+    const {data, isLoading, isError, error} = useGetConventions();
+
     return(
         <ScrollWrapper>
             <Header 
@@ -60,7 +26,13 @@ export const Explore: FC = () => {
                 <div className="explore-corner-upper"></div>
                 <div className="explore-convention-wrapper">
                     {
-                        dummyConventions.map(convention => (
+                        isLoading && <h2>Loading...</h2>
+                    }
+                    {
+                        isError && <h2>{error.message}</h2>
+                    }
+                    { 
+                        data && data.data.map(convention => (
                             <ConventionCard
                                 key={ convention.id }
                                 convention_title={ convention.title }
@@ -69,7 +41,7 @@ export const Explore: FC = () => {
                                 convention_link={ convention.slug }
                             />
                         ))
-                    }
+                    } 
                 </div>
             </section>
             <PreFooter>

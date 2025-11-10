@@ -1,0 +1,32 @@
+nav{
+    position: relative;
+    width: 100%;
+    
+    .nav-wrapper{
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem 7.5dvw 0;
+
+        background-color: var(--accent-color);
+
+        a{
+            color: var(--font-color);
+            font-weight: 800;
+            font-size: 1rem;
+        }
+    }
+
+    .home{
+        background-color: var(--background-color);
+    }
+
+    ::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 3dvw;
+        height: 100%;
+        background: var(--accent-color);
+    }
+}

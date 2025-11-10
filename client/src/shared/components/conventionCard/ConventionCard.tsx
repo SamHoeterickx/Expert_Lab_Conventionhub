@@ -21,7 +21,7 @@ export const ConventionCard: FC<ConventionCardProps> = ({ convention_title, conv
                 <img src={ convention_imgPath } alt="" />
             </div>
             <h4>{ convention_description }</h4>
-            <Link to={`/#/${convention_link}`}>
+            <Link to={`/convention/${convention_link}`}>
                 <div className="large-button">View</div>
             </Link>
         </div>
