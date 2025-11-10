@@ -9,6 +9,7 @@ import { CONTRIBUTE_ROUTE } from "../contribute";
 import { EXPLORE_ROUTE } from "../explore";
 import { HOME_ROUTE } from "../home";
 import { Auth, LOGIN_ROUTE, REGISTER_ROUTE } from "../auth";
+import { CONVENTION_ROUTE } from "../conventions";
 
 export const Root = () => {
 
@@ -31,6 +32,10 @@ export const Root = () => {
                     path: CONTRIBUTE_ROUTE.path,
                     element: CONTRIBUTE_ROUTE.element
                 },
+                {
+                    path: CONVENTION_ROUTE.path,
+                    element: CONVENTION_ROUTE.element
+                }
             ]
         },
         {

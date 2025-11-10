@@ -1,0 +1,1 @@
+export { CONVENTION_ROUTE } from './convention.route';
