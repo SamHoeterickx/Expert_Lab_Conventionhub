@@ -1,7 +1,7 @@
 const BASE_URL = 'http://localhost:3000/api/users';
 
 class AuthService {
-    async login(email:string, password:string){
+    async login(email:string, password:string, redirectUri:string){
         const response = await fetch(`${BASE_URL}/login`, {
             method: 'POST',
             headers: {
@@ -10,7 +10,8 @@ class AuthService {
             body: JSON.stringify({
                 email,
                 password
-            })
+            }),
+            credentials: 'include'
         });
 
         if(!response.ok){
@@ -33,7 +34,8 @@ class AuthService {
                 username,
                 password,
                 repeatPassword
-            })
+            }),
+            credentials: 'include'
         });
 
         if(!response.ok){

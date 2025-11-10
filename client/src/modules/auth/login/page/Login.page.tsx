@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, type FormEvent } from "react";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 //Hooks
 
@@ -15,22 +15,35 @@ interface FormDataProps {
 
 export const Login = () => {
 
+    const [redirectUri, setRedirectUri] = useState<string | undefined>(undefined);
     const [formData, setFormData] = useState<FormDataProps>({
         email: '',
         password: ''
     });
-
+    const [searchParams, setSearchParams] = useSearchParams();
     const {mutate, isPending, isError, error} = useLogin();
+    const location = useLocation();
     
+    useEffect(() => {
+        const redirectPath:string|null = searchParams.get('redirect_uri');
+        if(redirectPath){
+            const path:string[] = redirectPath.split('/');
+            setRedirectUri(path[1]);
+        }
+    }, [location])
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
         setFormData(prev => ({
             ...prev,
             [field]: e.target.value
         }));
     }
+
     const handleFormSubmition = (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        mutate(formData);
+        if(redirectUri){
+            mutate(formData, redirectUri);
+        }
     }
 
     return(

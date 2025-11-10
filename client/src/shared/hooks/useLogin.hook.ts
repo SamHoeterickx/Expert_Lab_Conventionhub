@@ -10,7 +10,7 @@ interface LoginCredentials {
 
 export const useLogin = () => {
     return useMutation({
-        mutationFn: (credentials: LoginCredentials) => authService.login(credentials.email, credentials.password),
+        mutationFn: (credentials: LoginCredentials, redirectUri:string) => authService.login(credentials.email, credentials.password, redirectUri),
         
         onSuccess: (data) => {
             console.log('Login successful:', data);
