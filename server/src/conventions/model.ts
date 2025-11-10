@@ -18,6 +18,15 @@ export const getAllConventions = async() => {
     return result
 }
 
+export const findConventionBySlug = async(slug:string) => {
+    const result = await prisma.convention.findUnique({
+        where: {
+            slug
+        }
+    })
+    return result
+}
+
 export const saveConvention = async(conventionData:ConventionDataProps) => {
     const slug = generateSlug(conventionData.title);
 
