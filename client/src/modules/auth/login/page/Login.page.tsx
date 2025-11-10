@@ -1,11 +1,12 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 //Hooks
+import { useLogin } from "../../../../shared/hooks";
 
 //Routes
 import { REGISTER_ROUTE } from "../../register";
-import { useLogin } from "../../../../shared/hooks";
+import { HOME_ROUTE } from "../../../home";
 
 //Types
 interface FormDataProps {
@@ -15,23 +16,23 @@ interface FormDataProps {
 
 export const Login = () => {
 
-    const [redirectUri, setRedirectUri] = useState<string | undefined>(undefined);
     const [formData, setFormData] = useState<FormDataProps>({
         email: '',
         password: ''
     });
-    const [searchParams, setSearchParams] = useSearchParams();
-    const {mutate, isPending, isError, error} = useLogin();
-    const location = useLocation();
+    const [targetPath, setTargetPath] = useState<string>('');
+    const [searchParams] = useSearchParams();
     
-    useEffect(() => {
-        const redirectPath:string|null = searchParams.get('redirect_uri');
-        if(redirectPath){
-            const path:string[] = redirectPath.split('/');
-            setRedirectUri(path[1]);
-        }
-    }, [location])
+    const nav = useNavigate();
 
+    const {mutate, isPending, isError, error} = useLogin();
+
+    useEffect(() => {
+        const redirectPath = searchParams.get('redirect_uri');
+        console.log(redirectPath)
+        setTargetPath( redirectPath === '' ? `/${HOME_ROUTE.path}` : `/${redirectPath}`);
+    }, [searchParams]);
+    
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
         setFormData(prev => ({
             ...prev,
@@ -41,9 +42,15 @@ export const Login = () => {
 
     const handleFormSubmition = (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(redirectUri){
-            mutate(formData, redirectUri);
-        }
+
+        mutate(formData, {
+            onSuccess: () => {
+                nav(targetPath, { replace: true })
+            },
+            onError: (error) => {
+                console.error("Login failed:", error.message);
+            }
+        });
     }
 
     return(
@@ -79,7 +86,7 @@ export const Login = () => {
                     </p>
                 )
             }
-            <Link to={`/auth/${REGISTER_ROUTE.path}`}>
+            <Link to={`/auth/${REGISTER_ROUTE.path}?redirect_uri=${targetPath}`}>
                 REGISTER
             </Link>
         </form>

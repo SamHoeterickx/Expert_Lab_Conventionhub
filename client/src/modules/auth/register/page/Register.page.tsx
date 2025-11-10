@@ -1,11 +1,12 @@
-import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, type FormEvent } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 //Hooks
+import { useRegister } from "../../../../shared/hooks";
 
 //Routes
 import { LOGIN_ROUTE } from "../../login";
-import { useRegister } from "../../../../shared/hooks";
+import { HOME_ROUTE } from "../../../home";
 
 //Type
 interface FormDataProps {
@@ -24,9 +25,18 @@ export const Register = () => {
             repeatPassword: '',
             username: ''
         });
+        const [targetPath, setTargetPath] = useState<string>('');
+        const [searchParams] = useSearchParams();
+        
+        const nav = useNavigate();
 
         const { mutate, isPending, isError, error} = useRegister();
-        
+
+        useEffect(() => {
+            const redirectPath = searchParams.get('redirect_uri');
+            setTargetPath( redirectPath === '' ? `/${HOME_ROUTE.path}` : `/${redirectPath}`);
+        }, [searchParams]);
+    
         const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
             setFormData(prev => ({
                 ...prev,
@@ -35,7 +45,15 @@ export const Register = () => {
         }
         const handleFormSubmition = (e:FormEvent<HTMLFormElement>) => {
             e.preventDefault();
-            mutate(formData);
+
+            mutate(formData, {
+                onSuccess: () => {
+                    nav(targetPath, { replace: true })
+                },
+                onError: (error) => {
+                    console.error("Register failed:", error.message);
+                }
+            });
         }
     
     
@@ -90,7 +108,7 @@ export const Register = () => {
                     </p>
                 )
             }
-            <Link to={`/auth/${LOGIN_ROUTE.path}`}>
+            <Link to={`/auth/${LOGIN_ROUTE.path}?redirect_uri=${targetPath}`}>
                 LOGIN
             </Link>
         </form>
