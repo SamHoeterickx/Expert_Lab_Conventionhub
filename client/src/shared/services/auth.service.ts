@@ -14,10 +14,11 @@ class AuthService {
         });
 
         if(!response.ok){
-            throw new Error('Failed to login');
+            const errorData = await response.json();
+            throw new Error(`${errorData.status} | ${errorData.message}` || 'Failed to login');
         }
 
-        const data = response.json();
+        const data = await response.json();
         return data
     }
 
@@ -36,10 +37,12 @@ class AuthService {
         });
 
         if(!response.ok){
-            throw new Error('Failed to register');
+            const errorData = await response.json();
+            console.log(errorData)
+            throw new Error(`${errorData.status} | ${errorData.message}` || 'Failed to register');
         }
 
-        const data = response.json();
+        const data = await response.json();
         return data;
     }
 }
