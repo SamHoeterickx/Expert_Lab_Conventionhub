@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom"
 
-import { type FC } from "react";
+import { useEffect, type FC } from "react";
 
 //Components
 import { Header, PreFooter } from "../../../shared/components"
@@ -10,15 +10,17 @@ import { useGetSingleConvention } from "../../../shared/hooks";
 
 //Style
 import './Convention.css'
-import ReactMarkdown from "react-markdown";
-import remarkGfm from 'remark-gfm'
 
 
 export const Convention:FC = () => {
     
-    const { id } = useParams();
+    const { slug } = useParams();
 
-    const {data, isLoading, isError, error} = useGetSingleConvention(id)
+    const {data, isLoading, isError, error} = useGetSingleConvention(slug);
+
+    useEffect(() => {
+        console.log(data?.data)
+    }, [data]);
 
     return( 
         <>
