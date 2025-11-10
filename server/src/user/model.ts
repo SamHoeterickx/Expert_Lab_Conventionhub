@@ -40,3 +40,17 @@ export const registerNewUser = async(userData:UserDataProps) => {
 export const verifyPassword = async(password:string, hashedPassword:string) => {
     return await bcrypt.compare(password, hashedPassword);
 }
+
+export const findUser = async(sessionId:string) => {
+    const result = await prisma.user.findUnique({
+        where: {
+            id: sessionId
+        },
+        select: {
+            id: true,
+            email: true,
+            username: true
+        }
+    });
+    return result;
+}

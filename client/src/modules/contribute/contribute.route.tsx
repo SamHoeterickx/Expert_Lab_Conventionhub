@@ -1,6 +1,13 @@
-import { Contribute } from "./page/Contribute.page";
+import { Contribute } from "./page/Contribute.page"
+
+//Auth
+import { ProtectedRoute } from "../../shared/components"
 
 export const CONTRIBUTE_ROUTE = {
-    path: 'contribute',
-    element: <Contribute />
+    path: '',
+    element: (
+        <ProtectedRoute redirect_path={"/auth/login"}>
+            <Contribute />
+        </ProtectedRoute>
+    )
 }

@@ -1,6 +1,6 @@
 import { type Request, type Response } from 'express';
 
-import { checkExcistingUser, registerNewUser, verifyPassword } from './model'
+import { checkExcistingUser, registerNewUser, verifyPassword, findUser } from './model'
 
 export const register = async(req:Request, res:Response) => {
     try{
@@ -114,4 +114,40 @@ export const login = async(req:Request, res:Response) => {
             message: error.message
         });
     }
+}
+
+export const authenticateMe = async(req:Request, res:Response) => {
+    try{
+
+        const sessionId = req.signedCookies.session_id;
+
+        if(!sessionId){
+            return res.status(401).send({
+                status: 401,
+                message: 'Not authenticated'
+            });
+        };
+
+        const user = await findUser(sessionId);
+
+        if(!user){
+            return res.status(401).send({
+                status: 401,
+                message: 'User not autenticated'
+            });
+        };
+
+        return res.status(200).send({
+            status: 200,
+            message: 'Authentication successfull',
+            data: user
+        });
+
+    }catch(error:any){
+        console.error('Error fetching authenticate:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        });
+    };
 }
