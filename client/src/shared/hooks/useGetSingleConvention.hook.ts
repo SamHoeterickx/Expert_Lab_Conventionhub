@@ -6,7 +6,7 @@ import { conventionService } from "../services/conventions.service"
 //Const
 import { SHARED_QUERY_KEYS } from "../const"
 
-export const useGetSingleConvention = (slug: string | null) => {
+export const useGetSingleConvention = (slug: string | undefined) => {
     return useQuery({
         queryKey: [...SHARED_QUERY_KEYS.singleConvention, slug],
         queryFn: () => conventionService.getSingleConvention(slug),

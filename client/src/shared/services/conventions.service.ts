@@ -28,7 +28,7 @@ class ConventionService {
         return data;
     }
 
-    async getSingleConvention(slug:string | null):Promise<GetSingleConventionProps>{
+    async getSingleConvention(slug:string | undefined):Promise<GetSingleConventionProps>{
         const response = await fetch(`${BASE_URL}/convention?slug=${slug}`);
 
         if(!response.ok){

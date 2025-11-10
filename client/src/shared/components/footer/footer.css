@@ -16,6 +16,9 @@ footer{
         align-items: flex-start;
         justify-content: space-between;
         padding-right: 3.625dvw;
+
+        display: flex;
+        flex-direction: column;
     }
 
     h4{

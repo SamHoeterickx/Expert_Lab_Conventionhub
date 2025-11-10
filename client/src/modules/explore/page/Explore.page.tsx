@@ -32,7 +32,7 @@ export const Explore: FC = () => {
                         isError && <h2>{error.message}</h2>
                     }
                     { 
-                        data && data.data.map(convention => (
+                        data && data.data && data.data.map(convention => (
                             <ConventionCard
                                 key={ convention.id }
                                 convention_title={ convention.title }
@@ -50,7 +50,7 @@ export const Explore: FC = () => {
                     className="large-button"
                     to={ `/${CONTRIBUTE_ROUTE.path}` }
                 >
-                    Contribute
+                    CONTRIBUTE
                 </Link>
             </PreFooter>
         </ScrollWrapper>

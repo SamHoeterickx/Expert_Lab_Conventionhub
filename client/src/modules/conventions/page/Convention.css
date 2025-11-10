@@ -1,0 +1,29 @@
+.convention-info-wrapper{
+
+    position: relative;
+    width: 100%;
+
+    .convention-right-corner-container{
+        width: 100%;
+        background-color: var(--accent-color);
+
+        .convention-right-corner{
+            background-color: var(--background-color);
+            height: var(--base-padding);
+            
+            margin-right: 3dvw;
+            border-top-right-radius: 2.5rem;
+        }
+    }
+
+    ::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 3dvw;
+
+        height: 100%;
+        background: var(--accent-color);
+    }
+}
