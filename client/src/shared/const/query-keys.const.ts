@@ -1,3 +1,4 @@
 export const SHARED_QUERY_KEYS = {
     conventions: ['conventions'],
+    singleConvention: ['singleConvention'],
 }

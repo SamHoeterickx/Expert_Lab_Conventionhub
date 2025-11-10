@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query"
 
+//Service
+import { conventionService } from "../services/conventions.service"
+
 //Const
 import { SHARED_QUERY_KEYS } from "../const"
-import { conventionService } from "../services/conventions.service"
 
 export const useGetConventions = () => {
     return useQuery({

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Header, ConventionCard, PreFooter, ScrollWrapper } from "../../../shared/components";
 
 //Hooks
-import { useGetConventions } from "../../../shared/hooks/useGetConventions.hook";
+import { useGetConventions } from "../../../shared/hooks";
 
 //Routes
 import { CONTRIBUTE_ROUTE } from "../../contribute";
