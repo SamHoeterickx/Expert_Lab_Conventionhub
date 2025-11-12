@@ -1,5 +1,5 @@
-import { useEffect, type FC } from "react"
-import { Link } from "react-router-dom";
+import { useEffect, useState, type FC } from "react"
+import { Link, useSearchParams } from "react-router-dom";
 
 //Components
 import { Header, ConventionCard, PreFooter, ScrollWrapper } from "../../../shared/components";
@@ -12,10 +12,40 @@ import { CONTRIBUTE_ROUTE } from "../../contribute";
 
 //Style
 import './explore.css';
+import type { ConventionType } from "../../../shared/types/Convention.type";
 
 export const Explore: FC = () => {
 
+    const [filteredData, setFilteredData] = useState<ConventionType[]>([]);
+
     const {data, isLoading, isError, error} = useGetConventions();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    useEffect(() => {
+        if(data && data.data){
+            const allConventions:ConventionType[] = data.data;
+            const category = searchParams.get('cf');
+            const search = searchParams.get('s');
+
+            let filteredConventions:ConventionType[] = allConventions;
+            
+            if(category){
+                if(category === "All"){
+                    filteredConventions = allConventions;
+                }else{
+                    filteredConventions = allConventions.filter(convention => convention.title.includes(category));
+                }
+            }
+
+            if(search){
+                filteredConventions = allConventions.filter(convention => convention.title.toLowerCase().includes(search));
+            }
+            console.log(filteredConventions);
+            setFilteredData(filteredConventions);
+        }else{
+            setFilteredData([])
+        }
+    }, [data, searchParams])
 
     return(
         <ScrollWrapper>
@@ -32,7 +62,7 @@ export const Explore: FC = () => {
                         isError && <h2>{error.message}</h2>
                     }
                     { 
-                        data && data.data && data.data.map(convention => (
+                        filteredData.map(convention => (
                             <ConventionCard
                                 key={ convention.id }
                                 convention_title={ convention.title }

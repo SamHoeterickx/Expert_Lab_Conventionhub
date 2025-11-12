@@ -7,7 +7,7 @@ import { CategoryItem } from './CategoryItem';
 import './categoryFilter.css';
 
 //Dummydata
-const categories = ["Javascript", "TypeScript", "CSS", "React", "PHP"]
+const categories = ["All", "Javascript", "TypeScript", "CSS", "React", "PHP"]
 
 export const CategoryFilter:FC = () => {
     return(
@@ -15,6 +15,7 @@ export const CategoryFilter:FC = () => {
             {
                 categories.map(item => (
                     <CategoryItem 
+                        key={item}
                         name={ item }
                     />
                 ))

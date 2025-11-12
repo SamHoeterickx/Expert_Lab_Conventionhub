@@ -17,7 +17,7 @@ export const SearchBar: FC = () => {
 
         setSearchParams(prevParams => {
             if (inputValue.trim() !== "") {
-                prevParams.set('s', inputValue);
+                prevParams.set('s', inputValue.toLowerCase());
             } else {
                 prevParams.delete('s');
             }
