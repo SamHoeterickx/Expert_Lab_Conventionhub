@@ -8,19 +8,17 @@ import './conventionCard.css';
 interface ConventionCardProps {
     convention_title: string,
     convention_description: string,
-    convention_imgPath: string,
     convention_link: string
 }
 
-export const ConventionCard: FC<ConventionCardProps> = ({ convention_title, convention_imgPath, convention_description, convention_link }) => {
+export const ConventionCard: FC<ConventionCardProps> = ({ convention_title, convention_description, convention_link }) => {
 
     return(
         <div className="convention-card-wrapper">
             <div className="convention-card-top-info">
                 <h2>{ convention_title }</h2>
-                <img src={ convention_imgPath } alt="" />
             </div>
-            <h4>{ convention_description }</h4>
+            <h4>{ `${convention_description.substring(0, 46)}...` }</h4>
             <Link to={`/convention/${convention_link}`}>
                 <div className="large-button">View</div>
             </Link>

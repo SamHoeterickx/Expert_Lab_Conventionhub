@@ -37,7 +37,6 @@ export const Explore: FC = () => {
                                 key={ convention.id }
                                 convention_title={ convention.title }
                                 convention_description={ convention.description }
-                                convention_imgPath="./"
                                 convention_link={ convention.slug }
                             />
                         ))

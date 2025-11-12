@@ -14,19 +14,16 @@ export const PopularConventionsSection = () => {
                         convention_title="JavaScript"
                         convention_description="Use camelCase for variable and function names"
                         convention_link="test"
-                        convention_imgPath="./images/"
                     />
                     <ConventionCard
                         convention_title="JavaScript"
                         convention_description="Use camelCase for variable and function names"
                         convention_link="test"
-                        convention_imgPath="./images/"
                     />
                     <ConventionCard
                         convention_title="JavaScript"
                         convention_description="Use camelCase for variable and function names"
-                        convention_link="test"
-                        convention_imgPath="./images/"
+                        convention_link="test"  
                     />
                 </div>
                 <div className="popular-convention-button-wrapper">
