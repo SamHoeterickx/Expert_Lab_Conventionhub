@@ -22,22 +22,26 @@ export const Convention: FC = () => {
 
     const { data, isLoading, isError, error } = useGetSingleConvention(slug);
 
+    const handleDownload = (content:string) => {
+        const file = new Blob([content], { type: 'text/markdown'});
+        const url = URL.createObjectURL(file);
+        
+        const element = document.createElement('a');
+        element.href = url;
+        element.download = 'STANDARDS.MD'; 
+        
+        document.body.appendChild(element);
+        element.click();
+        
+        document.body.removeChild(element);
+        URL.revokeObjectURL(url);
 
-    const processedMd = data?.data?.contentMd
-        ? data.data.contentMd
-            // .replace(/\\n/g, "\\n")   // Vervang de TEKST '\\n' door een ECHTE newline
-            // .replace(/\\`/g, "`")    // Vervang de TEKST '\\`' door een ECHTE backtick
-            // .replace(/\\'/g, "'")    // Vervang de TEKST '\\'' door een ECHTE single quote
-            // .replace(/\\\${/g, '${') // Vervang de TEKST '\\${' door een ECHTE template literal
-        : ""
-    ;
-
-    console.log(processedMd);
+    }
 
     return (
         <>
             {
-                processedMd && (
+                data && data.data && (
                     <>
                         {
                             data && data.data && <Header title={data.data.title.toUpperCase()} />
@@ -76,12 +80,17 @@ export const Convention: FC = () => {
 
                         <PreFooter>
                             <h2 dangerouslySetInnerHTML={{ __html: "DOWNLOAD <br> AND USE" }}></h2>
-                            <Link
+                            <div
                                 className="large-button"
-                                to={`/${"download"}`}
+                                onClick={() => {
+                                    const rawContent = data?.data?.contentMd;
+                                    if(rawContent){
+                                        handleDownload(rawContent);
+                                    }
+                                }}
                             >
                                 DOWNLOAD .MD
-                            </Link>
+                            </div>
                         </PreFooter>
                     </>
                 )
