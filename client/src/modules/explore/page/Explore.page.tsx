@@ -30,10 +30,10 @@ export const Explore: FC = () => {
             let filteredConventions:ConventionType[] = allConventions;
             
             if(category){
-                if(category === "All"){
+                if(category === "all"){
                     filteredConventions = allConventions;
                 }else{
-                    filteredConventions = allConventions.filter(convention => convention.title.includes(category));
+                    filteredConventions = allConventions.filter(convention => convention.category.toLowerCase() === category);
                 }
             }
 

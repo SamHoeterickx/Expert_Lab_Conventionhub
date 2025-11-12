@@ -14,7 +14,7 @@ export const CategoryItem:FC<CategoryItemProps> = ({ name }) => {
         console.log(name);
 
         setSearchParams(prevParms => {
-            prevParms.set('cf', name);
+            prevParms.set('cf', name.toLowerCase());
 
             return prevParms
         })

@@ -8,6 +8,7 @@ const prisma = new PrismaClient();
 //Types
 interface ConventionDataProps {
     title: string,
+    category: string,
     description: string,
     contentMd: string,
     authorId: string
@@ -33,6 +34,7 @@ export const saveConvention = async(conventionData:ConventionDataProps) => {
     const result = await prisma.convention.create({
         data: {
             title: conventionData.title,
+            category: conventionData.category,
             description: conventionData.description,
             slug: slug,
             contentMd: conventionData.contentMd,

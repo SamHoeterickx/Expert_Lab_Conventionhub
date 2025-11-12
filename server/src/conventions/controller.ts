@@ -4,11 +4,11 @@ import { getAllConventions, saveConvention, removeConvention, findConventionBySl
 
 export const createNewConvention = async(req:Request, res:Response) => {
     try{
-        const {title, description, contentMd} = req.body;
+        const {title, description, category, contentMd} = req.body;
         const authorId = req.signedCookies.session_id;
-        const conventionData = {title, description, contentMd, authorId}
+        const conventionData = {title, description, category, contentMd, authorId}
 
-        if(!title || !description ||!contentMd || !authorId){
+        if(!title || !description ||!contentMd || !authorId || !category){
             return res.status(401).send({
                 status: 401,
                 message: 'Missing info'
