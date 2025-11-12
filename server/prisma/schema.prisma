@@ -34,7 +34,7 @@ model Convention{
   title           String
   description     String        
   slug            String        @unique
-  contentMd       String
+  contentMd       String        @db.Text
   contentHtml     String?
   author          User          @relation(fields: [authorId], references: [id])
   authorId        String

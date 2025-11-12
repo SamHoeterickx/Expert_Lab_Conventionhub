@@ -10,10 +10,17 @@
         .convention-right-corner{
             background-color: var(--background-color);
             height: var(--base-padding);
-            
+
             margin-right: 3dvw;
             border-top-right-radius: 2.5rem;
         }
+    }
+
+    .convention-markdown-wrapper{
+        padding: 0 7.5dvw;
+
+        font-family: var(--base-font);
+
     }
 
     ::after {
