@@ -20,6 +20,21 @@
         justify-content: center;
         gap: 1rem;
 
+        .header-component-back{
+            width: 100%;
+            margin-left: 7.5dvw;
+            
+            a{
+                color: var(--background-color);
+                font-size: .825rem;
+                font-weight: 600;
+            }
+            a:hover{
+                border-bottom: 2pt solid var(--background-color);
+            }
+
+        }
+
         h2{
             font-weight: 900;
             text-align: center;
