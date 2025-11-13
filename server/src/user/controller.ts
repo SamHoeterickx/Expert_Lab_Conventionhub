@@ -14,6 +14,13 @@ export const register = async(req:Request, res:Response) => {
                 message: 'Missing register info'
             });
         };
+
+        if(password.length <= 8){
+            return res.status(400).send({
+                status: 400,
+                message: "Password isn't 8 characters long"
+            })
+        }
         
         const excistingUser = await checkExcistingUser(email);
         

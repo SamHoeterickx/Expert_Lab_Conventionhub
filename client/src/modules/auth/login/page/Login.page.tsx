@@ -62,6 +62,7 @@ export const Login = () => {
                     name="email" 
                     id="login_email"
                     onChange={(e) => handleInputChange(e, 'email')}
+                    required
                 />
             </div>
             <div className="auth-input-option">
@@ -71,6 +72,7 @@ export const Login = () => {
                     name="password" 
                     id="login_password"
                     onChange={(e) => handleInputChange(e, 'password')}
+                    required
                 />
             </div>
             <input 

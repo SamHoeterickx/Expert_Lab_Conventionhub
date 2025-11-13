@@ -78,7 +78,7 @@ export const Register = () => {
                 />
             </div>
             <div className="auth-input-option">
-                <label>PASSWORD</label>
+                <label>PASSWORD <span>{ "(MIN 8 CHARACTERS)" }</span></label>
                 <input 
                     type="password" 
                     name="password" 
@@ -93,6 +93,7 @@ export const Register = () => {
                     name="repeatPassword" 
                     id="login_repeat_password"
                     onChange={e => handleInputChange(e, 'repeatPassword')}
+                    required
                 />
             </div>
             <input 
