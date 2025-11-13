@@ -58,7 +58,7 @@
             .like-wrapper{
                 
                 display: flex;
-                align-items: flex-end;
+                align-items: center;
 
                 h3{
                     color: var(--accent-color);
@@ -67,6 +67,8 @@
                 .like-button{
                     color: var(--font-color);
                     font-size: 1.25rem;
+                    font-weight: 900;
+                    cursor: pointer;
                 }
                 .like-button.liked{
                     color: var(--accent-color);

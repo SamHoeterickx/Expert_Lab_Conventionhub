@@ -1,7 +1,7 @@
 import { useEffect, useState, type FC } from "react"
 
 //Hooks
-import { useGetLikeStatus, useLikeConvention } from "../../../shared/hooks";
+import { useAuth, useGetLikeStatus, useLikeConvention } from "../../../shared/hooks";
 
 //Type
 interface InteractionSectionProps {
@@ -18,6 +18,7 @@ export const InteractionSection:FC<InteractionSectionProps> = ({ conventionId, l
 
     const { mutate, isPending, isError, error:postError } = useLikeConvention();
     const { data } = useGetLikeStatus(conventionId);
+    const { user } = useAuth();
 
     useEffect(() => {
         console.log(data);
@@ -39,9 +40,9 @@ export const InteractionSection:FC<InteractionSectionProps> = ({ conventionId, l
             likeState: likeState
         };
 
-        if(likeState){
+        if(likeState && user){
             setCurrentLikeCount(currentLikeCount - 1);
-        }else{
+        }else if(!likeState && user ){
             setCurrentLikeCount(currentLikeCount + 1)
         }
         
