@@ -1,9 +1,9 @@
-const BASE_URL = `http://localhost:3000/api/like`;
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 class LikeConventionService {
 
     async getLikeStatus(conventionId: string){
-        const response = await fetch(`${BASE_URL}/?conventionId=${conventionId}`, {
+        const response = await fetch(`${BASE_URL}/like/?conventionId=${conventionId}`, {
             credentials: 'include',
         });
 
@@ -17,7 +17,7 @@ class LikeConventionService {
     }
 
     async likeConvention(conventionId: string){
-        const response = await fetch(`${BASE_URL}/`, {
+        const response = await fetch(`${BASE_URL}/like/`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -38,7 +38,7 @@ class LikeConventionService {
     }
 
     async removeLikeConvention(conventionId:string){
-        const response = await fetch(`${BASE_URL}/`, {
+        const response = await fetch(`${BASE_URL}/like/`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json"

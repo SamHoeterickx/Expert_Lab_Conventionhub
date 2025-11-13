@@ -1,8 +1,8 @@
-const BASE_URL = 'http://localhost:3000/api/users';
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 class AuthService {
     async login(email:string, password:string){
-        const response = await fetch(`${BASE_URL}/login`, {
+        const response = await fetch(`${BASE_URL}/users/login`, {
             method: 'POST',
             headers: {
                 'Content-type': "application/json"
@@ -24,7 +24,7 @@ class AuthService {
     }
 
     async register(email:string, username:string, password:string, repeatPassword:string){
-        const response = await fetch(`${BASE_URL}/register`, {
+        const response = await fetch(`${BASE_URL}/users/register`, {
             method: 'POST',
             headers: {
                 'Content-type': "application/json"
@@ -49,7 +49,7 @@ class AuthService {
     }
 
     async authenticateMe(){
-        const response = await fetch(`${BASE_URL}/authenticate`,{
+        const response = await fetch(`${BASE_URL}/users/authenticate`,{
             method: 'GET',
             credentials: 'include'
         });
