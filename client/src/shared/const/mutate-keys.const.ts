@@ -1,4 +1,5 @@
 export const SHARED_MUTATE_KEYS = {
     register: ['register'],
-    login: ['login']
+    login: ['login'],
+    likeConvention: ['likeConvention']
 };

@@ -4,6 +4,7 @@ export interface ConventionType {
     category: string,
     description: string,
     slug: string,
+    likes?: [],
     contentMd: string,
     authorId: string,
     createdAt: string,

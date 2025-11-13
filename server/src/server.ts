@@ -8,12 +8,11 @@ dotenv.config();
 
 //Route
 import { conventionRouter } from './conventions/route.ts';
+import { likeConventionRoute } from './likeConvention/route.ts';
 import { userRouter } from './user/route.ts';
 
-const prisma = new PrismaClient({ log:['query']});
 const app:Express = express();
 const port = 3000;
-
 
 app.use(express.json());
 app.use(cors({
@@ -24,6 +23,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET))
 
 app.use('/api/conventions', conventionRouter)
 app.use('/api/users', userRouter);
+app.use('/api/like', likeConventionRoute)
 
 app.listen(port, () => {
     console.log('App is listening on port:', port); 
