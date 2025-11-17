@@ -40,6 +40,18 @@ class ConventionService {
         return data;
     }
 
+    async getConventionPreview(limit:number, random:boolean):Promise<GetConventionProps>{
+       const response = await fetch(`${BASE_URL}/?limit=${limit}&random=${random}`);
+
+        if(!response.ok){
+            const errorData = await response.json();
+            throw new Error(`${errorData.status} | ${errorData.message}` || 'failed to get conventions');
+        }
+
+        const data = await response.json();
+        return data;
+    }
+
 }
 
 export const conventionService = new ConventionService();

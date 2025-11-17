@@ -1,5 +1,5 @@
 import { type Request, type Response } from 'express';
-import { getAllConventions, saveConvention, removeConvention, findConventionBySlug } from './model';
+import { getAllConventions, getRandomConvetionsWithLimit, saveConvention, removeConvention, findConventionBySlug } from './model';
 
 
 export const createNewConvention = async(req:Request, res:Response) => {
@@ -62,6 +62,58 @@ export const getConventions = async(req:Request, res:Response) => {
             message: error.message
         });
     };
+}
+
+export const getRandomConventions = async(req:Request, res:Response) => {
+    try{
+        const { limit:limitQuery, random:randomQuery } = req.query;
+
+        let limitString: string | undefined;
+        let randomString: string | undefined;
+
+        if (Array.isArray(limitQuery)) {
+            limitString = limitQuery[0] as string; 
+        } else if (typeof limitQuery === 'string') {
+            limitString = limitQuery;
+        }
+        if (Array.isArray(randomQuery)) {
+            randomString = randomQuery[0] as string; 
+        } else if (typeof randomQuery === 'string') {
+            randomString = randomQuery;
+        }
+
+        if (!limitString || !randomString) {
+            return res.status(400).send({
+                status: 400,
+                message: 'Missing required query parameter'
+            });
+        }
+
+        const limit = parseInt(limitString, 10);
+        const random = randomString === 'true';
+
+        if (isNaN(limit)) {
+            return res.status(400).send({
+                status: 400,
+                message: 'Invalid query parameter: limit must be a number'
+            });
+        }
+
+        const randomConventionsWithLimit = await getRandomConvetionsWithLimit(limit, random);
+
+        return res.status(200).send({
+            status: 200,
+            message: 'Get random conventions with limit successfull',
+            data: randomConventionsWithLimit
+        });
+
+    }catch(error:any){
+        console.error('Error fetching random conventions:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        })
+    }
 }
 
 export const getSingleConvention = async(req:Request, res:Response) => {

@@ -1,30 +1,33 @@
 //Components
 import { Button, ConventionCard } from "../../../../shared/components";
 
+//Hooks
+import { getConventionsPreview } from "../../../../shared/hooks/index";
+
 //Routes
 import { EXPLORE_ROUTE } from "../../../explore";
 
 export const PopularConventionsSection = () => {
+
+    const {data, isLoading } = getConventionsPreview(0, true);
+
     return (
         <section className="popular-conventions-section">
             <div className="popular-conventions-inner-wrapper">
                 <h3>POPULAR CONVENTIONS</h3>
                 <div className="popular-conventions-container">
-                    <ConventionCard
-                        convention_title="JavaScript"
-                        convention_description="Use camelCase for variable and function names"
-                        convention_link="test"
-                    />
-                    <ConventionCard
-                        convention_title="JavaScript"
-                        convention_description="Use camelCase for variable and function names"
-                        convention_link="test"
-                    />
-                    <ConventionCard
-                        convention_title="JavaScript"
-                        convention_description="Use camelCase for variable and function names"
-                        convention_link="test"  
-                    />
+                    {
+                        isLoading && <h4>Loading...</h4>
+                    }
+                    {
+                        data && data.data && data.data.map(convention => (
+                            <ConventionCard
+                                convention_title={ convention.title }
+                                convention_description={ convention.description }
+                                convention_link={convention.slug}
+                            />
+                        ))
+                    }
                 </div>
                 <div className="popular-convention-button-wrapper">
                     <Button

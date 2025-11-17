@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
 import slugify from 'slugify';
 import crypto from 'crypto';
 
@@ -43,6 +43,16 @@ export const saveConvention = async(conventionData:ConventionDataProps) => {
     });
 
     return result
+}
+
+export const getRandomConvetionsWithLimit = async(limit:number, random:boolean) => {
+    const orderByClause = random ? Prisma.sql`ORDER BY RANDOM()` : Prisma.empty;
+
+    const conventions = await prisma.$queryRaw(
+        Prisma.sql`SELECT * FROM "Convention" ${orderByClause} LIMIT ${limit}`
+    ); 
+
+    return conventions;
 }
 
 export const removeConvention = async(conventionId:string, authorId:string) => {
