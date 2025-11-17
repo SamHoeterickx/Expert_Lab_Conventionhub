@@ -73,3 +73,33 @@ button{
 
     cursor: pointer;
 }
+
+label{
+    font-family: var(--base-font);
+    color: var(--accent-color);
+    font-weight: 800;
+    font-size: 1.5rem;
+
+    span{
+        font-size: .75rem;
+    }
+}
+
+input, textarea{
+    background-color: transparent;
+    border: 2pt solid var(--accent-color);
+    outline: none;  
+    border-radius: .75rem;
+    color: var(--font-color);
+    padding: 0 .75rem ;
+    font-family: var(--base-font);
+    font-weight: 700;
+}
+
+input{
+    height: 3rem;
+}
+
+textarea{
+    padding: 1rem;
+}

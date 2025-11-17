@@ -1,8 +1,14 @@
-export { useAuth } from './useAuth.hook';
-export { useLogin } from './useLogin.hook';
-export { useRegister } from './useRegister.hook';
-export { useGetSingleConvention } from './useGetSingleConvention.hook';
-export { useGetConventions } from './useGetConventions.hook';
-export { getConventionsPreview } from './useGetConventionsPreview.hook';
-export { useLikeConvention } from './useLikeConvention.hook';
-export { useGetLikeStatus } from './useGetLikeStatus.hook'
+//AUTH HOOKS
+export { useAuth } from './auth/useAuth.hook';
+export { useLogin } from './auth/useLogin.hook';
+export { useRegister } from './auth/useRegister.hook';
+
+//CONVENTION HOOKS
+export { useGetConventions } from './conventions/useGetConventions.hook';
+export { useGetSingleConvention } from './conventions/useGetSingleConvention.hook';
+export { getConventionsPreview } from './conventions/useGetConventionsPreview.hook';
+export { useCreateConvention } from './conventions/useCreateConvention.hook'
+
+//LIKE HOOKS
+export { useLikeConvention } from './likes/useLikeConvention.hook';
+export { useGetLikeStatus } from './likes/useGetLikeStatus.hook'

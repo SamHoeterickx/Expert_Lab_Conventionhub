@@ -18,7 +18,7 @@ export const ConventionCard: FC<ConventionCardProps> = ({ convention_title, conv
             <div className="convention-card-top-info">
                 <h2>{ convention_title }</h2>
             </div>
-            <h4>{ `${convention_description.substring(0, 46)}...` }</h4>
+            <h4>{ convention_description }</h4>
             <Link to={`/convention/${convention_link}`}>
                 <div className="large-button">View</div>
             </Link>

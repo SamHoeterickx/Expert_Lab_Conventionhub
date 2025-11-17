@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 //Service
-import { authService } from '../services'; 
+import { authService } from '../../services';
 
 interface User {
   id: string;

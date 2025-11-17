@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query"
 
 //Service
-import { conventionService } from "../services";
+import { conventionService } from "../../services";
 
 //Const
-import { SHARED_QUERY_KEYS } from "../const"
+import { SHARED_QUERY_KEYS } from "../../const"
 
 export const useGetSingleConvention = (slug: string | undefined) => {
     return useQuery({

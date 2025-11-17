@@ -35,28 +35,6 @@
 
                 width: 80%;
 
-                label{
-                    font-family: var(--base-font);
-                    color: var(--accent-color);
-                    font-weight: 800;
-                    font-size: 1.5rem;
-
-                    span{
-                        font-size: .75rem;
-                    }
-                }
-
-                input{
-                    background-color: transparent;
-                    border: 2pt solid var(--accent-color);
-                    outline: none;
-                    height: 2rem;   
-                    border-radius: .75rem;
-                    color: var(--font-color);
-                    padding: 0 .75rem ;
-                    font-family: var(--base-font);
-                    font-weight: 700;
-                }
             }
 
             input[type="submit"]{

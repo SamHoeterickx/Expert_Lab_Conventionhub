@@ -7,6 +7,10 @@ export interface ConventionType {
     likes?: [],
     contentMd: string,
     authorId: string,
+    author?: {
+        id: string,
+        username:string,
+    },
     createdAt: string,
     updatedAt: string
 }

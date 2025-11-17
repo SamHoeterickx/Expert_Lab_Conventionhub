@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query"
 
 //Service
-import { authService } from "../services";
+import { authService } from "../../services";
 
 //Const
-import { SHARED_MUTATE_KEYS } from "../const";
+import { SHARED_MUTATE_KEYS } from "../../const";
 
 //Type
 interface RegisterCredentials {

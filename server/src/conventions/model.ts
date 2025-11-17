@@ -25,7 +25,13 @@ export const findConventionBySlug = async(slug:string) => {
             slug
         },
         include: {
-            likes: true
+            likes: true,
+            author: {
+                select:{
+                    id: true,
+                    username: true 
+                }
+            }
         }
     })
     return result

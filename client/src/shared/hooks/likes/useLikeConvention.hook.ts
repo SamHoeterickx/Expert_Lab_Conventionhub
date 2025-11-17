@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query"
-import { SHARED_MUTATE_KEYS } from "../const";
+import { SHARED_MUTATE_KEYS } from "../../const";
 
 //Services
-import { likeConventionService } from "../services";
+import { likeConventionService } from "../../services";
 
 //Type
 interface CredentialsProps {

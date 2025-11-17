@@ -4,8 +4,8 @@ import { getAllConventions, getRandomConvetionsWithLimit, saveConvention, remove
 
 export const createNewConvention = async(req:Request, res:Response) => {
     try{
-        const {title, description, category, contentMd, authorId} = req.body;
-        // const authorId = req.signedCookies.session_id;
+        const {title, description, category, contentMd} = req.body;
+        const authorId = req.signedCookies.session_id;
         const conventionData = {title, description, category, contentMd, authorId}
 
         if(!title || !description ||!contentMd || !authorId || !category){

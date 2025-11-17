@@ -6,13 +6,14 @@ import { useAuth, useGetLikeStatus, useLikeConvention } from "../../../shared/ho
 //Type
 interface InteractionSectionProps {
     conventionId: string,
-    likeCount: number
+    likeCount?: number,
+    authorName?: string
 };
 
-export const InteractionSection:FC<InteractionSectionProps> = ({ conventionId, likeCount }) => {
+export const InteractionSection:FC<InteractionSectionProps> = ({ conventionId, likeCount, authorName }) => {
 
     const [likeState, setLikeState] = useState<boolean>(false);
-    const [currentLikeCount, setCurrentLikeCount] = useState<number>(likeCount)
+    const [currentLikeCount, setCurrentLikeCount] = useState<number>(likeCount || 0);
     const [showError, setShowError] = useState(false);
 
 
@@ -79,8 +80,8 @@ export const InteractionSection:FC<InteractionSectionProps> = ({ conventionId, l
                     ↑
                 </button>
             </div>
-
-
+            <p>Created by:</p>
+            <p>{ authorName }</p>
         </section>
     );
 }

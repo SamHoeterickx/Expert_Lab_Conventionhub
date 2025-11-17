@@ -82,6 +82,7 @@ export const Convention: FC = () => {
                                 <InteractionSection  
                                     conventionId={ data.data.id }
                                     likeCount={data.data.likes?.length}
+                                    authorName={data.data.author?.username}
                                 />
                             </div>
                         </div>

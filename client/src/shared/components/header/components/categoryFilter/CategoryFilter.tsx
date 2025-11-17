@@ -7,7 +7,7 @@ import { CategoryItem } from './CategoryItem';
 import './categoryFilter.css';
 
 //Dummydata
-const categories = ["All", "Javascript", "TypeScript", "CSS", "React", "PHP"]
+const categories = ["All", "frontend", "backend", "database", "open sourece"];
 
 export const CategoryFilter:FC = () => {
     return(
