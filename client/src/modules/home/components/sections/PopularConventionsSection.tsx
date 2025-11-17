@@ -9,7 +9,7 @@ import { EXPLORE_ROUTE } from "../../../explore";
 
 export const PopularConventionsSection = () => {
 
-    const {data, isLoading } = getConventionsPreview(0, true);
+    const {data, isLoading } = getConventionsPreview(3, true);
 
     return (
         <section className="popular-conventions-section">

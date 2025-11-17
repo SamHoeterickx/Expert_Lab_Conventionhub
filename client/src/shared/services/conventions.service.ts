@@ -41,7 +41,7 @@ class ConventionService {
     }
 
     async getConventionPreview(limit:number, random:boolean):Promise<GetConventionProps>{
-       const response = await fetch(`${BASE_URL}/?limit=${limit}&random=${random}`);
+       const response = await fetch(`${BASE_URL}/conventions/random?limit=${limit}&random=${random}`);
 
         if(!response.ok){
             const errorData = await response.json();
