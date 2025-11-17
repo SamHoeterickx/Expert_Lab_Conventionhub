@@ -21,6 +21,60 @@
 
         font-family: var(--base-font);
 
+
+        .interaction-section{
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+
+            padding-top: var(--base-padding);
+
+            .error-pop-up-wrapper{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+
+                .error-pop-up-content{
+                    padding: .65rem 1rem;
+                    background-color: var(--accent-color);
+                    color: var(--font-color);
+                    border-radius: 2px;
+                }
+
+                .error-pop-up-triangle{
+                    margin-right: .5rem;
+
+                    height: 0px;
+                    width: 0px;
+
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: 15px solid var(--accent-color);
+                }
+            }
+            .like-wrapper{
+                
+                display: flex;
+                align-items: center;
+
+                h3{
+                    color: var(--accent-color);
+                }
+
+                .like-button{
+                    color: var(--font-color);
+                    font-size: 1.25rem;
+                    font-weight: 900;
+                    cursor: pointer;
+                }
+                .like-button.liked{
+                    color: var(--accent-color);
+                }
+            }
+        }
     }
 
     ::after {

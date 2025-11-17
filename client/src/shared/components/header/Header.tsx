@@ -1,5 +1,5 @@
 import { useEffect, useState, type FC } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 //Components
 import { FilterDropDown } from "./components/filterDropDown/FilterDropDown";
@@ -20,6 +20,7 @@ export const Header: FC<HeaderProps> = ({ title }) => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const location = useLocation();
+    const nav = useNavigate();
 
     useEffect(() => {
         const pathName = location.pathname;
@@ -46,9 +47,22 @@ export const Header: FC<HeaderProps> = ({ title }) => {
         });
     }
 
+    const handleNavigateBack = (e:any) => {
+        e.preventDefault();
+        nav(-1)
+    }
+
     return (
         <div className="header-component-wrapper">
             <div className="header-component-inner-wrapper">
+               <div className="header-component-back"> 
+                    <Link 
+                        to={'...'} 
+                        onClick={handleNavigateBack}
+                    >
+                        {'< BACK'}
+                    </Link>
+                </div>
                 <h2>{ title }</h2>
                 {
                     currentPage === "explore" && (

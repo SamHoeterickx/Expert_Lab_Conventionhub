@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 
 //Service
-import { conventionService } from "../services/conventions.service"
+import { conventionService } from "../services";
 
 //Const
 import { SHARED_QUERY_KEYS } from "../const"

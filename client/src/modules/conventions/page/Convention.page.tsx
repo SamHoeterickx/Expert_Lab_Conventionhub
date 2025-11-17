@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { useEffect, type FC } from "react";
 import { Link, useParams } from "react-router-dom";
 // import Markdown from "markdown-to-jsx";
 import Markdown from "react-markdown";
@@ -8,6 +8,7 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 //Components
 import { Header, PreFooter } from "../../../shared/components";
+import { InteractionSection } from "../components/InteractionSection";
 
 //Hooks
 import { useGetSingleConvention } from "../../../shared/hooks";
@@ -21,6 +22,10 @@ export const Convention: FC = () => {
     const { slug } = useParams();
 
     const { data, isLoading, isError, error } = useGetSingleConvention(slug);
+
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
     const handleDownload = (content:string) => {
         const file = new Blob([content], { type: 'text/markdown'});
@@ -49,7 +54,7 @@ export const Convention: FC = () => {
                         <div className="convention-info-wrapper">
                             <div className="convention-right-corner-container">
                                 <div className="convention-right-corner"></div>
-                                </div>
+                            </div>
                             <div className="convention-markdown-wrapper">
                                 <Markdown
                                     components={{
@@ -74,7 +79,10 @@ export const Convention: FC = () => {
                                     >
                                     {data?.data?.contentMd}
                                 </Markdown>
-
+                                <InteractionSection  
+                                    conventionId={ data.data.id }
+                                    likeCount={data.data.likes?.length}
+                                />
                             </div>
                         </div>
 

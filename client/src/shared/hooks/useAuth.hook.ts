@@ -22,6 +22,7 @@ export const useAuth = () => {
     //user excists en there is no error
     //!! so it goes as a boolean
     const isAuthenticated = !!user && !isError;
+    console.log("user", user);
 
     return { user, isLoading, isError, error, isAuthenticated};
 };

@@ -1,4 +1,4 @@
-const BASE_URL = `http://localhost:3000/api/conventions`;
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 //Type
 import { type ConventionType } from "../types/Convention.type";
@@ -17,7 +17,7 @@ interface GetSingleConventionProps {
 
 class ConventionService {
     async getAllConventions():Promise<GetConventionProps>{
-        const response = await fetch(`${BASE_URL}/`);
+        const response = await fetch(`${BASE_URL}/conventions/`);
 
         if(!response.ok){
             const errorData = await response.json();
@@ -29,7 +29,7 @@ class ConventionService {
     }
 
     async getSingleConvention(slug:string | undefined):Promise<GetSingleConventionProps>{
-        const response = await fetch(`${BASE_URL}/convention?slug=${slug}`);
+        const response = await fetch(`${BASE_URL}/conventions/convention?slug=${slug}`);
 
         if(!response.ok){
             const errorData = await response.json();

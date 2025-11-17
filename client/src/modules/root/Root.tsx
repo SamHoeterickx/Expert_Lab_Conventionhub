@@ -1,4 +1,4 @@
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 //Components
@@ -15,7 +15,7 @@ export const Root = () => {
 
     const QUERY_CLIENT = new QueryClient();
 
-    const ROUTE = createHashRouter([
+    const ROUTE = createBrowserRouter([
         {
             path: '/',
             element: <App />,

@@ -23,6 +23,9 @@ export const findConventionBySlug = async(slug:string) => {
     const result = await prisma.convention.findUnique({
         where: {
             slug
+        },
+        include: {
+            likes: true
         }
     })
     return result

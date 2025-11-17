@@ -1,5 +1,6 @@
 export const SHARED_QUERY_KEYS = {
     conventions: ['conventions'],
     singleConvention: ['singleConvention'],
-    conventionPreview: ['conventionPreview']
+    conventionPreview: ['conventionPreview'],
+    likeStatus: ['likeStatus']
 }
