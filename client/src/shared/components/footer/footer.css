@@ -19,6 +19,11 @@ footer{
 
         display: flex;
         flex-direction: column;
+
+        @media(min-width: 1024px){
+            flex-direction: row;
+            align-items: flex-end;
+        }
     }
 
     h4{

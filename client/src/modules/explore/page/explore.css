@@ -24,6 +24,15 @@
         .convention-card-wrapper{
             width: 85%;
         }
+
+        @media(min-width: 1024px){
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .convention-card-wrapper{
+                width: 45%;
+            }
+        }
     }
 
 

@@ -46,11 +46,13 @@ export const CreateConventionForm = () => {
             default: return null
         }
     }
+
+    const handleForm = (e: React.FormEvent<HTMLFormElement>) => e.preventDefault();
  
     return(
         <div className="form-wrapper">
             <div className="form-inner-wrapper">
-                <form>
+                <form onSubmit={ handleForm }>
                     { renderStepContent() }
 
                     {/* Navigation Buttons */}

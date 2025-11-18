@@ -16,6 +16,7 @@ export const StepThreeDescription:FC<StepsProps> = ({ formData, handleChange }) 
                 placeholder="Short description max 50 characters long"
                 maxLength={50}
             />
+            <p className="lower-text">Max 50 characters long</p>
         </div>
     )
 }

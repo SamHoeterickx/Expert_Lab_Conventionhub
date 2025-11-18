@@ -15,6 +15,7 @@ export const useCreateConvention = () => {
         mutationFn: (formData: conventionFormData) => conventionService.createnewConvention(formData),
             onSuccess: (data) => {
                 console.log('Register successfull:', data);
+                window.location.href = `http://localhost:5173/convention/${data.data.slug}`;
             },
             onError: (error) => {
                 console.log('Register error:', error);

@@ -35,6 +35,14 @@
                 margin-bottom: 1rem;
             }
 
+            p.lower-text{
+                text-align: center;
+                margin-top: 1rem;
+                font-size: .75rem;
+                font-style: italic;
+                opacity: .5;
+            }
+
             .category-wrapper{
                 display: flex;
                 flex-direction: column;
@@ -53,8 +61,6 @@
                         margin-top: .4rem;
                     }
                 }
-
-                
             }
 
             .md-container{
@@ -107,5 +113,28 @@
 
     @media(min-width: 1024px){
         width: 10rem;
+    }
+}
+
+@media(min-width: 1024px){
+    input[type="text"]{
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .convention-editor-wrapper{
+        display: flex;
+        justify-content: space-between;
+
+        .md-editor{
+            width: 48%;
+        }
+        .md-preview{
+            width: 48%;
+        }
+
+        textarea{
+            height: 100%;
+        }
     }
 }

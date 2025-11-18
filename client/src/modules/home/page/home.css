@@ -313,3 +313,64 @@
         background: var(--accent-color);
     }
 }
+
+/* Desktop */
+@media(min-width: 1024px){
+    /* KPI */
+    .kpi-section{
+
+        .kpi-inner-wrapper{
+            background-color: var(--background-color);
+
+            .kpi-container{
+                margin-left: 7.5dvw;
+                
+                width: 85dvw;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+        }
+    }
+
+    /* CONTRIBUTE */
+    .contribute-section{
+        .contribute-inner-wrapper{
+            .contribute-container{
+                .standards-wrapper{
+                    margin-top: .75rem;
+                    
+                    & > :nth-child(2) { 
+                        margin-left: 50%;
+                    }
+                }
+
+            }
+        }
+
+
+    }
+
+    /* SLOGAN */
+    .slogan-section{
+        height: 300px;
+
+        .left-wrapper{
+            .left-container{
+                h2{
+                    margin-right: 1rem;
+                    font-size: 4rem;
+                }
+            }
+        }
+
+        .right-wrapper{
+            h2{
+                margin-left: 1rem;
+                font-size: 4rem;
+            }
+        }
+
+    }
+}

@@ -5,7 +5,7 @@ import type { StepsProps } from "../../../../shared/types/Steps.type";
 
 export const StepOneTitle:FC<StepsProps> = ({ formData, handleChange }) => {
     return (
-        <div className="form-input-wrapper">
+        <div className="form-input-wrapper basic">
             <h2>TITLE</h2>
             <input 
                 type="text" 

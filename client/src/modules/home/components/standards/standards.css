@@ -13,12 +13,16 @@
             font-weight: 900;
             opacity: .4;
 
-            width: 117px;
+
+            @media(min-width: 1024px){
+                font-size: 8rem;
+            }
         }
 
         h4{
             font-size: 1.25rem;
             margin-bottom: 1.45rem;
+
         }
     }
 
@@ -26,3 +30,29 @@
         font-size: .95rem;
     }
 }
+
+@media(min-width:1024px){
+    .standards-item-wrapper{
+
+        max-width: 50%;
+
+        .standards-top-wrapper{
+            display: flex;
+            align-items: flex-end;
+            gap: 1.5rem;
+            
+            h2{
+                font-size: 8rem;
+            }
+
+            h4{
+                font-size: 1.5rem;
+            }
+        }
+
+        p{
+            font-size: 1rem;
+        }
+    }
+}
+

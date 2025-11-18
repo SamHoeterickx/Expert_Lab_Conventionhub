@@ -28,6 +28,10 @@
 
         .pre-footer-container{
             padding: 3.375rem 3.375rem;
+
+            @media(min-width: 1024px){
+                padding: 7rem 35rem;
+            }
             
             border-top-left-radius: 2.5rem;
             border-bottom-right-radius: 2.25rem;
