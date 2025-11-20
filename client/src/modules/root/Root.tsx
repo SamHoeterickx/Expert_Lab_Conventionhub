@@ -5,12 +5,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { App } from "../app";
 
 //Routes
+import { ACCOUNT_ROUTE } from "../account";
+import { Auth, LOGIN_ROUTE, REGISTER_ROUTE } from "../auth";
+import { COOKIE_POLICY_ROUTE, PRIVACY_POLICY_ROUTE } from "../policies";
 import { CONTRIBUTE_ROUTE } from "../contribute";
+import { CONVENTION_ROUTE } from "../conventions";
 import { EXPLORE_ROUTE } from "../explore";
 import { HOME_ROUTE } from "../home";
-import { Auth, LOGIN_ROUTE, REGISTER_ROUTE } from "../auth";
-import { CONVENTION_ROUTE } from "../conventions";
-import { COOKIE_POLICY_ROUTE, PRIVACY_POLICY_ROUTE } from "../policies";
 
 export const Root = () => {
 
@@ -36,6 +37,10 @@ export const Root = () => {
                 {
                     path: CONVENTION_ROUTE.path,
                     element: CONVENTION_ROUTE.element
+                },
+                {
+                    path: ACCOUNT_ROUTE.path,
+                    element: ACCOUNT_ROUTE.element
                 },
                 {
                     path: PRIVACY_POLICY_ROUTE.path,

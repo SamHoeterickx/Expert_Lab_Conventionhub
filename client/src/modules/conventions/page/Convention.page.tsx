@@ -1,6 +1,5 @@
 import { useEffect, type FC } from "react";
-import { Link, useParams } from "react-router-dom";
-// import Markdown from "markdown-to-jsx";
+import { useParams } from "react-router-dom";
 import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
