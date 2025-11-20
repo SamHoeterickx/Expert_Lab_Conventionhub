@@ -47,6 +47,16 @@ export const CreateConventionForm = () => {
         }
     }
 
+    const isStepValid = () => {
+        switch(step){
+            case 1: return formData.title.trim().length > 0;
+            case 2: return formData.category.length > 0;
+            case 3: return formData.description.trim().length > 0;
+            case 4: return formData.contentMd.trim().length > 0;
+            default: return false;
+        }
+    }
+
     const handleForm = (e: React.FormEvent<HTMLFormElement>) => e.preventDefault();
  
     return(
@@ -72,6 +82,7 @@ export const CreateConventionForm = () => {
                                     className="button"
                                     type="button"
                                     onClick={ handleNextStep }
+                                    disabled={ !isStepValid() }
                                 >
                                     Next
                                 </button>

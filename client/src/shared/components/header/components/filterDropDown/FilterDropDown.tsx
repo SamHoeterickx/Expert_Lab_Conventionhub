@@ -1,11 +1,11 @@
 import type { FC } from "react";
 
 //Components
+import { CategoryFilter } from "../categoryFilter/CategoryFilter";
 import { SearchBar } from "../searchbar/SearchBar";
 
 //Style
 import './filterDropDown.css';
-import { CategoryFilter } from "../categoryFilter/CategoryFilter";
 
 export const FilterDropDown: FC = () => {
     return(

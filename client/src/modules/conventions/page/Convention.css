@@ -62,6 +62,7 @@
 
                 h3{
                     color: var(--accent-color);
+                    margin-bottom: 0;
                 }
 
                 .like-button{

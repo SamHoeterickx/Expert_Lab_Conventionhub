@@ -17,8 +17,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
-
+        gap: 3rem 1rem;
         padding: 0 7.5dvw;
 
         .convention-card-wrapper{
@@ -28,9 +27,27 @@
         @media(min-width: 1024px){
             flex-direction: row;
             flex-wrap: wrap;
+            align-items: top;
+            justify-content: flex-start;
 
             .convention-card-wrapper{
-                width: 45%;
+                width: calc((88% - 1rem) / 2);
+            }
+        }
+
+        @media(min-width: 1800px){
+        
+            padding: 0 10dvw;
+
+            .convention-card-wrapper{
+                width: calc((88% - 2rem) / 3);
+            }
+        }
+
+        @media(min-width: 2000px){
+        
+            .convention-card-wrapper{
+                width: calc((88% - 2rem) / 4);
             }
         }
     }

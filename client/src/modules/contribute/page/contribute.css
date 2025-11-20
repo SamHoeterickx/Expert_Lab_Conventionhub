@@ -46,8 +46,11 @@
             .category-wrapper{
                 display: flex;
                 flex-direction: column;
-                width: 80%;
                 margin: 0 auto;
+
+                @media(min-width: 1024px){
+                    flex-direction: row;
+                }
 
                 .category-radio-wrapper{
 

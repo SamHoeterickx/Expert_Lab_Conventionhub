@@ -1,5 +1,5 @@
 .convention-card-wrapper{
-    min-width: 55dvw;
+    width: 100%;
 
     
     background-color: var(--light-blue-color);
@@ -25,8 +25,8 @@
         margin-bottom: 1rem;
     }
 
-    @media(min-width: 1024px){
+    /* @media(min-width: 1024px){
         min-width: 30rem;
-    }
+    } */
 
 }

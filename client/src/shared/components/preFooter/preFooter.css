@@ -28,8 +28,13 @@
 
         .pre-footer-container{
             padding: 3.375rem 3.375rem;
+            display: flex;
+            justify-content: center;
 
             @media(min-width: 1024px){
+                padding: 7rem 20rem;
+            }
+            @media(min-width: 1500px){
                 padding: 7rem 35rem;
             }
             
@@ -39,12 +44,30 @@
             background-color: var(--accent-color);            
             
             h2{
-                font-size: 2.5rem;
+                font-size: 3.5rem;
                 color: var(--background-color);
                 font-weight: 900;
 
                 margin-bottom: 2rem;
             }
+
+            @media(min-width: 1024px){
+                .pre-footer-inner-wrapper{
+                    width: 80dvw;
+                }
+            }
+            @media(min-width: 1500px){
+                .pre-footer-inner-wrapper{
+                    width: 30dvw;
+                }
+            }
+            @media(min-width: 2000px){
+                .pre-footer-inner-wrapper{
+                    width: 20dvw;
+                }
+            }
+
+
         }
     }
 

@@ -14,7 +14,9 @@ export const PreFooter: FC<PreFooterProps> = ({ children }) => {
             <div className="pre-footer-upper-corner"></div>
             <div className="pre-footer-wrapper">
                 <div className="pre-footer-container">
-                    { children }
+                    <div className="pre-footer-inner-wrapper">
+                        { children }
+                    </div>
                 </div>
             </div>
         </section>
