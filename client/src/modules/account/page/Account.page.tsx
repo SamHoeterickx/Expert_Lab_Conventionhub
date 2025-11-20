@@ -26,6 +26,10 @@ export const Account:FC = () => {
     const { data:conventionData, isLoading:isConventionLoading, isError:isConventionError, error:conventionError } = useGetUsersConventions(); 
     const { data:likedData, isLoading:isLikeLoading, isError:isLikeError, error:likeError } = useGetUserLikedConventions(); 
 
+    const handleLogOut = () => {
+        console.log('logout');
+    }
+ 
     const handleChangeUserName = () => {
         setActiveModal('username');
     }
@@ -105,6 +109,12 @@ export const Account:FC = () => {
             <PreFooter>
                 <div className="account-action-wrapper">
                     <h2>DANGER ZONE</h2>
+                    <button
+                        onClick={ handleLogOut }
+                        className="account-button"
+                    >
+                        LOGOUT
+                    </button>
                     <button
                         onClick={ handleChangeUserName }
                         className="account-button"
