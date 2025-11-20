@@ -29,6 +29,11 @@ footer{
     h4{
         font-weight: 900;
         font-size: 1.25rem;
+
+        @media(min-width: 1024px){
+            font-size: 3rem   ;
+        }
+
     }
 
     ul {
@@ -38,6 +43,9 @@ footer{
     p{
         font-weight: 300;
         margin-bottom: 1rem;
+        @media(min-width: 1024px){
+            font-size: 1rem   ;
+        }
     }
 
     ::after{

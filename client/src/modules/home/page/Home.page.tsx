@@ -11,10 +11,16 @@ import {
     SloganSection,
 } from "../components";
 
+//Hooks
+import { useDocumentTitle } from "../../../shared/hooks";
+
 //Styles
 import './home.css';
 
 export const Home: FC = () => {
+
+    useDocumentTitle('StandardsHUB | Home');
+
     return (
         <ScrollWrapper>
             <HeaderSection />

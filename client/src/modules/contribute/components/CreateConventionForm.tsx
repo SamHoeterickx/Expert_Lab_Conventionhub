@@ -67,14 +67,18 @@ export const CreateConventionForm = () => {
 
                     {/* Navigation Buttons */}
                     <div className="navigation-button-wrapper">
-                        <button
-                            className="button"
-                            type="button"
-                            onClick={ handlePrevStep }
-                            disabled={ step === 1 }
-                        >
-                            Back
-                        </button>
+                        {
+                            step !== 1 ? (
+                                <button
+                                    className="button"
+                                    type="button"
+                                    onClick={ handlePrevStep }
+                                    disabled={ step === 1 }
+                                >
+                                    Back
+                                </button>
+                            ) : <div></div>
+                        }
 
                         {
                             step < 4 ? (

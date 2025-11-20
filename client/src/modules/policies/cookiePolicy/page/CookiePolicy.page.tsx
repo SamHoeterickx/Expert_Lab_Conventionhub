@@ -4,23 +4,33 @@ import { Link } from "react-router-dom";
 // Components
 import { Header, PreFooter, ScrollWrapper } from "../../../../shared/components";
 
-// Routes
-import { HOME_ROUTE } from "../../../home";
+//Hooks
+import { useDocumentTitle } from "../../../../shared/hooks";
 
 //Styles
 import '../../policies.css'; 
 
+// Routes
+import { HOME_ROUTE } from "../../../home";
+
+
 export const CookiePolicy: FC = () => {
+
+    useDocumentTitle('StandardsHUB | CookiePolicy');
+    
     return (
         <ScrollWrapper>
             <Header title="COOKIE POLICY" />
             
             <section className="policy-section">
+                <div className="policy-top-right-corner-container">
+                    <div className="policy-top-right-corner"></div>
+                </div>
                 <div className="policy-container">
                     <div className="policy-content">
                         <h3>1. Introduction</h3>
                         <p>
-                            Welcome to ConventionHub. This Cookie Policy explains how we use cookies and similar technologies 
+                            Welcome to StandardsHUB. This Cookie Policy explains how we use cookies and similar technologies 
                             to recognize you when you visit our website. It explains what these technologies are and why we use them, 
                             as well as your rights to control our use of them.
                         </p>
@@ -74,7 +84,7 @@ export const CookiePolicy: FC = () => {
                         <h3>6. How can I control cookies?</h3>
                         <p>
                             You have the right to decide whether to accept or reject cookies. You can set or amend your web browser controls 
-                            to accept or refuse cookies. If you choose to reject cookies, you may still use our website to browse and explore conventions, 
+                            to accept or refuse cookies. If you choose to reject cookies, you may still use our website to browse and explore standards, 
                             but access to functionality such as contributing content, liking posts, or accessing your account will be restricted.
                         </p>
 

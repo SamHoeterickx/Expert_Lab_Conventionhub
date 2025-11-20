@@ -5,7 +5,7 @@ export const SloganSection = () => {
                 <div className="left-container">
                     <div className="left-content">
                         <h2>YOUR</h2>
-                        <h2>CONVENTION</h2>
+                        <h2>STANDARDS</h2>
                     </div>
                 </div>
             </div>

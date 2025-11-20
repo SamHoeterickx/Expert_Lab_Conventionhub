@@ -5,21 +5,25 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Header, ConventionCard, PreFooter, ScrollWrapper } from "../../../shared/components";
 
 //Hooks
-import { useGetConventions } from "../../../shared/hooks";
+import { useDocumentTitle, useGetConventions } from "../../../shared/hooks";
+
+//Types
+import type { ConventionType } from "../../../shared/types/Convention.type";
 
 //Routes
 import { CONTRIBUTE_ROUTE } from "../../contribute";
 
 //Style
 import './explore.css';
-import type { ConventionType } from "../../../shared/types/Convention.type";
 
 export const Explore: FC = () => {
 
     const [filteredData, setFilteredData] = useState<ConventionType[]>([]);
 
     const {data, isLoading, isError, error} = useGetConventions();
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
+
+    useDocumentTitle('StandardsHUB | Explore');
 
     useEffect(() => {
         if(data && data.data){

@@ -11,4 +11,7 @@ export { useCreateConvention } from './conventions/useCreateConvention.hook'
 
 //LIKE HOOKS
 export { useLikeConvention } from './likes/useLikeConvention.hook';
-export { useGetLikeStatus } from './likes/useGetLikeStatus.hook'
+export { useGetLikeStatus } from './likes/useGetLikeStatus.hook';
+
+//Title
+export { useDocumentTitle } from './title/useDocumentTitle.hook';

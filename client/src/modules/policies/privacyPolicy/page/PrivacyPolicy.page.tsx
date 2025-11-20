@@ -4,23 +4,32 @@ import { Link } from "react-router-dom";
 // Components
 import { Header, PreFooter, ScrollWrapper } from "../../../../shared/components";
 
+//Hooks
+import { useDocumentTitle } from "../../../../shared/hooks";
+
+//Styles
+import '../../policies.css'; 
+
 // Routes
 import { HOME_ROUTE } from "../../../home";
 
-//Style
-import '../../policies.css'; 
-
 export const PrivacyPolicy: FC = () => {
+
+    useDocumentTitle('StandardsHUB | PrivacyPolicy');
+
     return (
         <ScrollWrapper>
             <Header title="PRIVACY POLICY" />
             
             <section className="policy-section">
+                <div className="policy-top-right-corner-container">
+                    <div className="policy-top-right-corner"></div>
+                </div>
                 <div className="policy-container">
                     <div className="policy-content">
                         <h3>1. Introduction</h3>
                         <p>
-                            At ConventionHub, we value your privacy. This Privacy Policy outlines what personal data we collect, 
+                            At StandardsHUB, we value your privacy. This Privacy Policy outlines what personal data we collect, 
                             how we use it, and the choices you have regarding your information. By using our platform, 
                             you agree to the collection and use of information in accordance with this policy.
                         </p>
@@ -62,7 +71,7 @@ export const PrivacyPolicy: FC = () => {
                         <h3>5. Sharing of Information</h3>
                         <p>
                             <strong>We do not sell, trade, or rent your personal identification information to others.</strong> 
-                            Your data is used solely for the operation of ConventionHub. Conventions you publish are public by default and can be viewed, 
+                            Your data is used solely for the operation of StandardsHUB. Conventions you publish are public by default and can be viewed, 
                             searched, and downloaded by anyone visiting the site.
                         </p>
 
@@ -87,7 +96,7 @@ export const PrivacyPolicy: FC = () => {
             </section>
 
             <PreFooter>
-                <h2>BACK TO HUB</h2>
+                <h2 dangerouslySetInnerHTML={{__html: "BACK TO <br> THE HUB"}}></h2>
                 <Link className="large-button" to={`/${HOME_ROUTE.path}`}>
                     HOME
                 </Link>

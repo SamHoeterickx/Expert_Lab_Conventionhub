@@ -17,12 +17,12 @@ export const Footer = () => {
                     <ul>
                         <li>
                             <Link to={`/${EXPLORE_ROUTE.path}`}>
-                                <p>Explore Conventions</p>
+                                <p>Explore Standards</p>
                             </Link>
                         </li>
                         <li>
                             <Link to={`/${CONTRIBUTE_ROUTE.path}`}>
-                                <p>Create Conventions</p>
+                                <p>Create Standards</p>
                             </Link>
                         </li>
                         <li>

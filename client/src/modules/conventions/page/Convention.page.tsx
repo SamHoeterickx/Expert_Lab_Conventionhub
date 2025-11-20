@@ -11,7 +11,7 @@ import { Header, PreFooter } from "../../../shared/components";
 import { InteractionSection } from "../components/InteractionSection";
 
 //Hooks
-import { useGetSingleConvention } from "../../../shared/hooks";
+import { useDocumentTitle, useGetSingleConvention } from "../../../shared/hooks";
 
 //Style
 import './convention.css';
@@ -22,6 +22,10 @@ export const Convention: FC = () => {
     const { slug } = useParams();
 
     const { data, isLoading, isError, error } = useGetSingleConvention(slug);
+
+    const pageTitle = data?.data?.title ? `ConventionHub | ${data.data.title}` : "ConventionHub | Loading...";
+
+    useDocumentTitle(pageTitle);
 
     useEffect(() => {
         console.log(data);
