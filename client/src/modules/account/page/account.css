@@ -9,3 +9,62 @@
         margin-right: 3dvw;
     }
 }
+
+.account-userdata-wrapper{
+    position: relative;
+    padding-bottom: var(--base-padding);
+
+    .account-top-info-wrapper{
+        text-align: center;
+        padding: 0 7.5dvw;
+        margin-bottom: var(--base-margin);
+
+        h1{
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+    }
+
+    .account-my-conventions-container{
+
+        h2{
+            margin: 0 0 1rem 7.5dvw;
+        }
+
+        .account-my-conventions-wrapper{
+            width: 100%;
+
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+
+            overflow: scroll;
+
+            margin-bottom: 4rem;
+
+            .convention-card-wrapper{
+                width: 400px;
+            }
+        }   
+        .convention-card-wrapper:nth-child(1){
+            margin-left: 7.5dvw;
+        }
+        .convention-card-wrapper:nth-last-child(1){
+            margin-right: 7.5dvw;
+        }
+        .account-my-conventions-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    ::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 3dvw;
+
+        height: 100%;
+        background: var(--accent-color);
+    }
+}

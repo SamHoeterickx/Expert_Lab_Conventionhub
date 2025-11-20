@@ -64,8 +64,6 @@ export const getUserData = async(userId:string) => {
             id: true,
             username: true,
             email: true,
-            likes: true,
-            conventions: true
         }
     });
 
