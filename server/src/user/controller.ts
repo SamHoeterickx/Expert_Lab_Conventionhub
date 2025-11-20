@@ -194,3 +194,31 @@ export const getUser = async(req:Request, res:Response) => {
         });
     };
 }
+
+export const logout = async(req:Request, res:Response) => {
+    try{
+
+        const userId = req.signedCookies.session_id;
+
+        if(!userId){
+            return res.status(401).send({
+                status: 401,
+                message: 'Missing info'
+            });
+        };
+
+        res.cookie('session_id', '', {expires: new Date(0)});
+
+        return res.status(200).send({
+            status: 200,
+            message: 'User found successfull',
+        })
+
+    }catch(error:any){
+        console.error('Error fetching logout:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        });
+    };
+}

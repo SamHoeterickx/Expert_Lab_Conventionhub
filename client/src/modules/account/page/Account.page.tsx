@@ -6,6 +6,9 @@ import { Button, ConventionCard, Header, PreFooter } from "../../../shared/compo
 //Modals
 import { ChangePasswordModal, ChangeUsernameModal, DeleteAccountModal } from "../../../shared/utils/modals";
 
+//Service
+import { authService } from "../../../shared/services";
+
 //Hooks
 import { useDocumentTitle, useGetUserData, useGetUserLikedConventions, useGetUsersConventions } from "../../../shared/hooks";
 
@@ -14,20 +17,29 @@ import type { ConventionType } from "../../../shared/types/Convention.type";
 
 //Style
 import './account.css';
+import { useNavigate } from "react-router-dom";
 
 export const Account:FC = () => {
 
     useDocumentTitle('StandardsHUB | Account');
 
     const [activeModal, setActiveModal] = useState<'password' | 'username' | 'delete' | null>(null);
+    
+    const nav = useNavigate();
 
     //Get all the data
     const { data:userData, isLoading, isError, error } = useGetUserData(); 
     const { data:conventionData, isLoading:isConventionLoading, isError:isConventionError, error:conventionError } = useGetUsersConventions(); 
     const { data:likedData, isLoading:isLikeLoading, isError:isLikeError, error:likeError } = useGetUserLikedConventions(); 
 
-    const handleLogOut = () => {
+    const handleLogOut = async() => {
         console.log('logout');
+        const data:any = await authService.logout();
+
+        if(data && data.status === 200){
+            nav('/');
+        }
+
     }
  
     const handleChangeUserName = () => {

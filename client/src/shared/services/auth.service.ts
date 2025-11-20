@@ -76,6 +76,20 @@ class AuthService {
         const data = await response.json();
         return data
     }
+
+    async logout(){
+        const response = await fetch(`${BASE_URL}/users/logout`,{
+            credentials: 'include'
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Not authenticated');
+        };
+
+        const data = await response.json();
+        return data
+    }
 }
 
 export const authService = new AuthService();
