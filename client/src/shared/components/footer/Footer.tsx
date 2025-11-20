@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 
 //Routes
+import { ACCOUNT_ROUTE } from '../../../modules/account';
+import { COOKIE_POLICY_ROUTE, PRIVACY_POLICY_ROUTE } from '../../../modules/policies';
 import { CONTRIBUTE_ROUTE } from '../../../modules/contribute';
 import { EXPLORE_ROUTE } from '../../../modules/explore';
 import { HOME_ROUTE } from '../../../modules/home';
 
 //Style
 import './footer.css';
-import { COOKIE_POLICY_ROUTE, PRIVACY_POLICY_ROUTE } from '../../../modules/policies';
 
 export const Footer = () => {
     return (
@@ -26,7 +27,7 @@ export const Footer = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to={`/${CONTRIBUTE_ROUTE.path}`}>
+                            <Link to={`/${ACCOUNT_ROUTE.path}/`}>
                                 <p>Account</p>
                             </Link>
                         </li>

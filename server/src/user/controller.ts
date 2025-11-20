@@ -1,6 +1,6 @@
 import { type Request, type Response } from 'express';
 
-import { checkExcistingUser, registerNewUser, verifyPassword, findUser } from './model'
+import { checkExcistingUser, registerNewUser, verifyPassword, findUser, getUserData } from './model'
 
 export const register = async(req:Request, res:Response) => {
     try{
@@ -121,8 +121,8 @@ export const login = async(req:Request, res:Response) => {
             message: error.message
         });
     }
+    
 }
-
 export const authenticateMe = async(req:Request, res:Response) => {
     try{
 
@@ -152,6 +152,42 @@ export const authenticateMe = async(req:Request, res:Response) => {
 
     }catch(error:any){
         console.error('Error fetching authenticate:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        });
+    };
+}
+
+export const getUser = async(req:Request, res:Response) => {
+    try{
+
+        const userId = req.signedCookies.session_id;
+
+        if(!userId){
+            return res.status(401).send({
+                status: 401,
+                message: 'Missing info'
+            });
+        };
+
+        const userData = await getUserData(userId);
+
+        if(!userData){
+            return res.status(404).send({
+                status: 404,
+                message: 'User not found'
+            });
+        };
+
+        return res.status(200).send({
+            status: 200,
+            message: 'User found successfull',
+            data: userData
+        })
+
+    }catch(error:any){
+        console.error('Error fetching getUser:', error);
         return res.status(500).send({
             status: 500,
             message: error.message

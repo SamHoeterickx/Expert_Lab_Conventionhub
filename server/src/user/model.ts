@@ -41,10 +41,10 @@ export const verifyPassword = async(password:string, hashedPassword:string) => {
     return await bcrypt.compare(password, hashedPassword);
 }
 
-export const findUser = async(sessionId:string) => {
+export const findUser = async(userId:string) => {
     const result = await prisma.user.findUnique({
         where: {
-            id: sessionId
+            id: userId
         },
         select: {
             id: true,
@@ -52,5 +52,22 @@ export const findUser = async(sessionId:string) => {
             username: true
         }
     });
+    return result;
+}
+
+export const getUserData = async(userId:string) => {
+    const result = await prisma.user.findFirst({
+        where: {
+            id: userId
+        },
+        select: {
+            id: true,
+            username: true,
+            email: true,
+            likes: true,
+            conventions: true
+        }
+    });
+
     return result;
 }
