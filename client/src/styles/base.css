@@ -51,7 +51,6 @@ p {
 button{
     border: none;
     outline: none;
-    background-color: transparent;
 
     font-family: var(--base-font);
 }

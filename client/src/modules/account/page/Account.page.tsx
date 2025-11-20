@@ -1,7 +1,10 @@
-import { useEffect, type FC } from "react";
+import { useEffect, useState, type FC } from "react";
 
 //Components
 import { Button, ConventionCard, Header, PreFooter } from "../../../shared/components";
+
+//Modals
+import { ChangePasswordModal, ChangeUsernameModal, DeleteAccountModal } from "../../../shared/utils/modals";
 
 //Hooks
 import { useDocumentTitle, useGetUserData, useGetUserLikedConventions, useGetUsersConventions } from "../../../shared/hooks";
@@ -11,28 +14,32 @@ import type { ConventionType } from "../../../shared/types/Convention.type";
 
 //Style
 import './account.css';
-import { Link } from "react-router-dom";
 
 export const Account:FC = () => {
 
     useDocumentTitle('StandardsHUB | Account');
+
+    const [activeModal, setActiveModal] = useState<'password' | 'username' | 'delete' | null>(null);
 
     //Get all the data
     const { data:userData, isLoading, isError, error } = useGetUserData(); 
     const { data:conventionData, isLoading:isConventionLoading, isError:isConventionError, error:conventionError } = useGetUsersConventions(); 
     const { data:likedData, isLoading:isLikeLoading, isError:isLikeError, error:likeError } = useGetUserLikedConventions(); 
 
-
     const handleChangeUserName = () => {
-        console.log('click');
+        setActiveModal('username');
     }
 
     const handleChangePassword = () => {
-        console.log('click');
+        setActiveModal('password');
     }
 
     const handleDeleteAccount = () => {
-        console.log('click');
+        setActiveModal('delete');
+    }
+
+    const closeModal = () => {
+        setActiveModal(null);
     }
 
 
@@ -119,6 +126,19 @@ export const Account:FC = () => {
 
                 </div>
             </PreFooter>
+
+            <ChangePasswordModal
+                isOpen={activeModal === 'password'} 
+                onClose={closeModal} 
+            />
+            <ChangeUsernameModal
+                isOpen={activeModal === 'username'} 
+                onClose={closeModal} 
+            />
+            <DeleteAccountModal
+                isOpen={activeModal === 'delete'} 
+                onClose={closeModal} 
+            />
         </>
     )
 }
