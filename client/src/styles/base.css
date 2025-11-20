@@ -73,6 +73,9 @@ button{
 
     cursor: pointer;
 }
+.large-button:hover{
+    background-color: #16202a;
+}
 
 label{
     font-family: var(--base-font);
@@ -104,9 +107,11 @@ textarea{
     padding: 1rem;
 }
 
-.convention-markdown-wrapper{
-    width: 50%;
-    margin: 0 auto;
+@media(min-width: 1024px){
+    .convention-markdown-wrapper{
+        width: 50%;
+        margin: 0 auto;
+    }
 }
 
 .convention-markdown-wrapper, .md-preview{

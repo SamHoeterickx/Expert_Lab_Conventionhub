@@ -169,7 +169,7 @@
             overflow: scroll;
 
             .convention-card-wrapper{
-                width: 400px;
+                width: 800px !important;
             }
         }
         .convention-card-wrapper:nth-child(1){

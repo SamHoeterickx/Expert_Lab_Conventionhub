@@ -1,7 +1,7 @@
 import { useEffect, type FC } from "react";
 
 //Components
-import { ConventionCard, Header, PreFooter } from "../../../shared/components";
+import { Button, ConventionCard, Header, PreFooter } from "../../../shared/components";
 
 //Hooks
 import { useDocumentTitle, useGetUserData, useGetUserLikedConventions, useGetUsersConventions } from "../../../shared/hooks";
@@ -11,24 +11,35 @@ import type { ConventionType } from "../../../shared/types/Convention.type";
 
 //Style
 import './account.css';
+import { Link } from "react-router-dom";
 
 export const Account:FC = () => {
 
     useDocumentTitle('StandardsHUB | Account');
+
+    //Get all the data
     const { data:userData, isLoading, isError, error } = useGetUserData(); 
     const { data:conventionData, isLoading:isConventionLoading, isError:isConventionError, error:conventionError } = useGetUsersConventions(); 
     const { data:likedData, isLoading:isLikeLoading, isError:isLikeError, error:likeError } = useGetUserLikedConventions(); 
 
-    useEffect(() => {
-        console.log(userData);
-        console.log(likedData);
-    }, [userData, likedData]);
+
+    const handleChangeUserName = () => {
+        console.log('click');
+    }
+
+    const handleChangePassword = () => {
+        console.log('click');
+    }
+
+    const handleDeleteAccount = () => {
+        console.log('click');
+    }
 
 
     return (
         <>
             <Header
-                title="Account"
+                title="MY ACCOUNT"
             />
             <div className="account-top-right-corner-container">
                 <div className="account-top-right-corner"></div>
@@ -49,6 +60,7 @@ export const Account:FC = () => {
                                     conventionData.data.length !== 0 ? (
                                         conventionData.data.map((convention:ConventionType) => (
                                             <ConventionCard
+                                                key={ convention.slug }
                                                 convention_title={ convention.title }
                                                 convention_description={ convention.description }
                                                 convention_link={ convention.slug}
@@ -68,6 +80,7 @@ export const Account:FC = () => {
                                     likedData.data.length !== 0 ? (
                                         likedData.data.map((convention:any) => (
                                             <ConventionCard
+                                                key={ convention.convention.slug }
                                                 convention_title={ convention.convention.title }
                                                 convention_description={ convention.convention.description }
                                                 convention_link={ convention.convention.slug}
@@ -84,6 +97,25 @@ export const Account:FC = () => {
 
             <PreFooter>
                 <div className="account-action-wrapper">
+                    <h2>DANGER ZONE</h2>
+                    <button
+                        onClick={ handleChangeUserName }
+                        className="account-button"
+                    >
+                        CHANGE USERNAME
+                    </button>
+                    <button
+                        onClick={ handleChangePassword }
+                        className="account-button"
+                    >
+                        CHANGE PASSWORD
+                    </button>
+                    <button
+                        onClick={ handleDeleteAccount }
+                        className="account-button delete"
+                    >
+                        DELETE ACCOUNT
+                    </button>
 
                 </div>
             </PreFooter>
