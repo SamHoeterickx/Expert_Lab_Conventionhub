@@ -1,0 +1,11 @@
+.account-top-right-corner-container{
+
+    background-color: var(--accent-color);
+
+    .account-top-right-corner{
+        height: var(--base-padding);
+        background-color: var(--background-color);
+        border-top-right-radius: 2.5rem;
+        margin-right: 3dvw;
+    }
+}

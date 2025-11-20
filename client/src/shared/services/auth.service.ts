@@ -62,6 +62,20 @@ class AuthService {
         const data = await response.json();
         return data
     }
+
+    async getUserData(){
+        const response = await fetch(`${BASE_URL}/users/user`, {
+            credentials: 'include'
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Not authenticated');
+        };
+
+        const data = await response.json();
+        return data
+    }
 }
 
 export const authService = new AuthService();
