@@ -10,6 +10,7 @@ import { EXPLORE_ROUTE } from "../explore";
 import { HOME_ROUTE } from "../home";
 import { Auth, LOGIN_ROUTE, REGISTER_ROUTE } from "../auth";
 import { CONVENTION_ROUTE } from "../conventions";
+import { COOKIE_POLICY_ROUTE, PRIVACY_POLICY_ROUTE } from "../policies";
 
 export const Root = () => {
 
@@ -35,6 +36,14 @@ export const Root = () => {
                 {
                     path: CONVENTION_ROUTE.path,
                     element: CONVENTION_ROUTE.element
+                },
+                {
+                    path: PRIVACY_POLICY_ROUTE.path,
+                    element: PRIVACY_POLICY_ROUTE.element
+                },
+                {
+                    path: COOKIE_POLICY_ROUTE.path,
+                    element: COOKIE_POLICY_ROUTE.element
                 }
             ]
         },

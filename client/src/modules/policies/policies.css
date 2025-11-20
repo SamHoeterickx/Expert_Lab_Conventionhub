@@ -1,0 +1,73 @@
+.policy-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--background-color);
+    color: var(--font-color);
+    font-family: var(--base-font);
+}
+
+.policy-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3dvw;
+    height: 100%;
+    background: var(--accent-color);
+}
+
+.policy-container {
+    padding: var(--base-padding) 7.5dvw;
+    width: 85%;
+}
+
+.policy-content h3 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.policy-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+/* Table Styling */
+.cookie-table-wrapper {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    border: 1px solid var(--accent-color);
+}
+
+.cookie-table th {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    padding: 1rem;
+    font-weight: 900;
+}
+
+.cookie-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(36, 191, 181, 0.3); /* Accent color with opacity */
+}
+
+.cookie-table tr:last-child td {
+    border-bottom: none;
+}
+
+.last-updated {
+    margin-top: 3rem;
+    font-style: italic;
+    opacity: 0.7;
+}

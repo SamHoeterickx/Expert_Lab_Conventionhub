@@ -7,6 +7,7 @@ import { HOME_ROUTE } from '../../../modules/home';
 
 //Style
 import './footer.css';
+import { COOKIE_POLICY_ROUTE, PRIVACY_POLICY_ROUTE } from '../../../modules/policies';
 
 export const Footer = () => {
     return (
@@ -38,12 +39,12 @@ export const Footer = () => {
                 <div className="right-wrapper">
                     <ul>
                         <li>
-                            <Link to={"#"}>
+                            <Link to={`/${COOKIE_POLICY_ROUTE.path}`}>
                                 <p>Cookiepolicy</p>
                             </Link>
                         </li>
                         <li>
-                            <Link to={"#"}>
+                            <Link to={`/${PRIVACY_POLICY_ROUTE.path}`}>
                                 <p>Privacypolicy</p>
                             </Link>
                         </li>
