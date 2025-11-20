@@ -112,12 +112,15 @@ textarea{
 .convention-markdown-wrapper, .md-preview{
     h1{
         margin-bottom: 1.5rem;
+        text-align: start;
     }
     h2{
         margin-bottom: 1.2rem;
+        text-align: start !important;
     }
     h3, h4, h5, h6, h7, hr{
         margin-bottom: 1rem;
+        text-align: start !important;
     }
     p{
         margin-bottom: .75rem;

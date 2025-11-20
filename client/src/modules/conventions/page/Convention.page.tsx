@@ -23,7 +23,7 @@ export const Convention: FC = () => {
 
     const { data, isLoading, isError, error } = useGetSingleConvention(slug);
 
-    const pageTitle = data?.data?.title ? `ConventionHub | ${data.data.title}` : "ConventionHub | Loading...";
+    const pageTitle = data?.data?.title ? `StandardsHUB | ${data.data.title}` : "StandardsHUB | Loading...";
 
     useDocumentTitle(pageTitle);
 
