@@ -108,11 +108,6 @@ Sam Hoeterickx <br>
 Student Multimedia & Creative Technology <br>
 Erasmushogeschool Brussel <br>
 [Linkedin](https://www.linkedin.com/in/sam-hoeterickx/) <br>
-[portfolio](https://www.samhoeterickx.be)
+[portfolio](https://www.samhoeterickx.be) <br>
 
-
-
-
-
-
-
+all rights reserved
