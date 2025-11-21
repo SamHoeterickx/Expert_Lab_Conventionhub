@@ -1,6 +1,6 @@
 import { type Request, type Response } from 'express';
 
-import { checkExcistingUser, registerNewUser, verifyPassword, findUser, getUserData } from './model'
+import { checkExcistingUser, registerNewUser, verifyPassword, findUser, getUserData, deleteUserById } from './model'
 
 export const register = async(req:Request, res:Response) => {
     try{
@@ -123,6 +123,7 @@ export const login = async(req:Request, res:Response) => {
     }
     
 }
+
 export const authenticateMe = async(req:Request, res:Response) => {
     try{
 
@@ -216,6 +217,52 @@ export const logout = async(req:Request, res:Response) => {
 
     }catch(error:any){
         console.error('Error fetching logout:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        });
+    };
+}
+
+export const deleteAccount = async(req:Request, res:Response) => {
+    try{
+
+        // const userId = req.signedCookies.session_id;
+
+        const { userId } = req.body;
+
+        if(!userId){
+            return res.status(401).send({
+                status: 401,
+                message: 'Missing user info'
+            });
+        }
+
+        const excistingUser = await findUser(userId);
+
+        if(!excistingUser){
+            return res.status(404).send({
+                status: 404,
+                message: 'User not found'
+            });
+        };
+        
+        const result = await deleteUserById(userId);
+
+        if(!result){
+            return res.status(409).send({
+                status: 409,
+                message: 'Failed to delete user'
+            });
+        };
+
+        return res.status(200).send({
+            status: 200,
+            message: 'Account deleted successfully',
+        });
+
+    }catch(error:any){
+        console.error('Error fetching delete account:', error);
         return res.status(500).send({
             status: 500,
             message: error.message

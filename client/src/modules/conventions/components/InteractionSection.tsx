@@ -81,7 +81,7 @@ export const InteractionSection:FC<InteractionSectionProps> = ({ conventionId, l
                 </button>
             </div>
             <p>Created by:</p>
-            <p>{ authorName }</p>
+            <p>{ authorName ? authorName : 'Deleted User' }</p>
         </section>
     );
 }
