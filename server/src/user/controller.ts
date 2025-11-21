@@ -1,6 +1,6 @@
-import { type Request, type Response } from 'express';
+import e, { type Request, type Response } from 'express';
 
-import { checkExcistingUser, registerNewUser, verifyPassword, findUser, getUserData, deleteUserById } from './model'
+import { checkExcistingUser, registerNewUser, verifyPassword, findUser, getUserData, deleteUserById, updatePasswordById } from './model'
 
 export const register = async(req:Request, res:Response) => {
     try{
@@ -15,7 +15,7 @@ export const register = async(req:Request, res:Response) => {
             });
         };
 
-        if(password.length <= 8){
+        if(password.length < 8){
             return res.status(400).send({
                 status: 400,
                 message: "Password isn't 8 characters long"
@@ -224,6 +224,65 @@ export const logout = async(req:Request, res:Response) => {
     };
 }
 
+export const updatePassword = async(req:Request, res:Response) => {
+    try{
+
+        const { oldPassword, newPassword, repeatNewPassword, email } = req.body;
+        const userId = req.signedCookies.session_id;
+
+        if(!oldPassword || !newPassword || !repeatNewPassword || !userId || !email){
+            return res.status(401).send({
+                status: 401,
+                message: 'Missing credentials'
+            });
+        }
+
+        if(newPassword !== repeatNewPassword){
+            return res.status(401).send({
+                status: 401,
+                message: 'newPasswords dont match'
+            });
+        };
+
+        const excistingUser = await checkExcistingUser(email);
+        if(!excistingUser){
+            return res.status(404).send({
+                status: 404,
+                message: 'User not found'
+            });
+        };
+        
+        const passwordMatch = await verifyPassword(oldPassword, excistingUser.password);
+        if(!passwordMatch){
+            return res.status(401).send({
+                status: 401,
+                message: 'Incorrect old password'
+            });
+        };
+
+        const updatedPassword = await updatePasswordById(newPassword, userId);
+
+        if(!updatePassword){
+            return res.status(409).send({
+                status: 409,
+                message: 'Failed to update password'
+            });
+        }
+
+        return res.status(204).send({
+            status: 204,
+            message: 'Password updated successfully'
+        });
+        
+    }catch(error:any){
+        console.error('Error fetching update password:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        });
+    };
+}
+
 export const deleteAccount = async(req:Request, res:Response) => {
     try{
 
@@ -256,8 +315,8 @@ export const deleteAccount = async(req:Request, res:Response) => {
             });
         };
 
-        return res.status(200).send({
-            status: 200,
+        return res.status(204).send({
+            status: 204,
             message: 'Account deleted successfully',
         });
 
