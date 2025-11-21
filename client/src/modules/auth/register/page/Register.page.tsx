@@ -34,7 +34,7 @@ export const Register = () => {
 
         useEffect(() => {
             const redirectPath = searchParams.get('redirect_uri');
-            setTargetPath( redirectPath === '' ? `/${HOME_ROUTE.path}` : `/${redirectPath}`);
+            setTargetPath( redirectPath === '' ? `/${HOME_ROUTE.path}` : `${redirectPath}`);
         }, [searchParams]);
     
         const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
