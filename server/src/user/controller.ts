@@ -227,9 +227,9 @@ export const logout = async(req:Request, res:Response) => {
 export const deleteAccount = async(req:Request, res:Response) => {
     try{
 
-        // const userId = req.signedCookies.session_id;
+        const userId = req.signedCookies.session_id;
 
-        const { userId } = req.body;
+        // const { userId } = req.body;
 
         if(!userId){
             return res.status(401).send({

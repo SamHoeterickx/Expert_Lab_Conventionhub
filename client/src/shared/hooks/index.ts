@@ -3,6 +3,7 @@ export { useAuth } from './auth/useAuth.hook';
 export { useLogin } from './auth/useLogin.hook';
 export { useRegister } from './auth/useRegister.hook';
 export { useGetUserData } from './auth/useGetUserData.hook';
+export { useDeleteAccount } from './auth/useDeleteAccount.hook';
 
 //CONVENTION HOOKS
 export { useGetConventions } from './conventions/useGetConventions.hook';

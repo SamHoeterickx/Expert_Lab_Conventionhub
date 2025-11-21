@@ -1,7 +1,8 @@
-import { useEffect, useState, type FC } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState, type FC, type FormEvent } from "react";
 
 //Components
-import { Button, ConventionCard, Header, PreFooter } from "../../../shared/components";
+import { ConventionCard, Header, PreFooter } from "../../../shared/components";
 
 //Modals
 import { ChangePasswordModal, ChangeUsernameModal, DeleteAccountModal } from "../../../shared/utils/modals";
@@ -15,9 +16,11 @@ import { useDocumentTitle, useGetUserData, useGetUserLikedConventions, useGetUse
 //Type
 import type { ConventionType } from "../../../shared/types/Convention.type";
 
+//Const
+import { ROUTES } from "../../../shared/const/routes.const";
+
 //Style
 import './account.css';
-import { useNavigate } from "react-router-dom";
 
 export const Account:FC = () => {
 
@@ -32,14 +35,15 @@ export const Account:FC = () => {
     const { data:conventionData, isLoading:isConventionLoading, isError:isConventionError, error:conventionError } = useGetUsersConventions(); 
     const { data:likedData, isLoading:isLikeLoading, isError:isLikeError, error:likeError } = useGetUserLikedConventions(); 
 
+
     const handleLogOut = async() => {
         console.log('logout');
         const data:any = await authService.logout();
 
         if(data && data.status === 200){
-            nav('/');
+            nav(ROUTES.HOME); 
+            window.location.reload()
         }
-
     }
  
     const handleChangeUserName = () => {
@@ -149,18 +153,25 @@ export const Account:FC = () => {
                 </div>
             </PreFooter>
 
-            <ChangePasswordModal
-                isOpen={activeModal === 'password'} 
-                onClose={closeModal} 
-            />
-            <ChangeUsernameModal
-                isOpen={activeModal === 'username'} 
-                onClose={closeModal} 
-            />
-            <DeleteAccountModal
-                isOpen={activeModal === 'delete'} 
-                onClose={closeModal} 
-            />
+            {
+                userData && userData.data && (
+                    <>
+                        <ChangePasswordModal
+                            isOpen={activeModal === 'password'} 
+                            onClose={closeModal} 
+                        />
+                        <ChangeUsernameModal
+                            isOpen={activeModal === 'username'} 
+                            onClose={closeModal} 
+                        />
+                        <DeleteAccountModal
+                            isOpen={activeModal === 'delete'} 
+                            onClose={closeModal} 
+                            username={ userData.data.username }
+                        />
+                    </>
+                )
+            }
         </>
     )
 }

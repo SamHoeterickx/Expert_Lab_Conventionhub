@@ -1,17 +1,25 @@
-import type { FC } from "react";
+import { useState, type FC, type FormEvent } from "react";
+
+//Hooks
+import { useDeleteAccount } from "../../hooks";
 
 //Type
-import type { DangerZoneModalProps } from "../../types/DangerZone.type";
-
+interface DeleteAccountModalProps {
+    isOpen:boolean,
+    onClose: () => void,
+    username: string
+}
 //Style
 import './modal.css'
 
-export const DeleteAccountModal: FC<DangerZoneModalProps> = ({ isOpen, onClose }) => {
+export const DeleteAccountModal: FC<DeleteAccountModalProps> = ({ isOpen, onClose, username }) => {
+    const [deleteInput, setDeleteInput] = useState<string>('');
+
+    const { mutate, isPending, error } = useDeleteAccount();
     
-    const handleDelete = () => {
-       // TODO: Add delete mutation here
-       console.log("Account Deleted");
-       onClose();
+    const handleDelete = (e:FormEvent) => {
+        mutate(e)
+        onClose();
     }
   
     if (!isOpen) return null;
@@ -20,9 +28,24 @@ export const DeleteAccountModal: FC<DangerZoneModalProps> = ({ isOpen, onClose }
         <div className="modal-overlay">
             <div className="modal-content">
                 <h3>Delete Account</h3>
-                <p>Are you sure? This action cannot be undone.</p>
-                <button onClick={onClose}>Cancel</button>
-                <button onClick={handleDelete} className="danger-button">Confirm Delete</button>
+                <p>
+                    To confirm, type <strong>{ username }</strong> below:
+                </p>
+                <input 
+                    type="text"
+                    className="modal-input"
+                    placeholder={username}
+                    value={deleteInput}
+                    onChange={(e) => setDeleteInput(e.target.value)}
+                />
+                <button onClick={ onClose }>Cancel</button>
+                <button 
+                    onClick={ handleDelete } 
+                    className="danger-button"
+                    disabled={deleteInput !== username}
+                >
+                    {isPending ? 'Deleting...' : 'Confirm Delete'}
+                </button>
             </div>
         </div>
     );
