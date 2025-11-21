@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { register, login, authenticateMe, getUser, logout, deleteAccount } from './controller.ts';
+import { register, login, authenticateMe, getUser, logout, deleteAccount, updatePassword } from './controller.ts';
 
 export const userRouter = Router();
 
@@ -8,4 +8,5 @@ userRouter.get('/logout', logout);
 userRouter.get('/authenticate', authenticateMe);
 userRouter.post('/login', login);
 userRouter.post('/register', register);
+userRouter.patch('/password', updatePassword);
 userRouter.delete('/account', deleteAccount);

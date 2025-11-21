@@ -158,10 +158,12 @@ export const Account:FC = () => {
                     <>
                         <ChangePasswordModal
                             isOpen={activeModal === 'password'} 
+                            email={userData.data.email}
                             onClose={closeModal} 
                         />
                         <ChangeUsernameModal
                             isOpen={activeModal === 'username'} 
+                            email={userData.data.email}
                             onClose={closeModal} 
                         />
                         <DeleteAccountModal

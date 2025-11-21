@@ -26,10 +26,6 @@ export const Convention: FC = () => {
 
     useDocumentTitle(pageTitle);
 
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
-
     const handleDownload = (content:string) => {
         const file = new Blob([content], { type: 'text/markdown'});
         const url = URL.createObjectURL(file);
@@ -43,7 +39,6 @@ export const Convention: FC = () => {
         
         document.body.removeChild(element);
         URL.revokeObjectURL(url);
-
     }
 
     return (

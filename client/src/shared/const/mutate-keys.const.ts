@@ -3,5 +3,6 @@ export const SHARED_MUTATE_KEYS = {
     login: ['login'],
     likeConvention: ['likeConvention'],
     createConvention: ['createConvention'],
+    updatePassword: ['updatePassword'],
     deleteAccount: ['deleteAccount'],
 };

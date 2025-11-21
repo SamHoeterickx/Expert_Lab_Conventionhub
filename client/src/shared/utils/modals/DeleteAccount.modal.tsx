@@ -34,7 +34,7 @@ export const DeleteAccountModal: FC<DeleteAccountModalProps> = ({ isOpen, onClos
                 <input 
                     type="text"
                     className="modal-input"
-                    placeholder={username}
+                    placeholder={"username"}
                     value={deleteInput}
                     onChange={(e) => setDeleteInput(e.target.value)}
                 />
