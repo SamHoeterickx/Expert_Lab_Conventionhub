@@ -8,6 +8,7 @@ export const StepThreeDescription:FC<StepsProps> = ({ formData, handleChange }) 
         <div className="form-input-wrapper">
             <h2>DESCRIPTION</h2>
             <input 
+                className="contribute-text-field"
                 type="text" 
                 name="description" 
                 id="description"

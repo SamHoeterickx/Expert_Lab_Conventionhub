@@ -2,7 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 //Hooks
-import { useRegister } from "../../../../shared/hooks";
+import { useDocumentTitle, useRegister } from "../../../../shared/hooks";
 
 //Routes
 import { LOGIN_ROUTE } from "../../login";
@@ -19,42 +19,46 @@ interface FormDataProps {
 
 export const Register = () => {
 
-        const [formData, setFormData] = useState<FormDataProps>({
-            email: '',
-            password: '',
-            repeatPassword: '',
-            username: ''
-        });
-        const [targetPath, setTargetPath] = useState<string>('');
-        const [searchParams] = useSearchParams();
-        
-        const nav = useNavigate();
+    useDocumentTitle('REGISTER | ConventionHUB')
 
-        const { mutate, isPending, isError, error} = useRegister();
-
-        useEffect(() => {
-            const redirectPath = searchParams.get('redirect_uri');
-            setTargetPath( redirectPath === '' ? `/${HOME_ROUTE.path}` : `${redirectPath}`);
-        }, [searchParams]);
+    const [formData, setFormData] = useState<FormDataProps>({
+        email: '',
+        password: '',
+        repeatPassword: '',
+        username: ''
+    });
+    const [targetPath, setTargetPath] = useState<string>('');
+    const [searchParams] = useSearchParams();
     
-        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
-            setFormData(prev => ({
-                ...prev,
-                [field]: e.target.value
-            }));
-        }
-        const handleFormSubmition = (e:FormEvent<HTMLFormElement>) => {
-            e.preventDefault();
+    const nav = useNavigate();
 
-            mutate(formData, {
-                onSuccess: () => {
-                    nav(targetPath, { replace: true })
-                },
-                onError: (error) => {
-                    console.error("Register failed:", error.message);
-                }
-            });
-        }
+    const { mutate, isPending, isError, error} = useRegister();
+
+    useEffect(() => {
+        const rawPath = searchParams.get('redirect_uri');
+        const redirectPath = rawPath?.replace(/^\//, '') || '';
+        console.log(redirectPath);
+        setTargetPath( redirectPath === '' ? `/${HOME_ROUTE.path}` : `/${redirectPath}`);
+    }, [searchParams]);
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
+        setFormData(prev => ({
+            ...prev,
+            [field]: e.target.value
+        }));
+    }
+    const handleFormSubmition = (e:FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        mutate(formData, {
+            onSuccess: () => {
+                nav(targetPath, { replace: true })
+            },
+            onError: (error) => {
+                console.error("Register failed:", error.message);
+            }
+        });
+    }
     
     
     return(

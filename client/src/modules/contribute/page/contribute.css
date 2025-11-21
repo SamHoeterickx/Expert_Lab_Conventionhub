@@ -116,7 +116,7 @@
 }
 
 @media(min-width: 1024px){
-    input[type="text"]{
+    input[type="text"].contribute-text-field{
         width: 50%;
         margin: 0 auto;
     }

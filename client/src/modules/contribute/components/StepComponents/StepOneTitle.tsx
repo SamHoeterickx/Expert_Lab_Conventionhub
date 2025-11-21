@@ -8,6 +8,7 @@ export const StepOneTitle:FC<StepsProps> = ({ formData, handleChange }) => {
         <div className="form-input-wrapper basic">
             <h2>TITLE</h2>
             <input 
+                className="contribute-text-field"
                 type="text" 
                 name="title" 
                 id="title"
