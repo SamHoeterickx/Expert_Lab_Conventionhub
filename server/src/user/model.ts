@@ -48,7 +48,7 @@ export const isUserNameUnique = async(username:string) => {
 }
 
 export const getUserData = async(userId:string) => {
-    const result = await prisma.user.findFirst({
+    const result = await prisma.user.findUnique({
         where: {
             id: userId
         },
