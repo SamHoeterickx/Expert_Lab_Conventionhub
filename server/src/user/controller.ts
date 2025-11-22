@@ -262,15 +262,15 @@ export const updatePassword = async(req:Request, res:Response) => {
 
         const updatedPassword = await updatePasswordById(newPassword, userId);
 
-        if(!updatePassword){
+        if(!updatedPassword){
             return res.status(409).send({
                 status: 409,
                 message: 'Failed to update password'
             });
         }
 
-        return res.status(204).send({
-            status: 204,
+        return res.status(200).send({
+            status: 200,
             message: 'Password updated successfully'
         });
         
@@ -283,7 +283,7 @@ export const updatePassword = async(req:Request, res:Response) => {
     };
 }
 
-export const updateUsername = async(req:Request, res:Response) => {
+export const updateUsername = async(req:Request, res:Response) => {200
     try{
 
         const { oldUsername, newUsername, email } = req.body;
@@ -319,8 +319,8 @@ export const updateUsername = async(req:Request, res:Response) => {
             });
         }
 
-        return res.status(204).send({
-            status: 204,
+        return res.status(200).send({
+            status: 200,
             message: 'Username updated successfully'
         });
         

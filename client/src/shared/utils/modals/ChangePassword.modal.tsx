@@ -23,11 +23,18 @@ export const ChangePasswordModal: FC<DangerZoneModalProps> = ({ isOpen, email, o
         email: email
     });
 
-    const { mutate, isPending } = useUpdatePassword() 
-    
-    const handleSubmit = () => {
-        mutate(updatePasswordData);
-        onClose();
+    const { mutate, isPending, isError, error } = useUpdatePassword();
+
+    const handleSubmit = async() => {
+        mutate(updatePasswordData, {
+            onSuccess: (data) => {
+                console.log('Password updated:', data);
+                onClose(); 
+            },
+            onError: (error) => {
+                console.error('Failed to update password:', error);
+            }
+        });
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, field:string) => {
@@ -69,6 +76,9 @@ export const ChangePasswordModal: FC<DangerZoneModalProps> = ({ isOpen, email, o
                     value={ updatePasswordData.repeatNewPassword }
                     autoComplete="new-password"
                 />
+                {
+                    isError && <p style={{color: 'red', textAlign: 'center'}}>{error?.message || 'Something went wrong'}</p>
+                }
                 <button 
                     onClick={onClose} 
                     className="danger-button"

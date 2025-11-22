@@ -20,7 +20,7 @@ export const ChangeUsernameModal: FC<DangerZoneModalProps> = ({ isOpen, email, o
         email:email
     });
 
-    const { mutate, isPending } = useUpdateUsername();
+    const { mutate, isPending, isError, error } = useUpdateUsername();
 
     const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>, field:string) => {
         setUpdateUsernameData(prev => ({
@@ -30,9 +30,16 @@ export const ChangeUsernameModal: FC<DangerZoneModalProps> = ({ isOpen, email, o
     }
     
     const handleSubmit = () => {
-        mutate(updateUsernameData);
-        onClose();
-        window.location.reload();
+        mutate(updateUsernameData, {
+            onSuccess: (data) => {
+                console.log('Password updated:', data);
+                onClose(); 
+                window.location.reload();
+            },
+            onError: (error) => {
+                console.error('Failed to update password:', error);
+            }
+        });
     }
   
 
@@ -54,6 +61,9 @@ export const ChangeUsernameModal: FC<DangerZoneModalProps> = ({ isOpen, email, o
                     className="modal-input"
                     onChange={(e) => handleInputChange(e, 'newUsername')} 
                 />
+                {
+                    isError && <p style={{color: 'red', textAlign: 'center'}}>{error?.message || 'Something went wrong'}</p>
+                }
                 <button onClick={onClose} className="danger-button">Cancel</button>
                 <button 
                     onClick={handleSubmit} 
