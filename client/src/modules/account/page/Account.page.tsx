@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, type FC, type FormEvent } from "react";
 
 //Components
@@ -81,7 +81,15 @@ export const Account:FC = () => {
                         </div>
 
                         <div className="account-my-conventions-container">
-                            <h2>MY STANDARDS</h2>
+                            <div className="account-my-conventions-upper-info">
+                                <h2>MY CONVENTIONS</h2>
+                                <Link
+                                    className="button small"
+                                    to={`/${ROUTES.EXPLORE}`}
+                                >
+                                    <h2 className="account-add-convention">+</h2>
+                                </Link>
+                            </div>
                             <div className="account-my-conventions-wrapper">
                                 {
                                     conventionData.data.length !== 0 ? (
@@ -94,14 +102,22 @@ export const Account:FC = () => {
                                             />
                                         ))
                                     ) : (
-                                        <h4>No contributes yet</h4>
+                                        <h4 className="empty-card-text">No contributes yet</h4>
                                     )
                                 }
                                
                             </div> 
                         </div>
                         <div className="account-my-conventions-container">
-                            <h2>MY LIKED STANDARDS</h2>
+                            <div className="account-my-conventions-upper-info">
+                                <h2>MY LIKED CONVENTIONS</h2>
+                                <Link
+                                    className="button small"
+                                    to={`/${ROUTES.EXPLORE}`}
+                                >
+                                    <h2 className="account-add-convention">+</h2>
+                                </Link>
+                            </div>
                             <div className="account-my-conventions-wrapper">
                                 {
                                     likedData.data.length !== 0 ? (
@@ -114,7 +130,7 @@ export const Account:FC = () => {
                                             />
                                         ))
                                     ) : (
-                                        <h4>No liked conventions yet</h4>
+                                        <h4 className="empty-card-text">No liked conventions yet</h4>
                                     )
                                 }
                             </div>

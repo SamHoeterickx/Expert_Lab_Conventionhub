@@ -27,8 +27,22 @@
 
     .account-my-conventions-container{
 
-        h2{
+        .account-my-conventions-upper-info{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 80dvw;
+            
             margin: 0 0 1rem 7.5dvw;
+
+            .button.small{
+                width: 3rem;
+                height: 2rem;
+            }
+
+            h2.account-add-convention{
+                margin: 0;
+            }
         }
 
         .account-my-conventions-wrapper{
@@ -41,6 +55,10 @@
             overflow: scroll;
 
             margin-bottom: 4rem;
+
+            h4.empty-card-text{
+                margin-left: 7.5dvw;
+            }
         }   
         .convention-card-wrapper:nth-child(1){
             margin-left: 7.5dvw;
