@@ -1,6 +1,6 @@
 import e, { type Request, type Response } from 'express';
 
-import { checkExcistingUser, registerNewUser, verifyPassword, findUser, getUserData, deleteUserById, updatePasswordById } from './model'
+import { checkExcistingUser, registerNewUser, verifyPassword, findUser, getUserData, deleteUserById, updatePasswordById, updateUsernameById } from './model'
 
 export const register = async(req:Request, res:Response) => {
     try{
@@ -272,6 +272,56 @@ export const updatePassword = async(req:Request, res:Response) => {
         return res.status(204).send({
             status: 204,
             message: 'Password updated successfully'
+        });
+        
+    }catch(error:any){
+        console.error('Error fetching update password:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        });
+    };
+}
+
+export const updateUsername = async(req:Request, res:Response) => {
+    try{
+
+        const { oldUsername, newUsername, email } = req.body;
+        const userId = req.signedCookies.session_id;
+
+        if(!oldUsername || !newUsername || !userId || !email){
+            return res.status(401).send({
+                status: 401,
+                message: 'Missing credentials'
+            });
+        }
+
+        const excistingUser = await checkExcistingUser(email);
+        if(!excistingUser){
+            return res.status(404).send({
+                status: 404,
+                message: 'User not found'
+            });
+        };
+
+        if(oldUsername !== excistingUser.username){
+            return res.status(401).send({
+                status: 401,
+                message: 'Old username not correct'
+            });
+        }
+
+        const updatedUsername = await updateUsernameById(newUsername, userId);
+        if(!updatedUsername){
+            return res.status(409).send({
+                status: 409,
+                message: 'Failed to update username'
+            });
+        }
+
+        return res.status(204).send({
+            status: 204,
+            message: 'Username updated successfully'
         });
         
     }catch(error:any){
