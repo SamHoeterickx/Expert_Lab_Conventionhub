@@ -42,7 +42,7 @@ export const Account:FC = () => {
 
         if(data && data.status === 200){
             nav(ROUTES.HOME); 
-            window.location.reload()
+            window.location.reload();
         }
     }
  

@@ -115,6 +115,29 @@ class AuthService {
         return data;
     }
 
+    async updateUsername(oldUsername:string, newUsername:string, email:string){
+        const response = await fetch(`${BASE_URL}/users/username`, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': "application/json"
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                oldUsername,
+                newUsername,
+                email
+            })
+        });
+
+        if(!response.ok){
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Not authenticated');
+        }
+
+        const data = await response.json();
+        return data;
+    }
+
     async deleteAccount(){
         const response = await fetch(`${BASE_URL}/users/account`,{
             method: 'DELETE',
