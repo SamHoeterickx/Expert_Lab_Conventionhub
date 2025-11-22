@@ -1,6 +1,6 @@
 import e, { type Request, type Response } from 'express';
 
-import { checkExcistingUser, registerNewUser, verifyPassword, findUser, getUserData, deleteUserById, updatePasswordById, updateUsernameById } from './model'
+import { checkExcistingUser, registerNewUser, verifyPassword, findUser, getUserData, deleteUserById, updatePasswordById, updateUsernameById, isUserNameUnique } from './model'
 
 export const register = async(req:Request, res:Response) => {
     try{
@@ -15,15 +15,24 @@ export const register = async(req:Request, res:Response) => {
             });
         };
 
+        const checkUsernameAlreadyInUse = await isUserNameUnique(username);
+        if(checkUsernameAlreadyInUse){
+            return res.status(409).send({
+                status: 409,
+                message: 'Username is already in use'
+            });
+        };
+
         if(password.length < 8){
             return res.status(400).send({
                 status: 400,
                 message: "Password isn't 8 characters long"
             })
         }
+
+        //Check not supported passwords
         
         const excistingUser = await checkExcistingUser(email);
-        
         if(excistingUser){
             return res.status(409).send({
                 status: 409,
@@ -39,7 +48,6 @@ export const register = async(req:Request, res:Response) => {
         };
 
         const newUser = await registerNewUser(userData);
-
         if(!newUser){
             return res.status(409).send({
                 status: 409,
@@ -60,7 +68,6 @@ export const register = async(req:Request, res:Response) => {
         });
 
     }catch(error:any){
-
         console.error('Error fetching register:', error);
         return res.status(500).send({
             status: 500,
@@ -283,7 +290,7 @@ export const updatePassword = async(req:Request, res:Response) => {
     };
 }
 
-export const updateUsername = async(req:Request, res:Response) => {200
+export const updateUsername = async(req:Request, res:Response) => {
     try{
 
         const { oldUsername, newUsername, email } = req.body;
@@ -295,6 +302,14 @@ export const updateUsername = async(req:Request, res:Response) => {200
                 message: 'Missing credentials'
             });
         }
+
+        const checkUsernameAlreadyInUse = await isUserNameUnique(newUsername);
+        if(checkUsernameAlreadyInUse){
+            return res.status(409).send({
+                status: 409,
+                message: 'Username is already in use'
+            });
+        };
 
         const excistingUser = await checkExcistingUser(email);
         if(!excistingUser){
