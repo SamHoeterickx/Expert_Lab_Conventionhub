@@ -58,11 +58,15 @@
             .like-wrapper{
                 
                 display: flex;
-                align-items: center;
+                align-items: flex-end;
 
                 h3{
                     color: var(--accent-color);
                     margin-bottom: 0;
+
+                    @media(min-width: 1024px){
+                        font-size: 1.5rem;
+                    }
                 }
 
                 .like-button{
@@ -70,10 +74,63 @@
                     font-size: 1.25rem;
                     font-weight: 900;
                     cursor: pointer;
+                    background-color: transparent;
+
+                    margin-bottom: 4px;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-end;
+
+                    .like-triangle-top{
+                        width: 0;
+                        height: 0;
+                        border-left: 8px solid transparent;
+                        border-right: 8px solid transparent;
+                        border-bottom: 12.5px solid var(--font-color);
+
+                        @media(min-width: 1024px){
+                            border-left: 15px solid transparent;
+                            border-right: 15px solid transparent;
+                            border-bottom: 20px solid var(--font-color);
+                        }
+                    }
+                    .like-rectangle{
+                        width: 5px;
+                        height: 15px;
+                        @media(min-width: 1024px){
+                            width: 10px;
+                            height: 20px;
+                        }
+                        background-color: var(--font-color);
+                    }
+                    .like-triangle-top.liked{
+                        border-bottom-color: var(--accent-color);
+                    }
+                    .like-rectangle.liked{
+                        background-color: var(--accent-color);
+                    }
                 }
                 .like-button.liked{
                     color: var(--accent-color);
                 }
+            }
+            .like-wrapper:hover{
+                .like-triangle-top{
+                    border-bottom-color: var(--accent-color);
+                }
+                .like-rectangle{
+                    background-color: var(--accent-color);
+                }
+            }
+
+            .created-by{
+                margin: 0;
+            }
+            .created-by.author{
+                color: var(--accent-color);
+                font-weight: 800;
             }
         }
     }
