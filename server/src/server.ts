@@ -7,12 +7,12 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 //Route
-import { conventionRouter } from './conventions/route.ts';
-import { likeConventionRoute } from './likeConvention/route.ts';
-import { userRouter } from './user/route.ts';
+import { conventionRouter } from './conventions/route';
+import { likeConventionRoute } from './likeConvention/route';
+import { userRouter } from './user/route';
 
 const app:Express = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors({
