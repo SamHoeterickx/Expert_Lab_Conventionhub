@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useState, type FC, type FormEvent } from "react";
+import { useState, type FC } from "react";
 
 //Components
-import { ConventionCard, Header, PreFooter } from "../../../shared/components";
+import { ConventionCard, Header, LoadingScreen, PreFooter } from "../../../shared/components";
 
 //Modals
 import { ChangePasswordModal, ChangeUsernameModal, DeleteAccountModal } from "../../../shared/utils/modals";
@@ -22,7 +22,7 @@ import { ROUTES } from "../../../shared/const/routes.const";
 //Style
 import './account.css';
 
-export const Account:FC = () => {
+export const Account: FC = () => {
 
     useDocumentTitle('StandardsHUB | Account');
 
@@ -30,17 +30,19 @@ export const Account:FC = () => {
     
     const nav = useNavigate();
 
-    //Get all the data
-    const { data:userData, isLoading, isError, error } = useGetUserData(); 
-    const { data:conventionData, isLoading:isConventionLoading, isError:isConventionError, error:conventionError } = useGetUsersConventions(); 
-    const { data:likedData, isLoading:isLikeLoading, isError:isLikeError, error:likeError } = useGetUserLikedConventions(); 
+    // Get all the data
+    const { data: userData, isLoading } = useGetUserData(); 
+    const { data: conventionData, isLoading: isConventionLoading } = useGetUsersConventions(); 
+    const { data: likedData, isLoading: isLikeLoading } = useGetUserLikedConventions(); 
 
+    const isPageLoading = isLoading || isConventionLoading || isLikeLoading;
+    const hasData = userData?.data && likedData?.data && conventionData?.data;
 
-    const handleLogOut = async() => {
+    const handleLogOut = async () => {
         console.log('logout');
-        const data:any = await authService.logout();
+        const data: any = await authService.logout();
 
-        if(data && data.status === 200){
+        if (data && data.status === 200) {
             nav(ROUTES.HOME); 
             window.location.reload();
         }
@@ -62,118 +64,100 @@ export const Account:FC = () => {
         setActiveModal(null);
     }
 
-
     return (
         <>
-            <Header
-                title="MY ACCOUNT"
-            />
+            <Header title="MY ACCOUNT" />
+            
             <div className="account-top-right-corner-container">
                 <div className="account-top-right-corner"></div>
             </div>
-            
-            {
-                userData && userData.data && likedData && likedData.data && conventionData && conventionData.data && 
-                    <section className="account-userdata-wrapper">
-                        <div className="account-top-info-wrapper">
-                            <h1> { userData.data.username.toUpperCase() }</h1>
-                            <h4> { userData.data.email.toUpperCase() }</h4>
-                        </div>
 
-                        <div className="account-my-conventions-container">
-                            <h2>MY STANDARDS</h2>
-                            <div className="account-my-conventions-wrapper">
-                                {
-                                    conventionData.data.length !== 0 ? (
-                                        conventionData.data.map((convention:ConventionType) => (
-                                            <ConventionCard
-                                                key={ convention.slug }
-                                                convention_title={ convention.title }
-                                                convention_description={ convention.description }
-                                                convention_link={ convention.slug}
-                                            />
-                                        ))
-                                    ) : (
-                                        <h4>No contributes yet</h4>
-                                    )
-                                }
-                               
-                            </div> 
+            <section className="account-userdata-wrapper">
+            {isPageLoading ? (
+                <></>
+            ) : hasData ? (
+                <>
+                    <div className="account-top-info-wrapper">
+                        <h1> {userData.data.username.toUpperCase()} </h1>
+                        <h4> {userData.data.email.toUpperCase()} </h4>
+                    </div>
+
+                    <div className="account-my-conventions-container">
+                        <h2>MY STANDARDS</h2>
+                        <div className="account-my-conventions-wrapper">
+                            {conventionData.data.length !== 0 ? (
+                                conventionData.data.map((convention: ConventionType) => (
+                                    <ConventionCard
+                                        key={convention.slug}
+                                        convention_title={convention.title}
+                                        convention_description={convention.description}
+                                        convention_link={convention.slug}
+                                    />
+                                ))
+                            ) : (
+                                <h4>No contributes yet</h4>
+                            )}
+                        </div> 
+                    </div>
+
+                    <div className="account-my-conventions-container">
+                        <h2>MY LIKED STANDARDS</h2>
+                        <div className="account-my-conventions-wrapper">
+                            {likedData.data.length !== 0 ? (
+                                likedData.data.map((convention: any) => (
+                                    <ConventionCard
+                                        key={convention.convention.slug}
+                                        convention_title={convention.convention.title}
+                                        convention_description={convention.convention.description}
+                                        convention_link={convention.convention.slug}
+                                    />
+                                ))
+                            ) : (
+                                <h4>No liked conventions yet</h4>
+                            )}
                         </div>
-                        <div className="account-my-conventions-container">
-                            <h2>MY LIKED STANDARDS</h2>
-                            <div className="account-my-conventions-wrapper">
-                                {
-                                    likedData.data.length !== 0 ? (
-                                        likedData.data.map((convention:any) => (
-                                            <ConventionCard
-                                                key={ convention.convention.slug }
-                                                convention_title={ convention.convention.title }
-                                                convention_description={ convention.convention.description }
-                                                convention_link={ convention.convention.slug}
-                                            />
-                                        ))
-                                    ) : (
-                                        <h4>No liked conventions yet</h4>
-                                    )
-                                }
-                            </div>
-                        </div>
-                    </section>
-            }
+                    </div>
+                </>
+            ) : null}
+            </section>
 
             <PreFooter>
                 <div className="account-action-wrapper">
                     <h2>DANGER ZONE</h2>
-                    <button
-                        onClick={ handleLogOut }
-                        className="account-button"
-                    >
+                    <button onClick={handleLogOut} className="account-button">
                         LOGOUT
                     </button>
-                    <button
-                        onClick={ handleChangeUserName }
-                        className="account-button"
-                    >
+                    <button onClick={handleChangeUserName} className="account-button">
                         CHANGE USERNAME
                     </button>
-                    <button
-                        onClick={ handleChangePassword }
-                        className="account-button"
-                    >
+                    <button onClick={handleChangePassword} className="account-button">
                         CHANGE PASSWORD
                     </button>
-                    <button
-                        onClick={ handleDeleteAccount }
-                        className="account-button delete"
-                    >
+                    <button onClick={handleDeleteAccount} className="account-button delete">
                         DELETE ACCOUNT
                     </button>
-
                 </div>
             </PreFooter>
 
-            {
-                userData && userData.data && (
-                    <>
-                        <ChangePasswordModal
-                            isOpen={activeModal === 'password'} 
-                            email={userData.data.email}
-                            onClose={closeModal} 
-                        />
-                        <ChangeUsernameModal
-                            isOpen={activeModal === 'username'} 
-                            email={userData.data.email}
-                            onClose={closeModal} 
-                        />
-                        <DeleteAccountModal
-                            isOpen={activeModal === 'delete'} 
-                            onClose={closeModal} 
-                            username={ userData.data.username }
-                        />
-                    </>
-                )
-            }
+            {!isPageLoading && hasData && (
+                <>
+                    <ChangePasswordModal
+                        isOpen={activeModal === 'password'} 
+                        email={userData.data.email}
+                        onClose={closeModal} 
+                    />
+                    <ChangeUsernameModal
+                        isOpen={activeModal === 'username'} 
+                        email={userData.data.email}
+                        onClose={closeModal} 
+                    />
+                    <DeleteAccountModal
+                        isOpen={activeModal === 'delete'} 
+                        onClose={closeModal} 
+                        username={userData.data.username}
+                    />
+                </>
+            )}
         </>
-    )
+    );
 }

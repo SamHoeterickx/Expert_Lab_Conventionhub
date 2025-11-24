@@ -6,3 +6,4 @@ export { Navigation } from './navigation/Navigation';
 export { PreFooter } from './preFooter/PreFooter';
 export { ProtectedRoute } from './protectedRoute/ProtectedRoute';
 export { ScrollWrapper } from './scrollWrapper/ScrollWrapper';
+export { LoadingScreen } from './loadingScreen/LoadingScreen';

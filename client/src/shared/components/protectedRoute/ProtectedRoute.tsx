@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 
 //Hooks
 import { useAuth } from '../../hooks'; 
+import { LoadingScreen } from '../loadingScreen/LoadingScreen';
 
 //Types
 interface ProtectedRouteProps {
@@ -15,7 +16,7 @@ export const ProtectedRoute:FC<ProtectedRouteProps> = ({ children, redirect_path
     const { isAuthenticated, isLoading } = useAuth(); 
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <LoadingScreen />
     }
 
     

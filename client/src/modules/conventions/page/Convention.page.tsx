@@ -6,7 +6,7 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 
 //Components
-import { Header, PreFooter } from "../../../shared/components";
+import { Header, LoadingScreen, PreFooter } from "../../../shared/components";
 import { InteractionSection } from "../components/InteractionSection";
 
 //Hooks
@@ -40,6 +40,13 @@ export const Convention: FC = () => {
         document.body.removeChild(element);
         URL.revokeObjectURL(url);
     }
+
+    if(isError){
+        //navigate to and show error
+        console.log(error);
+    }
+
+    if(isLoading) return <LoadingScreen />
 
     return (
         <>
