@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
 import { useState, type FC } from "react";
+=======
+import { Link, useNavigate } from "react-router-dom";
+import { useState, type FC, type FormEvent } from "react";
+>>>>>>> 3fd756785a4f0026fb325aadaf1ea89663b18f00
 
 //Components
 import { ConventionCard, Header, LoadingScreen, PreFooter } from "../../../shared/components";
