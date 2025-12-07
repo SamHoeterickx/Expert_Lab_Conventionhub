@@ -1,4 +1,4 @@
-# __STANDARDSHUB__
+# __CONVENTIONHUB__
 
 ![Project Status](https://img.shields.io/badge/status-active-success.svg)
 
