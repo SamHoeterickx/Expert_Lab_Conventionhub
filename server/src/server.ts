@@ -15,7 +15,10 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://conventionhub.dev/',
+    origin: [
+        'https://conventionhub.dev', 
+        'https://conventionhub.dev/'
+    ],
     credentials: true
 }));
 app.use(cookieParser(process.env.COOKIE_SECRET))
