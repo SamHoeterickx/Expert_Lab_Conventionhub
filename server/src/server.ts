@@ -17,7 +17,9 @@ app.use(express.json());
 app.use(cors({
     origin: [
         'https://conventionhub.dev', 
-        'https://conventionhub.dev/'
+        'https://conventionhub.dev/',
+        'https://www.conventionhub.dev/',
+        'https://www.conventionhub.dev',
     ],
     credentials: true
 }));
