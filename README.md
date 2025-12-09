@@ -4,6 +4,8 @@
 
 **ConventionHub** is a full-stack web application designed to centralize and streamline coding standards and best practices for developers and teams. It serves as a central library where users can easily discover, document, and share coding conventions to ensure code readability and consistency.
 
+> This project is part of the expert lab course at EHB
+
 ## Features
 * **Direct Download:** Download conventions with a single click as `.md` files for immediate use in your projects.
 * **Visual Editor:** Create standards using a powerful Markdown editor with real-time live preview and syntax highlighting.
