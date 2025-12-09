@@ -1,0 +1,1 @@
+export { ACCOUNT_ROUTE} from './account.route';

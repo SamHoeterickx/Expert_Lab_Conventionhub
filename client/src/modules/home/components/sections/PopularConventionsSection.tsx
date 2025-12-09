@@ -1,5 +1,5 @@
 //Components
-import { Button, ConventionCard } from "../../../../shared/components";
+import { Button, ConventionCard, LoadingScreen } from "../../../../shared/components";
 
 //Hooks
 import { getConventionsPreview } from "../../../../shared/hooks/index";
@@ -17,7 +17,7 @@ export const PopularConventionsSection = () => {
                 <h3>POPULAR CONVENTIONS</h3>
                 <div className="popular-conventions-container">
                     {
-                        isLoading && <h4>Loading...</h4>
+                        isLoading && <LoadingScreen />
                     }
                     {
                         data && data.data && data.data.map(convention => (

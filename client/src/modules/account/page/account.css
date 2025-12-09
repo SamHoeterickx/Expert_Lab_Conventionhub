@@ -1,0 +1,123 @@
+.account-top-right-corner-container{
+
+    background-color: var(--accent-color);
+
+    .account-top-right-corner{
+        height: var(--base-padding);
+        background-color: var(--background-color);
+        border-top-right-radius: 2.5rem;
+        margin-right: 3dvw;
+    }
+}
+
+.account-userdata-wrapper{
+    position: relative;
+    padding-bottom: 1rem;
+
+    .account-top-info-wrapper{
+        text-align: center;
+        padding: 0 7.5dvw;
+        margin-bottom: var(--base-margin);
+
+        h1{
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+    }
+
+    .account-my-conventions-container{
+
+        .account-my-conventions-upper-info{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 80dvw;
+            
+            margin: 0 0 1rem 7.5dvw;
+
+            .button.small{
+                width: 3rem;
+                height: 2rem;
+            }
+
+            h2.account-add-convention{
+                margin: 0;
+            }
+        }
+
+        .account-my-conventions-wrapper{
+            width: 100%;
+
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+
+            overflow: scroll;
+
+            margin-bottom: 4rem;
+
+            h4.empty-card-text{
+                margin-left: 7.5dvw;
+            }
+        }   
+        .convention-card-wrapper:nth-child(1){
+            margin-left: 7.5dvw;
+        }
+        .convention-card-wrapper:nth-last-child(1){
+            margin-right: 7.5dvw;
+        }
+        .account-my-conventions-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    ::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 3dvw;
+
+        height: 100%;
+        background: var(--accent-color);
+    }
+}
+
+.account-action-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    .account-button{
+        width: 20rem;
+        height: 3rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: .5rem;
+        cursor: pointer;
+
+        background-color: var(--background-color);
+
+        font-family: var(--base-font);
+        font-size: .875rem;
+        font-weight: 500;
+        color: var(--font-color);
+
+        @media(min-width: 1024px){
+            width: 40rem;
+        }
+    }
+    .account-button:hover{
+        background-color: #16202a;
+    }
+    .account-button.delete{
+        background-color: #f61d1d;
+    }
+    .account-button.delete:hover{
+        background-color: #a81414;
+    }
+}

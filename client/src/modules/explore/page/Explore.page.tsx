@@ -2,7 +2,7 @@ import { useEffect, useState, type FC } from "react"
 import { Link, useSearchParams } from "react-router-dom";
 
 //Components
-import { Header, ConventionCard, PreFooter, ScrollWrapper } from "../../../shared/components";
+import { Header, ConventionCard, PreFooter, ScrollWrapper, LoadingScreen } from "../../../shared/components";
 
 //Hooks
 import { useDocumentTitle, useGetConventions } from "../../../shared/hooks";
@@ -23,7 +23,7 @@ export const Explore: FC = () => {
     const {data, isLoading, isError, error} = useGetConventions();
     const [searchParams] = useSearchParams();
 
-    useDocumentTitle('StandardsHUB | Explore');
+    useDocumentTitle('ConventionHUB | Explore');
 
     useEffect(() => {
         if(data && data.data){
@@ -60,7 +60,7 @@ export const Explore: FC = () => {
                 <div className="explore-corner-upper"></div>
                 <div className="explore-convention-wrapper">
                     {
-                        isLoading && <h2>Loading...</h2>
+                        isLoading && <LoadingScreen />
                     }
                     {
                         isError && <h2>{error.message}</h2>

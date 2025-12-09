@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.likeConventionRoute = void 0;
+const express_1 = require("express");
+const controller_1 = require("./controller");
+exports.likeConventionRoute = (0, express_1.Router)();
+exports.likeConventionRoute.get('/getMyLikedConvention', controller_1.getMyLikedConventions);
+exports.likeConventionRoute.get('', controller_1.getLikeStatus);
+exports.likeConventionRoute.post('', controller_1.like);
+exports.likeConventionRoute.delete('', controller_1.removeLike);

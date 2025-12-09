@@ -3,7 +3,7 @@ export const HeaderSection = () => {
         <section className="header-wrapper">
             <div className="header-inner-wrapper">
                 
-                <h1 className="header-main-title">STANDARDSHUB</h1>
+                <h1 className="header-main-title">CONVENTIONHUB</h1>
                 
                 <p className="header-lower-title">
                     Find, learn and apply best practices across all 

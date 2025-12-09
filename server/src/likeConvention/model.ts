@@ -52,3 +52,16 @@ export const removeLikeConventionWithId = async(likeData:LikeDataProps) => {
 
     return result
 }
+
+export const getAllLikedConventionsByUserId = async(userId:string) => {
+    const result = await prisma.like.findMany({
+        where: {
+            userId: userId
+        },
+        select: {
+            convention: true
+        }
+    })
+
+    return result
+}

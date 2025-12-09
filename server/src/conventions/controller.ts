@@ -1,5 +1,7 @@
 import { type Request, type Response } from 'express';
-import { getAllConventions, getRandomConvetionsWithLimit, saveConvention, removeConvention, findConventionBySlug } from './model';
+
+import { getAllConventions, getRandomConvetionsWithLimit, saveConvention, removeConvention, findConventionBySlug, getAllConventionsByUserId } from './model';
+import { findUser } from '../user/model';
 
 
 export const createNewConvention = async(req:Request, res:Response) => {
@@ -174,5 +176,35 @@ export const deleteConvention = async(req:Request, res:Response) => {
             status: 500,
             message: error.message
         })
+    };
+}
+
+export const getMyConventions = async(req:Request, res:Response) => {
+    try{
+
+        const userId = req.signedCookies.session_id;
+        
+        const excistingUser = await findUser(userId);
+        if(!excistingUser){
+            return res.status(404).send({
+                status: 404,
+                message: "No user found"
+            })
+        }
+
+        const result = await getAllConventionsByUserId(userId);
+
+        return res.status(201).send({
+            status: 201,
+            message: 'Found my conventions successfully',
+            data: result
+        })
+
+    }catch(error:any){
+        console.error('Failed to fetch get my conventions:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        });
     };
 }

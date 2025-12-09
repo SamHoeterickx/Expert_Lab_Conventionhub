@@ -1,6 +1,10 @@
 .convention-card-wrapper{
-    width: 100%;
+    
+    min-width: 360px;
 
+    @media(min-width: 1024px){
+        min-width: 400px;
+    }
     
     background-color: var(--light-blue-color);
     border-radius: .75rem;
@@ -12,21 +16,14 @@
         justify-content: space-between;
         
         margin-bottom: 1rem;
-        
-        img{
-            width: 40px;
-            height: 40px;
-            aspect-ratio: 1 / 1;
-        }
+    }
+
+    h2{
+        margin: 0 !important;
     }
     
     h4{
         font-weight: 300;
         margin-bottom: 1rem;
     }
-
-    /* @media(min-width: 1024px){
-        min-width: 30rem;
-    } */
-
 }

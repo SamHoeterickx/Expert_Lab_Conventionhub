@@ -22,7 +22,14 @@
     background-color: var(--accent-color);
     color: var(--background-color);
 }
+.button.primary:hover{
+   
+    background-color: #1d9e95;
+}
 .button.secondary{
     background-color: var(--background-color);
     color: var(--font-color);
+}
+.button.secondary:hover{
+    background-color: #16202a;
 }

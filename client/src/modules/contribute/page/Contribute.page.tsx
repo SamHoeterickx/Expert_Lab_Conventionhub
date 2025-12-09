@@ -16,7 +16,7 @@ import { EXPLORE_ROUTE } from "../../explore";
 
 export const Contribute: FC = () => {
 
-    useDocumentTitle('StandardsHUB | Contribute');
+    useDocumentTitle('ConventionHUB | Contribute');
 
     return(
         <ScrollWrapper>

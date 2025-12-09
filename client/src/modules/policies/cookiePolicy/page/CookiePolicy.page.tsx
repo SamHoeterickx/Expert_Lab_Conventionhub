@@ -16,7 +16,7 @@ import { HOME_ROUTE } from "../../../home";
 
 export const CookiePolicy: FC = () => {
 
-    useDocumentTitle('StandardsHUB | CookiePolicy');
+    useDocumentTitle('ConventionHUB | CookiePolicy');
     
     return (
         <ScrollWrapper>
@@ -30,7 +30,7 @@ export const CookiePolicy: FC = () => {
                     <div className="policy-content">
                         <h3>1. Introduction</h3>
                         <p>
-                            Welcome to StandardsHUB. This Cookie Policy explains how we use cookies and similar technologies 
+                            Welcome to ConventionHUB. This Cookie Policy explains how we use cookies and similar technologies 
                             to recognize you when you visit our website. It explains what these technologies are and why we use them, 
                             as well as your rights to control our use of them.
                         </p>

@@ -75,6 +75,16 @@ export const removeConvention = async(conventionId:string, authorId:string) => {
     return result
 }
 
+export const getAllConventionsByUserId = async(userId:string) => {
+    const result = await prisma.convention.findMany({
+        where: {
+            authorId: userId
+        },
+    })
+
+    return result
+}
+
 const generateSlug = (title:string) => {
 
     const baseSlug = slugify(title);

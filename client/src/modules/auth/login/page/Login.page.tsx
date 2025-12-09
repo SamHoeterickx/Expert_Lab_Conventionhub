@@ -2,7 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 //Hooks
-import { useLogin } from "../../../../shared/hooks";
+import { useDocumentTitle, useLogin } from "../../../../shared/hooks";
 
 //Routes
 import { REGISTER_ROUTE } from "../../register";
@@ -15,6 +15,9 @@ interface FormDataProps {
 }
 
 export const Login = () => {
+
+    useDocumentTitle('LOGIN | ConventionHUB')
+
 
     const [formData, setFormData] = useState<FormDataProps>({
         email: '',

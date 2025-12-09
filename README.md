@@ -7,6 +7,7 @@
 > This project is part of the expert lab course at EHB
 
 ## Features
+
 * **Direct Download:** Download conventions with a single click as `.md` files for immediate use in your projects.
 * **Visual Editor:** Create standards using a powerful Markdown editor with real-time live preview and syntax highlighting.
 * **Community Validation:** A built-in like system allows the community to validate and surface the best standards.
@@ -14,7 +15,9 @@
 * **Single Source of Truth:** Enforces a uniform structure for all documentation, preventing fragmentation.
 
 ## Tech Stack
+
 ### Client
+
 * **Framework:** React (Vite)
 * **Language:** TypeScript
 * **Styling:** CSS Modules
@@ -23,62 +26,74 @@
 * **Markdown:** `react-markdown`, `react-syntax-highlighter`
 
 ### Server
+
 * **Runtime:** Node.js
 * **Framework:** Express.js
 * **Database:** PostgreSQL
 * **ORM:** Prisma
 * **Authentication:** Cookie-based sessions (HttpOnly) & Bcrypt
 
-
 ## Installation & Setup
+
 Follow these steps to run the project locally.
 
 ### 1. Clone the Repository
+
 ```bash
   git clone [https://github.com/your-username/ConventionHub.git](https://github.com/your-username/ConventionHub.git)
 ```
 
 ### 2. Backend setup
+
 #### 2.1 Installl dependencies
-``` bash
+
+```bash
   cd server
   npm i
 ```
 
 #### 2.2 ENV
+
 ```bash
   DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/conventionhub?schema=public"
   COOKIE_SECRET="Your-secret-key-here"
 ```
 
 #### 2.3 Migrate prisma scheme
+
 ```bash
   npx prisma migrate dev --name init
 ```
 
 #### 2.4 Start Server
+
 ```bash
   npm run start
-```  
+```
 
 ### 3. Frontend setup
+
 #### 2.1 Installl dependencies
-``` bash
+
+```bash
   cd client
   npm i
 ```
 
 #### 2.2 ENV
+
 ```bash
   VITE_API_URL="Your-api-url-here"
 ```
 
 #### 2.3 Start Client
+
 ```bash
   npm run dev
-```  
+```
 
 ## File Structure
+
 ```
 ConventionHub/
 ├── client/                 # React Frontend
@@ -98,6 +113,7 @@ ConventionHub/
 ```
 
 ## Questions, requests or suggestions
+
 Have a question about a specific convention? Want to request a new standard for a technology we're adopting? Or do you have a suggestion to improve this platform?
 
 * Questions: Reach out to me on [Linkedin](https://www.linkedin.com/in/sam-hoeterickx/) or open an Issue in this repository with the tag question-hub.

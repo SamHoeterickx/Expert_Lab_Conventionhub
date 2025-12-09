@@ -62,6 +62,96 @@ class AuthService {
         const data = await response.json();
         return data
     }
+
+    async getUserData(){
+        const response = await fetch(`${BASE_URL}/users/user`, {
+            credentials: 'include'
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Not authenticated');
+        };
+
+        const data = await response.json();
+        return data
+    }
+
+    async logout(){
+        const response = await fetch(`${BASE_URL}/users/logout`,{
+            credentials: 'include'
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Not authenticated');
+        };
+
+        const data = await response.json();
+        return data
+    }
+
+    async updatePassword(oldPassword:string, newPassword:string, repeatNewPassword:string, email:string){
+        const response = await fetch(`${BASE_URL}/users/password`, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': "application/json"
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                oldPassword,
+                newPassword,
+                repeatNewPassword,
+                email
+            })
+        });
+
+        if(!response.ok){
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Not authenticated');
+        }
+
+        const data = await response.json();
+        return data;
+    }
+
+    async updateUsername(oldUsername:string, newUsername:string, email:string){
+        const response = await fetch(`${BASE_URL}/users/username`, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': "application/json"
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                oldUsername,
+                newUsername,
+                email
+            })
+        });
+
+        if(!response.ok){
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Not authenticated');
+        }
+
+        const data = await response.json();
+        return data;
+    }
+
+    async deleteAccount(){
+        const response = await fetch(`${BASE_URL}/users/account`,{
+            method: 'DELETE',
+            credentials: 'include'
+        });
+
+        if(!response.ok){
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Not authenticated');
+        };
+
+        const data = await response.json();
+        return data;
+    }
 }
 
 export const authService = new AuthService();

@@ -1,13 +1,12 @@
-import { useEffect, type FC } from "react";
-import { Link, useParams } from "react-router-dom";
-// import Markdown from "markdown-to-jsx";
+import { type FC } from "react";
+import { useParams } from "react-router-dom";
 import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 
 //Components
-import { Header, PreFooter } from "../../../shared/components";
+import { Header, LoadingScreen, PreFooter } from "../../../shared/components";
 import { InteractionSection } from "../components/InteractionSection";
 
 //Hooks
@@ -23,13 +22,9 @@ export const Convention: FC = () => {
 
     const { data, isLoading, isError, error } = useGetSingleConvention(slug);
 
-    const pageTitle = data?.data?.title ? `StandardsHUB | ${data.data.title}` : "StandardsHUB | Loading...";
+    const pageTitle = data?.data?.title ? `ConventionHUB | ${data.data.title}` : "ConventionHUB | Loading...";
 
     useDocumentTitle(pageTitle);
-
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
 
     const handleDownload = (content:string) => {
         const file = new Blob([content], { type: 'text/markdown'});
@@ -44,8 +39,14 @@ export const Convention: FC = () => {
         
         document.body.removeChild(element);
         URL.revokeObjectURL(url);
-
     }
+
+    if(isError){
+        //navigate to and show error
+        console.log(error);
+    }
+
+    if(isLoading) return <LoadingScreen />
 
     return (
         <>
@@ -62,25 +63,25 @@ export const Convention: FC = () => {
                             <div className="convention-markdown-wrapper">
                                 <Markdown
                                     components={{
-                                        code({ node, className, children, ...props }) {
-                                        const match = /language-(\w+)/.exec(className || '');
-                                        return match ? (
-                                            <SyntaxHighlighter
-                                                style={oneDark}
-                                                language={match[1]}
-                                                PreTag="div"
-                                                {...props}
-                                            >
-                                                {String(children)}
-                                            </SyntaxHighlighter>
-                                        ) : (
-                                            <code className={className} {...props}>
-                                                {children}
-                                            </code>
-                                        );
+                                        code({ node, className, children, ref, ...props }) {
+                                            const match = /language-(\w+)/.exec(className || '');
+                                            return match ? (
+                                                <SyntaxHighlighter
+                                                    style={oneDark as any}
+                                                    language={match[1]}
+                                                    PreTag="div"
+                                                    {...props}
+                                                >
+                                                    {String(children).replace(/\n$/, '')}
+                                                </SyntaxHighlighter>
+                                            ) : (
+                                                <code className={className} {...props}>
+                                                    {children}
+                                                </code>
+                                            );
                                         }
                                     }}
-                                    >
+                                >
                                     {data?.data?.contentMd}
                                 </Markdown>
                                 <InteractionSection  

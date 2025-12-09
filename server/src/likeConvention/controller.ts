@@ -1,5 +1,7 @@
 import { type Request, type Response } from 'express';
-import { getLikeStatusOfConvetionWithId, checkIfLikeExcist, likeConventionWithId, removeLikeConventionWithId } from './model';
+
+import { getLikeStatusOfConvetionWithId, checkIfLikeExcist, likeConventionWithId, removeLikeConventionWithId, getAllLikedConventionsByUserId } from './model';
+import { findUser } from '../user/model';
 
 export const getLikeStatus = async(req:Request, res:Response) => {
     try{
@@ -147,6 +149,36 @@ export const removeLike = async(req:Request, res:Response) => {
 
     }catch(error:any){
         console.error('Failed to fetch remove like:', error);
+        return res.status(500).send({
+            status: 500,
+            message: error.message
+        });
+    };
+}
+
+export const getMyLikedConventions = async(req:Request, res:Response) => {
+    try{
+
+        const userId = req.signedCookies.session_id;
+        
+        const excistingUser = await findUser(userId);
+        if(!excistingUser){
+            return res.status(404).send({
+                status: 404,
+                message: "No user found"
+            })
+        }
+
+        const result = await getAllLikedConventionsByUserId(userId);
+
+        return res.status(201).send({
+            status: 201,
+            message: 'Found my liked conventions successfully',
+            data: result
+        })
+
+    }catch(error:any){
+        console.error('Failed to fetch get my liked conventions:', error);
         return res.status(500).send({
             status: 500,
             message: error.message

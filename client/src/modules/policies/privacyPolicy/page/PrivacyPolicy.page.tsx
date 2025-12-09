@@ -15,7 +15,7 @@ import { HOME_ROUTE } from "../../../home";
 
 export const PrivacyPolicy: FC = () => {
 
-    useDocumentTitle('StandardsHUB | PrivacyPolicy');
+    useDocumentTitle('ConventionHUB | PrivacyPolicy');
 
     return (
         <ScrollWrapper>
@@ -29,7 +29,7 @@ export const PrivacyPolicy: FC = () => {
                     <div className="policy-content">
                         <h3>1. Introduction</h3>
                         <p>
-                            At StandardsHUB, we value your privacy. This Privacy Policy outlines what personal data we collect, 
+                            At ConventionHUB, we value your privacy. This Privacy Policy outlines what personal data we collect, 
                             how we use it, and the choices you have regarding your information. By using our platform, 
                             you agree to the collection and use of information in accordance with this policy.
                         </p>
@@ -71,7 +71,7 @@ export const PrivacyPolicy: FC = () => {
                         <h3>5. Sharing of Information</h3>
                         <p>
                             <strong>We do not sell, trade, or rent your personal identification information to others.</strong> 
-                            Your data is used solely for the operation of StandardsHUB. Conventions you publish are public by default and can be viewed, 
+                            Your data is used solely for the operation of ConventionHUB. Conventions you publish are public by default and can be viewed, 
                             searched, and downloaded by anyone visiting the site.
                         </p>
 

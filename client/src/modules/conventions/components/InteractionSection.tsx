@@ -77,11 +77,12 @@ export const InteractionSection:FC<InteractionSectionProps> = ({ conventionId, l
                     className={`like-button ${likeState ? 'liked' : ''}`}
                     disabled={ isPending }
                 >
-                    ↑
+                    <div className={`like-triangle-top ${likeState ? 'liked' : ''}`}></div>
+                    <div className={`like-rectangle ${likeState ? 'liked' : ''}`}></div>
                 </button>
             </div>
-            <p>Created by:</p>
-            <p>{ authorName }</p>
+            <p className="created-by">Created by:</p>
+            <p className="created-by author">{ authorName ? authorName : 'Deleted User' }</p>
         </section>
     );
 }
