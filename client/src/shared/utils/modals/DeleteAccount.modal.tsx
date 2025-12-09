@@ -19,7 +19,9 @@ export const DeleteAccountModal: FC<DeleteAccountModalProps> = ({ isOpen, onClos
     
     const handleDelete = (e:FormEvent) => {
         mutate(e)
-        onClose();
+        if(!error){
+            onClose();
+        }
     }
   
     if (!isOpen) return null;

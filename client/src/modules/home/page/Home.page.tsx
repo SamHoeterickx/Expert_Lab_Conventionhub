@@ -1,4 +1,4 @@
-import { useEffect, type FC } from "react";
+import { type FC } from "react";
 
 //Components
 import { ScrollWrapper } from "../../../shared/components";
@@ -19,7 +19,7 @@ import './home.css';
 
 export const Home: FC = () => {
 
-    useDocumentTitle('StandardsHUB | Home');
+    useDocumentTitle('ConventionHUB | Home');
 
     return (
         <ScrollWrapper>

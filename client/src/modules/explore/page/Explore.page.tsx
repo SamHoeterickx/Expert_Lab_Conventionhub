@@ -23,7 +23,7 @@ export const Explore: FC = () => {
     const {data, isLoading, isError, error} = useGetConventions();
     const [searchParams] = useSearchParams();
 
-    useDocumentTitle('StandardsHUB | Explore');
+    useDocumentTitle('ConventionHUB | Explore');
 
     useEffect(() => {
         if(data && data.data){

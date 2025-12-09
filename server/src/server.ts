@@ -1,5 +1,4 @@
-import express, { type Express, type Request, type Response} from 'express';
-import { PrismaClient } from '@prisma/client';
+import express, { type Express} from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 

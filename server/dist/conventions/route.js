@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.conventionRouter = void 0;
+const express_1 = require("express");
+const controller_1 = require("./controller");
+exports.conventionRouter = (0, express_1.Router)();
+exports.conventionRouter.get('/', controller_1.getConventions);
+exports.conventionRouter.get('/random', controller_1.getRandomConventions);
+exports.conventionRouter.get('/convention', controller_1.getSingleConvention);
+exports.conventionRouter.get('/myConventions', controller_1.getMyConventions);
+exports.conventionRouter.post('/create', controller_1.createNewConvention);
+exports.conventionRouter.delete('/delete', controller_1.deleteConvention);

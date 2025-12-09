@@ -51,7 +51,7 @@ export const Footer = () => {
                         </li>
                         <li>
                             <Link to={`/${HOME_ROUTE.path}`}> 
-                                <h4>STANDARDSHUB</h4>
+                                <h4>CONVENTIONHUB</h4>
                             </Link>
                         </li>
                     </ul>

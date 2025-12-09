@@ -27,25 +27,27 @@ export const StepFourContentMd:FC<StepsProps> = ({ formData, handleChange }) => 
                     <label>PREVIEW</label>
                     <Markdown
                         components={{
-                            code({ node, className, children, ...props }) {
-                            const match = /language-(\w+)/.exec(className || '');
-                            return match ? (
-                                <SyntaxHighlighter
-                                    style={oneDark}
-                                    language={match[1]}
-                                    PreTag="div"
-                                    {...props}
-                                >
-                                    {String(children)}
-                                </SyntaxHighlighter>
-                            ) : (
-                                <code className={className} {...props}>
-                                    {children}
-                                </code>
-                            );
+                            code({ node, className, children, ref, ...props }) {
+                                const match = /language-(\w+)/.exec(className || '');
+                                return match ? (
+                                    <SyntaxHighlighter
+                                        style={oneDark as any}
+                                        language={match[1]}
+                                        PreTag="div"
+                                        {...props}
+                                    >
+                                        {String(children).replace(/\n$/, '')}
+                                    </SyntaxHighlighter>
+                                ) : (
+                                    <code className={className} {...props}>
+                                        {children}
+                                    </code>
+                                );
                             }
                         }}
-                    >{ formData.contentMd }</Markdown>
+                    >
+                        {formData.contentMd}
+                    </Markdown>
                 </div>
             </div>
         </div>

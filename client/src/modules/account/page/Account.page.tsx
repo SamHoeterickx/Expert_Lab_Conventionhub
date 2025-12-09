@@ -24,7 +24,7 @@ import './account.css';
 
 export const Account: FC = () => {
 
-    useDocumentTitle('StandardsHUB | Account');
+    useDocumentTitle('ConventionHUB | Account');
 
     const [activeModal, setActiveModal] = useState<'password' | 'username' | 'delete' | null>(null);
     

@@ -22,7 +22,7 @@ export const Convention: FC = () => {
 
     const { data, isLoading, isError, error } = useGetSingleConvention(slug);
 
-    const pageTitle = data?.data?.title ? `StandardsHUB | ${data.data.title}` : "StandardsHUB | Loading...";
+    const pageTitle = data?.data?.title ? `ConventionHUB | ${data.data.title}` : "ConventionHUB | Loading...";
 
     useDocumentTitle(pageTitle);
 
@@ -63,25 +63,25 @@ export const Convention: FC = () => {
                             <div className="convention-markdown-wrapper">
                                 <Markdown
                                     components={{
-                                        code({ node, className, children, ...props }) {
-                                        const match = /language-(\w+)/.exec(className || '');
-                                        return match ? (
-                                            <SyntaxHighlighter
-                                                style={oneDark}
-                                                language={match[1]}
-                                                PreTag="div"
-                                                {...props}
-                                            >
-                                                {String(children)}
-                                            </SyntaxHighlighter>
-                                        ) : (
-                                            <code className={className} {...props}>
-                                                {children}
-                                            </code>
-                                        );
+                                        code({ node, className, children, ref, ...props }) {
+                                            const match = /language-(\w+)/.exec(className || '');
+                                            return match ? (
+                                                <SyntaxHighlighter
+                                                    style={oneDark as any}
+                                                    language={match[1]}
+                                                    PreTag="div"
+                                                    {...props}
+                                                >
+                                                    {String(children).replace(/\n$/, '')}
+                                                </SyntaxHighlighter>
+                                            ) : (
+                                                <code className={className} {...props}>
+                                                    {children}
+                                                </code>
+                                            );
                                         }
                                     }}
-                                    >
+                                >
                                     {data?.data?.contentMd}
                                 </Markdown>
                                 <InteractionSection  

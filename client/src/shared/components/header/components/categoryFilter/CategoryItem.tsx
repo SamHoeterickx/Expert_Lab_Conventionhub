@@ -8,7 +8,7 @@ interface CategoryItemProps {
 
 export const CategoryItem:FC<CategoryItemProps> = ({ name }) => {
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [, setSearchParams] = useSearchParams();
 
     const handleClick = () => {
         console.log(name);

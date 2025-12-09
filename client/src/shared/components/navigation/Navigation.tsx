@@ -29,7 +29,7 @@ export const Navigation = () => {
                         <Link 
                             to={`/${HOME_ROUTE.path}`}
                         >
-                            STANDARDSHUB
+                            CONVENTIONHUB
                         </Link>
                     ) : (<div className="blank-space"></div>)
                 }

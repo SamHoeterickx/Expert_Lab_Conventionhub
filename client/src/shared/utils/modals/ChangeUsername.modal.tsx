@@ -1,4 +1,4 @@
-import React, { useState, type FC, type FormEvent } from "react";
+import React, { useState, type FC, } from "react";
 
 //Type
 import type { DangerZoneModalProps } from "../../types/DangerZone.type";
