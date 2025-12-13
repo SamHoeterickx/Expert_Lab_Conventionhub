@@ -138,6 +138,8 @@ export const authenticateMe = async(req:Request, res:Response) => {
 
         const sessionId = req.signedCookies.session_id;
 
+        console.log(sessionId);
+
         if(!sessionId){
             return res.status(401).send({
                 status: 401,
