@@ -9,7 +9,7 @@ export const HeroSection = () => {
     return (
         <section className="hero-section">
             <div className="explore-section-wrapper">
-                <img className="hero-image" src="./images/" alt="image of convention detail page" />
+                <img className="hero-image" src="images/md.png" alt="image of convention detail page" />
 
                 <Button
                     copy={ 'Explore' }
@@ -18,7 +18,7 @@ export const HeroSection = () => {
                 />
             </div>
             <div className="contribute-section-wrapper">
-                <img className="hero-image" src="./images/" alt="image of convention md file" />
+                <img className="hero-image" src="images/preview.png" alt="image of convention md file" />
 
                 <Button
                     copy={ 'Contribute' }

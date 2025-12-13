@@ -16,6 +16,10 @@
         background-color: var(--accent-color);
         border-radius: 50rem;
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
     }
 
     .kpi-info-wrapper{
