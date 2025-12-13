@@ -12,6 +12,7 @@ import { userRouter } from './user/route';
 
 const app:Express = express();
 const port = process.env.PORT || 3000;
+const COOKIE_SECRET = process.env.COOKIE_SECRET;
 
 app.use(express.json());
 app.use(cors({
@@ -23,7 +24,9 @@ app.use(cors({
     ],
     credentials: true
 }));
-app.use(cookieParser(process.env.COOKIE_SECRET))
+
+app.use(cookieParser(COOKIE_SECRET));
+app.set('trust proxy', 1)
 
 app.use('/api/conventions', conventionRouter)
 app.use('/api/users', userRouter);
